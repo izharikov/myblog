@@ -1,0 +1,184 @@
+export const meta = {
+    title: "Sitecore Content Hub Administrator Certification – Practice Guide",
+    logo: "/images/2025/ch/logo.png",
+    description: "Practical guide to prepare for the Sitecore Content Hub Administrator Certification. Learn which modules to explore and what to practice in the sandbox to pass the exam.",
+    tags: ["Content Hub", "Certification"],
+    date: "27.10.2025",
+};
+
+{/* ----- */}
+
+#### Intro
+
+I recently passed the [Sitecore Content Hub Administrator Certification](https://www.credly.com/badges/8000032c-309e-4dc3-a5f4-27da5ffac960/public_url) and want to share my experience — especially what areas of Content Hub you should focus on to prepare effectively.
+
+There’s already plenty of information about what to expect and how to get ready, but this guide focuses on **what to explore hands-on in the Sandbox** to increase your chances of passing.
+
+Check out these helpful videos:
+- [Tips for Passing Sitecore Content Hub Certification Exams](https://www.youtube.com/watch?v=MQR1W-ZL6FY)
+- [Sitecore Content Hub Administrator Certification](https://www.youtube.com/watch?v=TJ3jvmXbJ3E)
+- [Sitecore Content Hub Admin Certification | Introduction | Tips & Tricks](https://www.youtube.com/watch?v=T587jpfn9zU)
+
+---
+
+#### Competencies and Preparation
+
+The exam covers the following key competencies:
+
+- Asset Management in Content Hub DAM  
+- Content Hub DAM Configuration  
+- Security & Rights Management for Content Hub DAM  
+- State Flow Configuration with Content Hub  
+- Content Creation & Management with CMP  
+- Project Management with MRM  
+
+---
+
+#### Where to Start
+
+Begin with the _Content Hub for Administrators_ e-learning course on [learning.sitecore.com](https://learning.sitecore.com/).  
+Also, get access to a **sandbox** to explore the platform in practice.
+
+To go beyond the basics and prepare for the exam, check the sections below.
+
+---
+
+#### Asset Management in Content Hub DAM
+
+##### Entities (Schema)
+
+Entities are the foundation of Content Hub, so explore them thoroughly. 
+
+![Schema](/images/2025/ch/schema.png)
+
+Create **custom fields** with different settings (conditional validation, field-level security, etc.) to see how they behave. 
+
+![new member](/images/2025/ch/new-member.png)
+
+Review the **Entity Details** pages for various types (Assets, Content, Projects) to understand how data and relations are structured. 
+Learn which **repositories** are used by DAM, CMP, and MRM, and how they store and organize data.
+
+![entity details - repository](/images/2025/ch/entity-details-repository.png)
+
+Finally, understand the difference between **Option Lists** and **Taxonomies** — both categorize data but differ in search, filtering, and security inheritance.
+
+![taxonomy vs option list](/images/2025/ch/taxnonomy-vs-option-list.png)
+
+_Suggestion:_ Create a custom entity type, taxonomy, and option list. Add validation and security rules to practice configuration.
+
+##### Assets
+
+Assets are a major part of the exam. Review all **asset statuses** in DAM, CMP, and MRM to understand the full lifecycle — from creation to approval and archiving.  
+
+![asset actions](/images/2025/ch/asset-actions.png)
+
+Check the **Project Incoming** page to see which assets appear there and why.
+Study [**File Storage**](https://doc.sitecore.com/ch/en/users/content-hub/file-storage.html) and **export options** to learn how files, renditions, and metadata are managed.  
+Understand the difference between **M.File** and **M.Asset**, how duplicates are handled, and how **hash values** are used (`entitymgmt => System` section).
+Finally, review **asset type flags**, such as those enabling Azure Vision or ZIP extraction — these often appear in exam questions.
+
+![asset type](/images/2025/ch/asset-type.png)
+
+_Suggestion:_ Upload and export assets, import data from Excel, review statuses, and explore the Entity Details for assets and files.
+
+---
+
+#### Content Creation & Management and State Flow with CMP
+
+The **Content Marketing Platform (CMP)** focuses on content lifecycle — from idea to publication.
+Start by exploring the **out-of-the-box (OOTB) state flows** provided by Sitecore. Observe each state and transition to understand how ideas become approved content.  
+
+![state flow](/images/2025/ch/state-flow.png)
+
+Then create your own **custom state flow**, noting restrictions when adding states, actions, or conditions.
+
+Next, work with **custom content types** (e.g., “Blog Article” or “Press Release”). Add relevant fields and assign a **state flow** to control lifecycle and approval.  
+
+_Suggestion:_ Explore entity details in CMP, create a new Content Type, and link a state flow to it.
+
+![state flow](/images/2025/ch/ideation-state-flow.png)
+
+---
+
+#### Content Hub DAM Configuration
+
+Explore **default pages** such as *Assets*, *Create New Asset (Upload)*, *Create New Entity*, and *Asset Details*.
+
+![custom asset details page](/images/2025/ch/pages-custom.png)
+
+Duplicate and rebuild them to understand how **components** are structured and configured.  
+Focus on the **Assets page** and its **Search component** — review options for filters, facets, pagination, and sorting.  
+Also, check **CMP pages** to see how state flow is displayed and configured within components.
+
+_Suggestion:_ Recreate pages from scratch to practice component setup and configuration.
+
+---
+
+#### Project Management with MRM
+
+In the **Marketing Resource Management (MRM)** module, understand how **projects**, **tasks**, and **jobs** are related.  
+
+![sample project](/images/2025/ch/mrm-project.png)
+
+Start by reviewing all available **roles** (Project Manager, Contributor, Reviewer) to see permission differences.  
+Create a **test project**, add **tasks**, and assign them to users or roles. Compare how **tasks** differ from **jobs** in purpose and visibility.
+
+_Suggestion:_ Review entity details to understand how jobs differ from projects.
+
+---
+
+#### Security & Rights Management for Content Hub DAM
+
+Experiment with **security rules and access conditions**.  
+
+![security rules](/images/2025/ch/security-rules.png)
+
+Create test users and assign them to different **user groups** to learn about default permissions and access scopes.  
+Then, configure **policy combinations** using **“When All”** and **“When Any”** options — see how these combinations affect access to entities, pages, and assets.
+
+![policy combinations](/images/2025/ch/policy-combination.png)
+
+---
+
+#### Bonus
+
+Check these questions to test your readiness:
+
+_Among these names which are types entity types or taxonomies? If it’s a taxonomy, what are the default values?_
+```
+M.Asset
+M.AssetType
+M.AssetMedia
+M.File
+M.Final.LifeCycle.Status
+M.Project.Task
+M.Project.Block
+M.Content
+M.Content.Repository
+M.Automation.StateMachine
+```
+
+
+_What are the two main CMP State Flows? Which entities are they related to?_
+
+_What is the default role every user should have in Content Hub DAM?_
+
+_If you upload the same PNG twice, how many assets and files are created? Does Content Hub detect identical files?_
+
+_What are the key differences between Taxonomy and Option List?_
+
+_What is the purpose of the `Start state machine` action type?_
+
+_What’s the difference between Multi-Stage Project, Basic Project, and Jobs?_
+
+_Which component is used for Asset Search? How do you configure Result List, Facets, and Filters?_
+
+Answers are located [here](https://gist.github.com/izharikov/277da9bd2cc42f6f3d48eb2bb753cb50).
+
+---
+
+#### Conclusion
+
+I hope this guide helps you prepare effectively for the Sitecore Content Hub Administrator Certification.  
+Good luck with your exam!
+

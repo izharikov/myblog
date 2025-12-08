@@ -1,9 +1,13 @@
-export interface BlogPost {
+export type BlogPost = {
     slug: string;
     title: string;
-    preview: string;
-    date: string;
-    category: string;
-    imageAlt: string;
-    imageUrl: string;
+    description: string;
+    date: Date;
+    dateDisplay: string;
+    logo: string;
+    tags: string[];
 }
+
+export type BlogMeta = Omit<BlogPost, 'dateDisplay' | 'date'> & {
+    date: string;
+};

@@ -81,7 +81,7 @@ const components: MDXComponents = {
         const isInline = !className
         if (isInline) {
             return (
-                <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+                <code className="relative rounded bg-muted py-[0.2rem] font-mono text-sm font-semibold">
                     {children}
                 </code>
             )
@@ -139,13 +139,13 @@ const components: MDXComponents = {
 
     // Image
     img: ({ src, alt }) => (
-        <span className="block my-6">
-            <img
+        <span className="my-6 block">
+            <Image
                 src={src as string}
                 alt={alt || ''}
-                width={800}
-                height={400}
-                className="rounded-lg border"
+                width={1000}
+                height={500}
+                className="max-w-full w-auto m-auto h-auto border-2"
             />
         </span>
     ),
