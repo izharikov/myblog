@@ -145,6 +145,7 @@ const components: MDXComponents = {
                 alt={alt || ''}
                 width={1000}
                 height={500}
+                quality={75}
                 className="max-w-full w-auto m-auto h-auto border-2"
             />
         </span>

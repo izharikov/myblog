@@ -1,21 +1,18 @@
 import { BlogPost } from "@/types/blog";
 import Image from "next/image";
+import { getAllBlogs } from "@/lib/blogs";
 
 async function getBlogPost(slug: string) {
   return await import(`@/blogs/${slug}.mdx`);
 }
 
-function formatDate(dateString: string): string {
-  // Parse dd.MM.yyyy format
-  const [day, month, year] = dateString.split('.');
-  const date = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
-
-  // Format to "Month DD, YYYY"
-  return date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  });
+async function getBlogMeta(slug: string): Promise<BlogPost> {
+  const allBlogs = getAllBlogs();
+  const blog = allBlogs.find(b => b.slug === slug);
+  if (!blog) {
+    throw new Error(`Blog post not found: ${slug}`);
+  }
+  return blog;
 }
 
 export async function generateMetadata({
@@ -24,7 +21,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params;
-  const { meta }: { meta: BlogPost } = await getBlogPost(slug);
+  const meta = await getBlogMeta(slug);
 
   return {
     title: meta.title,
@@ -34,7 +31,7 @@ export async function generateMetadata({
       title: meta.title,
       description: meta.description,
       type: 'article',
-      publishedTime: meta.date,
+      publishedTime: meta.dateDisplay,
     },
   };
 }
@@ -45,7 +42,8 @@ export default async function Page({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params;
-  const { default: Post, meta }: { default: any; meta: BlogPost } = await getBlogPost(slug);
+  const { default: Post } = await getBlogPost(slug);
+  const meta = await getBlogMeta(slug);
 
   return <div className="container max-w-screen-xl mx-auto p-4">
     <h1 className="scroll-m-20 text-4xl font-bold tracking-tight lg:text-5xl mb-6 mt-8">{meta.title}</h1>
@@ -65,16 +63,24 @@ export default async function Page({
       </div>
     </div>
     <div className="flex justify-center">
-      <Image src={meta.logo} alt={meta.title} width={600} height={600} />
+      <Image
+        src={meta.logo}
+        alt={meta.title}
+        width={600}
+        height={600}
+        priority
+        quality={75}
+        placeholder="blur"
+      />
     </div>
     <Post />
   </div>
 }
 
-export async function generateStaticParams() {
-  const { getAllBlogSlugs } = await import('@/lib/blogs');
-  const slugs = await getAllBlogSlugs();
-  return slugs.map(slug => ({ slug }));
+export function generateStaticParams() {
+  const { getAllBlogSlugs } = require('@/lib/blogs');
+  const slugs = getAllBlogSlugs();
+  return slugs.map((slug: string) => ({ slug }));
 }
 
 export const dynamicParams = false
