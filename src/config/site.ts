@@ -1,9 +1,8 @@
 export const siteConfig = {
-    name: "Igor Zharikov",
+    name: "Igor Zharikov Blog",
     logo: "@izharikov",
     description: `This site just went live, so don't be too strict with me 😅.
 I'm Sitecore Architect at Brimit. Sitecore MVP 2023-2025`,
-    url: "https://yourdomain.com",
     author: {
         name: "Igor Zharikov",
         email: "zharikovigor97@gmail.com",

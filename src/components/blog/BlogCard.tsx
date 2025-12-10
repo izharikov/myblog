@@ -19,7 +19,6 @@ export const BlogCard = ({ post }: BlogCardProps) => (
                     height={338}
                     quality={75}
                     className="object-cover w-full h-full"
-                    placeholder="blur"
                 />
             </div>
             <CardContent className="p-6 space-y-3">

@@ -5,8 +5,8 @@ const nextConfig: NextConfig = {
 	// Configure `pageExtensions` to include markdown and MDX files
 	pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
 
-	// Image optimization configuration
-	images: {
+	// Image optimization with custom Cloudflare loader
+	images: process.env.NODE_ENV === "development" ? {
 		formats: ['image/avif', 'image/webp'], // AVIF first (better compression), fallback to WebP
 		deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840], // Responsive breakpoints
 		imageSizes: [16, 32, 48, 64, 96, 128, 256, 384], // Smaller image sizes
@@ -15,6 +15,12 @@ const nextConfig: NextConfig = {
 		contentDispositionType: 'attachment',
 		contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
 		qualities: [75],
+	} : {
+		loader: 'custom',
+		loaderFile: './image-loader.ts',
+		formats: ['image/avif', 'image/webp'],
+		deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+		imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
 	},
 };
 

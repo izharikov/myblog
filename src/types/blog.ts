@@ -1,4 +1,5 @@
 export type BlogPost = {
+    path: string;
     slug: string;
     title: string;
     description: string;

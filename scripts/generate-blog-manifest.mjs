@@ -35,23 +35,23 @@ async function generateBlogManifest() {
     const blogs = [];
 
     for (const file of mdxFiles) {
-        const slug = file.replace(/\.mdx$/, '');
-        const filePath = path.join(blogsDirectory, file);
+        const name = file.replace(/\.mdx$/, '');
+        const fullPath = path.join(blogsDirectory, file);
 
         try {
-            const data = await extractMeta(filePath);
+            const data = await extractMeta(fullPath);
 
             if (data && Object.keys(data).length > 0) {
                 blogs.push({
-                    slug,
+                    path: name,
                     ...data,
                 });
-                console.log(`✓ Loaded: ${slug}`);
+                console.log(`✓ Loaded: ${name}`);
             } else {
                 console.warn(`⚠️  No frontmatter found in: ${file}`);
             }
         } catch (error) {
-            console.error(`✗ Error loading ${slug}:`, error.message);
+            console.error(`✗ Error loading ${name}:`, error.message);
         }
     }
 
@@ -69,6 +69,11 @@ async function generateBlogManifest() {
 // Do not edit manually - run 'npm run generate-manifest' to regenerate
 
 import { BlogMeta } from '@/types/blog';
+
+export const blogSlugToPath: Record<string, string> = ${JSON.stringify(blogs.reduce((acc, blog) => {
+        acc[blog.slug] = blog.path;
+        return acc;
+    }, {}), null, 4)};
 
 export const blogManifest: BlogMeta[] = ${JSON.stringify(blogs, null, 4)};
 `;

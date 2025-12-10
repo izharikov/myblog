@@ -1,9 +1,11 @@
 import { BlogPost } from "@/types/blog";
 import Image from "next/image";
 import { getAllBlogs } from "@/lib/blogs";
+import { blogSlugToPath } from "@/data/blog-manifest";
+import Head from 'next/head';
 
 async function getBlogPost(slug: string) {
-  return await import(`@/blogs/${slug}.mdx`);
+  return await import(`@/blogs/${blogSlugToPath[slug]}.mdx`);
 }
 
 async function getBlogMeta(slug: string): Promise<BlogPost> {
@@ -46,6 +48,12 @@ export default async function Page({
   const meta = await getBlogMeta(slug);
 
   return <div className="container max-w-screen-xl mx-auto p-4">
+    <Head>
+      <title>{meta.title}</title>
+      <meta name="description" content={meta.description} />
+      <meta name="keywords" content={meta.tags.join(", ")} />
+      <meta name="og:image" content={meta.logo} />
+    </Head>
     <h1 className="scroll-m-20 text-4xl font-bold tracking-tight lg:text-5xl mb-6 mt-8">{meta.title}</h1>
     <div className="mb-6 flex flex-wrap items-center gap-3">
       <time className="text-sm text-gray-600 dark:text-gray-400">
@@ -70,7 +78,6 @@ export default async function Page({
         height={600}
         priority
         quality={75}
-        placeholder="blur"
       />
     </div>
     <Post />
@@ -78,9 +85,7 @@ export default async function Page({
 }
 
 export function generateStaticParams() {
-  const { getAllBlogSlugs } = require('@/lib/blogs');
-  const slugs = getAllBlogSlugs();
-  return slugs.map((slug: string) => ({ slug }));
+  return Object.keys(blogSlugToPath).map((slug) => ({ slug }));
 }
 
 export const dynamicParams = false

@@ -5,7 +5,7 @@ export const HeroSection = () => (
         <div className="container max-w-screen-xl mx-auto px-4">
             <div className="flex flex-col justify-center space-y-3">
                 <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
-                    Hello, I'm <span className="text-primary">{siteConfig.name}</span>
+                    Hello, I'm <span className="text-primary">{siteConfig.author.name}</span>
                 </h1>
                 <p className="max-w-[700px] text-base text-muted-foreground whitespace-pre-line">
                     {siteConfig.description}
