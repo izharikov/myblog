@@ -4,6 +4,7 @@
 import { BlogMeta } from '@/types/blog';
 
 export const blogSlugToPath: Record<string, string> = {
+    "sitecore-marketers-mcp-server-resource-parameter-required": "6-sitecore-mcp-server-issue",
     "sitecoreai-mcp-marketplace-symposium2025-recap": "5-sitecoreai-mcp-marketplace-symposium2025-recap",
     "sitecore-ch-dam-exam": "4-sitecore-ch-dam-exam",
     "sitecore-ci-cd": "3-sitecore-ci-cd",
@@ -12,6 +13,18 @@ export const blogSlugToPath: Record<string, string> = {
 };
 
 export const blogManifest: BlogMeta[] = [
+    {
+        "path": "6-sitecore-mcp-server-issue",
+        "title": "Fix \"Resource parameter is required\" error in Sitecore Marketers MCP",
+        "slug": "sitecore-marketers-mcp-server-resource-parameter-required",
+        "logo": "/images/2025/marketers-mcp-issue/logo.png",
+        "description": "Check how to fix issue  \"Resource parameter is required\" error in Sitecore Marketers MCP (Postman, Microsoft Copilot Studio, Codex)",
+        "tags": [
+            "MCP",
+            "Sitecore"
+        ],
+        "date": "11.12.2025"
+    },
     {
         "path": "5-sitecoreai-mcp-marketplace-symposium2025-recap",
         "title": "SitecoreAI, Marketer MCP, Agents API, Marketplace — Sitecore Symposium 2025 Recap",
