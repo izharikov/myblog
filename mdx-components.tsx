@@ -1,6 +1,7 @@
 import type { MDXComponents } from 'mdx/types'
 import Image from 'next/image'
 import Link from 'next/link'
+import { CodeBlock } from '@/components/code-block'
 
 const components: MDXComponents = {
     // Headings
@@ -87,15 +88,13 @@ const components: MDXComponents = {
             )
         }
         return (
-            <code className={className}>
-                {children}
-            </code>
+            <CodeBlock className={className}>
+                {children as string}
+            </CodeBlock>
         )
     },
     pre: ({ children }) => (
-        <pre className="mb-4 mt-6 overflow-x-auto rounded-lg border bg-muted p-4">
-            {children}
-        </pre>
+        <>{children}</>
     ),
 
     // Horizontal Rule

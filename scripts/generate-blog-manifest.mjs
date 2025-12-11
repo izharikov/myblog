@@ -18,7 +18,7 @@ async function extractMeta(filePath) {
         baseUrl: import.meta.url
     });
 
-    return meta;
+    return { meta, fileContent };
 }
 
 async function generateBlogManifest() {
@@ -39,14 +39,18 @@ async function generateBlogManifest() {
         const fullPath = path.join(blogsDirectory, file);
 
         try {
-            const data = await extractMeta(fullPath);
-
-            if (data && Object.keys(data).length > 0) {
+            const { meta, fileContent } = await extractMeta(fullPath);
+            if (meta && Object.keys(meta).length > 0) {
                 blogs.push({
                     path: name,
-                    ...data,
+                    ...meta,
                 });
                 console.log(`✓ Loaded: ${name}`);
+                const mdFile = path.join(process.cwd(), 'public', 'blogs', meta.slug + '.md');
+                let markdown = fileContent.substring(fileContent.indexOf('{/* ----- */}'));
+                markdown = markdown.replace('{/* ----- */}', `# ${meta.title}`);
+                await fs.writeFile(mdFile, markdown, 'utf-8');
+                console.log(`✓ Saved: ${name}`);
             } else {
                 console.warn(`⚠️  No frontmatter found in: ${file}`);
             }

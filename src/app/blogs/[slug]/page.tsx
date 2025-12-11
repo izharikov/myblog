@@ -3,6 +3,10 @@ import Image from "next/image";
 import { getAllBlogs } from "@/lib/blogs";
 import { blogSlugToPath } from "@/data/blog-manifest";
 import Head from 'next/head';
+import { Images } from "lucide-react";
+import { siteConfig } from "@/config/site";
+import { imgUrl } from "@/lib/img";
+import Link from "next/link";
 
 async function getBlogPost(slug: string) {
   return await import(`@/blogs/${blogSlugToPath[slug]}.mdx`);
@@ -34,7 +38,13 @@ export async function generateMetadata({
       description: meta.description,
       type: 'article',
       publishedTime: meta.dateDisplay,
+      images: [{ url: siteConfig.site + imgUrl({ src: meta.logo, width: 600, quality: 75 }) }],
     },
+    alternates: {
+      types: {
+        'text/markdown': siteConfig.site + '/blogs/' + slug + '.md',
+      }
+    }
   };
 }
 
@@ -55,7 +65,7 @@ export default async function Page({
       <meta name="og:image" content={meta.logo} />
     </Head>
     <h1 className="scroll-m-20 text-4xl font-bold tracking-tight lg:text-5xl mb-6 mt-8">{meta.title}</h1>
-    <div className="mb-6 flex flex-wrap items-center gap-3">
+    <div className="mb-6 flex flex-col flex-wrap gap-3">
       <time className="text-sm text-gray-600 dark:text-gray-400">
         {meta.dateDisplay}
       </time>
@@ -81,6 +91,8 @@ export default async function Page({
       />
     </div>
     <Post />
+    <hr className="my-6" />
+    <Link className="font-medium text-primary underline underline-offset-4 hover:text-primary/80 transition-colors" href={`/blogs/${slug}.md`} target="_blank">View article as markdown</Link>
   </div>
 }
 

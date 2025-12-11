@@ -1,13 +1,4 @@
-export const meta = {
-    title: "Optimizing Sitecore Builds: CI/CD Performance Tips",
-    slug: "sitecore-ci-cd",
-    logo: "/images/2025/cicd/logo.png",
-    description: "Optimize Sitecore CI/CD pipelines with practical tips for faster frontend builds and Docker image performance. Learn how to reduce build time, improve caching, and minimize I/O operations.",
-    tags: ["XP", "CI/CD", "Docker", "Performance"],
-    date: "06.10.2025",
-};
-
-{/* ----- */}
+# Optimizing Sitecore Builds: CI/CD Performance Tips
 
 Building and deploying Sitecore solutions can be time-consuming if pipelines aren’t optimized. This article shares practical techniques we used to speed up CI/CD workflows for Sitecore XP (Kubernetes in our case) deployments, enabling faster and more efficient delivery.
 
