@@ -4,6 +4,7 @@
 import { BlogMeta } from '@/types/blog';
 
 export const blogSlugToPath: Record<string, string> = {
+    "sitecore-marketplace-december-updates": "7-sitecore-marketplace-updates",
     "sitecore-marketers-mcp-server-resource-parameter-required": "6-sitecore-mcp-server-issue",
     "sitecoreai-mcp-marketplace-symposium2025-recap": "5-sitecoreai-mcp-marketplace-symposium2025-recap",
     "sitecore-ch-dam-exam": "4-sitecore-ch-dam-exam",
@@ -13,6 +14,18 @@ export const blogSlugToPath: Record<string, string> = {
 };
 
 export const blogManifest: BlogMeta[] = [
+    {
+        "path": "7-sitecore-marketplace-updates",
+        "title": "Sitecore Marketplace Updates (December 2025)",
+        "slug": "sitecore-marketplace-december-updates",
+        "logo": "/images/2025/marketplace-updates/logo.png",
+        "description": "Latest Sitecore Marketplace updates: Blok components General Availability (GA), new permissions and event subscriptions",
+        "tags": [
+            "Marketplace",
+            "Sitecore AI"
+        ],
+        "date": "12.12.2025"
+    },
     {
         "path": "6-sitecore-mcp-server-issue",
         "title": "Fix \"Resource parameter is required\" error in Sitecore Marketers MCP",

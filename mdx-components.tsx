@@ -48,6 +48,7 @@ const components: MDXComponents = {
         <Link
             href={href as string}
             className="font-medium text-primary underline underline-offset-4 hover:text-primary/80 transition-colors"
+            target="_blank"
         >
             {children}
         </Link>
