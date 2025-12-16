@@ -1,8 +1,12 @@
 import { siteConfig } from '@/config/site';
+import Image from 'next/image';
 
 export const HeroSection = () => (
     <section className="py-8 md:py-12 border-b">
-        <div className="container max-w-screen-xl mx-auto px-4">
+        <div className="container max-w-screen-xl mx-auto px-4 flex">
+            <div className="pr-8">
+                <Image src="/myphoto.jpg" alt={siteConfig.author.name} width={100} height={100} className="rounded-xl" />
+            </div>
             <div className="flex flex-col justify-center space-y-3">
                 <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
                     Hello, I'm <span className="text-primary">{siteConfig.author.name}</span>

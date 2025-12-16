@@ -24,7 +24,7 @@ export function CodeBlock({ children, className }: CodeBlockProps) {
 
     if (!mounted) {
         return (
-            <pre className="mb-4 mt-6 overflow-x-auto rounded-lg border bg-muted p-4">
+            <pre className="bg-muted text-primary mb-4 mt-6 overflow-x-auto rounded-lg border p-4">
                 <code className={className}>{children}</code>
             </pre>
         )
@@ -46,6 +46,7 @@ export function CodeBlock({ children, className }: CodeBlockProps) {
                     variant="outline"
                     size="sm"
                     className="h-8 w-8 bg-background/50 hover:bg-background backdrop-blur-sm"
+                    aria-label="Copy code"
                 />
             </div>
             <SyntaxHighlighter

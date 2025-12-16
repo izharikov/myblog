@@ -9,13 +9,13 @@ export const Footer = () => (
                 &copy; {new Date().getFullYear()} {siteConfig.author.name}
             </p>
             <div className="flex items-center space-x-6">
-                <Link href={siteConfig.social.github} target='_blank' className="text-muted-foreground hover:text-primary transition-colors">
+                <Link href={siteConfig.social.github} target='_blank' aria-label="GitHub" className="text-muted-foreground hover:text-primary transition-colors">
                     <GitHub />
                 </Link>
-                <Link href={siteConfig.social.linkedin} target='_blank' className="text-muted-foreground hover:text-primary transition-colors">
+                <Link href={siteConfig.social.linkedin} target='_blank' aria-label="LinkedIn" className="text-muted-foreground hover:text-primary transition-colors">
                     <Linkedin />
                 </Link>
-                <Link href={siteConfig.social.twitter} target='_blank' className="text-muted-foreground hover:text-primary transition-colors">
+                <Link href={siteConfig.social.twitter} target='_blank' aria-label="x.com" className="text-muted-foreground hover:text-primary transition-colors">
                     <XCom />
                 </Link>
             </div>

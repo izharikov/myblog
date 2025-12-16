@@ -83,7 +83,7 @@ const components: MDXComponents = {
         const isInline = !className
         if (isInline) {
             return (
-                <code className="relative rounded bg-muted py-[0.2rem] font-mono text-sm font-semibold">
+                <code className="relative rounded bg-muted text-primary py-[0.2rem] font-mono text-sm font-semibold px-1">
                     {children}
                 </code>
             )

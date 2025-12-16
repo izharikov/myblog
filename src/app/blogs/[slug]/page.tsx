@@ -3,10 +3,10 @@ import Image from "next/image";
 import { getAllBlogs } from "@/lib/blogs";
 import { blogSlugToPath } from "@/data/blog-manifest";
 import Head from 'next/head';
-import { Images } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { imgUrl } from "@/lib/img";
 import Link from "next/link";
+import { generateBlogJsonLd } from "@/lib/json-ld";
 
 async function getBlogPost(slug: string) {
   return await import(`@/blogs/${blogSlugToPath[slug]}.mdx`);
@@ -56,6 +56,7 @@ export default async function Page({
   const { slug } = await params;
   const { default: Post } = await getBlogPost(slug);
   const meta = await getBlogMeta(slug);
+  const jsonLd = generateBlogJsonLd(meta);
 
   return <div className="container max-w-screen-xl mx-auto p-4">
     <Head>
@@ -64,6 +65,10 @@ export default async function Page({
       <meta name="keywords" content={meta.tags.join(", ")} />
       <meta name="og:image" content={meta.logo} />
     </Head>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
     <h1 className="scroll-m-20 text-4xl font-bold tracking-tight lg:text-5xl mb-6 mt-8">{meta.title}</h1>
     <div className="mb-6 flex flex-col flex-wrap gap-3">
       <time className="text-sm text-gray-600 dark:text-gray-400">
