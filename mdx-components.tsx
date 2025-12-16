@@ -2,6 +2,9 @@ import type { MDXComponents } from 'mdx/types'
 import Image from 'next/image'
 import Link from 'next/link'
 import { CodeBlock } from '@/components/code-block'
+import { H2, H3, H4, H5, H6 } from '@/components/ui/heading-with-anchor';
+
+const anchor = (text: any) => text.toString().toLowerCase().replace(/\s/g, '-');
 
 const components: MDXComponents = {
     // Headings
@@ -11,29 +14,35 @@ const components: MDXComponents = {
         </h1>
     ),
     h2: ({ children }) => (
-        <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0 mt-10 mb-4">
+        <H2 anchor={anchor(children)}
+            anchorVisibility="hover"
+            className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0 mt-10 mb-4">
             {children}
-        </h2>
+        </H2>
     ),
     h3: ({ children }) => (
-        <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight mt-8 mb-4">
+        <H3 anchor={anchor(children)}
+            anchorVisibility="hover" className="scroll-m-20 text-2xl font-semibold tracking-tight mt-8 mb-4">
             {children}
-        </h3>
+        </H3>
     ),
     h4: ({ children }) => (
-        <h4 className="scroll-m-20 text-xl font-semibold tracking-tight mt-6 mb-3">
+        <H4 anchor={anchor(children)}
+            anchorVisibility="hover" className="scroll-m-20 text-xl font-semibold tracking-tight mt-6 mb-3">
             {children}
-        </h4>
+        </H4>
     ),
     h5: ({ children }) => (
-        <h5 className="scroll-m-20 text-lg font-semibold tracking-tight mt-6 mb-3">
+        <H5 anchor={anchor(children)}
+            anchorVisibility="hover" className="scroll-m-20 text-lg font-semibold tracking-tight mt-6 mb-3">
             {children}
-        </h5>
+        </H5>
     ),
     h6: ({ children }) => (
-        <h6 className="scroll-m-20 text-base font-semibold tracking-tight mt-6 mb-3">
+        <H6 anchor={anchor(children)}
+            anchorVisibility="hover" className="scroll-m-20 text-base font-semibold tracking-tight mt-6 mb-3">
             {children}
-        </h6>
+        </H6>
     ),
 
     // Paragraph
