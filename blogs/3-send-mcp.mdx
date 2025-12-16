@@ -9,7 +9,7 @@ export const meta = {
 
 {/* ----- */}
 
-#### Introduction
+## Introduction
 
 As LLMs become more popular, they face two main challenges: their knowledge is restricted to what they were trained on (with a knowledge cut-off), and their ability to interact with external tools is often limited. 
 
@@ -19,7 +19,7 @@ For easy integration with Sitecore Send, I've created a Sitecore Send MCP Server
 
 In this article, I will show the details of the Sitecore Send MCP Server and provide an example of its usage.
 
-#### Sitecore Send MCP Server (My Implementation)
+## Sitecore Send MCP Server (My Implementation)
 
 My implementation of the **Sitecore Send MCP Server** can be found here:  
 - [github](https://github.com/izharikov/send-mcp)
@@ -54,7 +54,7 @@ Use the following JSON to add the server to any LLM client supporting MCP (GitHu
 }
 ```
 
-#### Connecting to the MCP server
+## Connecting to the MCP server
 
 For the LLM client, I use [5ire](https://5ire.app/) (which, of course, supports MCP).
 
@@ -62,7 +62,7 @@ MCP currently supports [two transports](https://modelcontextprotocol.io/docs/con
 - `stdio` - connect to the server using standard input and output (run the server locally)
 - Streamable HTTP - uses HTTP POST requests for client-to-server communication and optional Server-Sent Events (SSE) streams for server-to-client communication (connect to a remote server)
 
-##### `stdio` transport
+### `stdio` transport
 
 If you are using the `stdio` mode, you can connect to the server using the following command:
 
@@ -75,7 +75,7 @@ The actual list of environment variables can be observed [here](https://github.c
 
 ![connecting to the server](/images/2025/send-mcp/connect-to-mcp-stdio.png)
 
-##### Streamable HTTP transport
+### Streamable HTTP transport
 
 If you are using the Streamable HTTP mode, you can start the server and connect to it.
 
@@ -111,11 +111,11 @@ http://localhost:3000/mcp
 
 ![connecting to the server](/images/2025/send-mcp/connect-to-mcp-http.png)
 
-##### Retrieve lists and subscribers information
+### Retrieve lists and subscribers information
 
 ![lists and subscribers information](/images/2025/send-mcp/ask-information.png)
 
-##### Sending an email
+### Sending an email
 
 As we have the tools `send_smtp_email` and `send_transactional_email`, we can ask the LLM to generate and send an email to a particular subscriber.
 
@@ -131,12 +131,12 @@ The email itself looks like this:
 
 ![LLM generated email](/images/2025/send-mcp/generated-email.png)
 
-#### Implementation details:
+## Implementation details:
 - Language: `TypeScript`
 - Framework used: [FastMCP](https://github.com/punkpeye/fastmcp)
 - Sitecore Send API Client in TypeScript: [git](https://github.com/izharikov/send-client) or [npm](https://www.npmjs.com/package/send-client)
 
-#### Conclusion
+## Conclusion
 
 As I just showed, with an MCP server it's possible (and easy!) to connect any LLM to your Sitecore Send instance and use it to get lists and subscriber information, send emails, and much more.
 

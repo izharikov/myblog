@@ -11,7 +11,7 @@ export const meta = {
 
 Building and deploying Sitecore solutions can be time-consuming if pipelines aren’t optimized. This article shares practical techniques we used to speed up CI/CD workflows for Sitecore XP (Kubernetes in our case) deployments, enabling faster and more efficient delivery.
 
-#### In short
+## In short
 
 If you don’t want to read all the details, here are the main principles that can be applied to any CI/CD pipeline:
 
@@ -25,7 +25,7 @@ _Note_: All implementation details here are for Azure DevOps pipelines, but the 
 
 ---
 
-#### Run tasks conditionally
+## Run tasks conditionally
 
 Our build pipeline is shared between regular builds (triggered on push) and deployment builds (used when deploying to an environment and generating deployment artifacts).
 
@@ -52,11 +52,11 @@ _Note_: This optimization improves the average build performance by skipping unn
 
 ---
 
-#### Caching
+## Caching
 
 Caching is one of the most effective optimization techniques. With proper configuration, it can significantly improve performance.
 
-##### Pipeline caching
+### Pipeline caching
 
 [Pipeline caching](https://learn.microsoft.com/en-us/azure/devops/pipelines/release/caching) in Azure DevOps can be implemented using the [Cache@2](https://learn.microsoft.com/en-us/azure/devops/pipelines/tasks/reference/cache-v2?view=azure-pipelines) task.
 
@@ -93,7 +93,7 @@ Example:
 _Explanation_: The `cacheHitVar` input sets `NODE_MODULES_CACHE_RESTORED` to `true` if the cache was restored.  
 Then the `npm ci` task only runs when the cache wasn’t restored — meaning no redundant package installation.
 
-##### Frontend caching
+### Frontend caching
 
 Use filesystem caching to speed up continuous builds. In our case, we configured [Webpack build cache](https://webpack.js.org/configuration/cache/).
 
@@ -117,7 +117,7 @@ _Note_: The cache directory is stored inside `node_modules`, which means when th
 
 ---
 
-#### IO Operations
+## IO Operations
 
 Our CI/CD setup uses a **pipeline chain** consisting of several stages:  
 **Build → Solution Image → CM/CD Builds.**
@@ -205,6 +205,6 @@ RUN if (Test-Path C:\archives\items.zip) { Invoke-Expression 'tar -xf C:\archive
 
 ---
 
-#### Conclusion
+## Conclusion
 
 I hope the ideas described here help you optimize your CI/CD pipelines and reduce build times.

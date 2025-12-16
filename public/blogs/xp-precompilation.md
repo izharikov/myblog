@@ -1,6 +1,6 @@
 # Sitecore XP MVC Views Precompilation: Make Startup 4+ Times Faster
 
-#### Introduction  
+## Introduction  
 A common way to optimize the startup of your Sitecore XP website is by precompiling views with [RazorGenerator.MsBuild](https://www.nuget.org/packages/RazorGenerator.MsBuild).  
 
 This approach can significantly speed up your website's startup time. There are already several articles explaining how to implement it in a Sitecore application:  
@@ -15,11 +15,11 @@ So, I decided to share my findings with you. Here, you'll find all the steps req
 
 ---
 
-#### Steps  
+## Steps  
 
 The steps are straightforward:  
 
-##### 1. Add the RazorGenerator.MsBuild NuGet package  
+### 1. Add the RazorGenerator.MsBuild NuGet package  
 First, add the [RazorGenerator.MsBuild](https://www.nuget.org/packages/RazorGenerator.MsBuild) NuGet package to your projects.  
 
 In all your projects (`.csproj`) that include `.cshtml` files, add the following line:  
@@ -50,20 +50,20 @@ _Note_: In our solution, we use a `Packages.props` file with the [`Microsoft.Bui
 
 ---
 
-##### 2. Update Sitecore settings  
+### 2. Update Sitecore settings  
 Ensure the `Mvc.UsePhysicalViewsIfNewer` Sitecore setting is configured correctly:  
 - **Production environment**: Set this to `true`.  
 - **Development environment**: Set this to `false` (so updated views can be uploaded to the server and changes will reflect immediately).  
 
 ---
 
-#### Notes  
+## Notes  
 
 That's how you can enable Sitecore XP MVC Views Precompilation in your project. However, there are some potential issues you should be aware of:  
 
 ---
 
-##### If `web.config` namespaces are not working  
+### If `web.config` namespaces are not working  
 You can define default namespaces for your views in the `Views\web.config` file. [Learn more here](https://stackoverflow.com/a/7586619/8918395). For example:  
 
 ```xml
@@ -110,7 +110,7 @@ Here's the full working import in the `.csproj` file:
 
 ---
 
-##### Duplicated views in Solution Explorer  
+### Duplicated views in Solution Explorer  
 I encountered an issue where views were shown multiple times in Solution Explorer.  
 
 ![Duplicated views](/images/2025/xp-precompilation/duplicated-views.png)  
@@ -146,7 +146,7 @@ This disables precompilation by default, but you can enable it during deployment
 
 ---
 
-#### Results  
+## Results  
 
 Enabling views precompilation significantly reduced our website's startup time across all environments (local, dev, staging, production).  
 

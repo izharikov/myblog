@@ -19,7 +19,7 @@ const nextConfig: NextConfig = {
 		dangerouslyAllowSVG: true, // Allow SVG images if needed
 		contentDispositionType: 'attachment',
 		contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-		qualities: [75],
+		qualities: [75, 100],
 	} : {
 		loader: 'custom',
 		loaderFile: './image-loader.ts',

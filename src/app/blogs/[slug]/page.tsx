@@ -93,6 +93,8 @@ export default async function Page({
         height={600}
         priority
         quality={75}
+        sizes="50vw"
+        fetchPriority="high"
       />
     </div>
     <Post />

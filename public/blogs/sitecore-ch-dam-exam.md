@@ -1,6 +1,6 @@
 # Sitecore Content Hub Administrator Certification – Practice Guide
 
-#### Intro
+## Intro
 
 I recently passed the [Sitecore Content Hub Administrator Certification](https://www.credly.com/badges/8000032c-309e-4dc3-a5f4-27da5ffac960/public_url) and want to share my experience — especially what areas of Content Hub you should focus on to prepare effectively.
 
@@ -13,7 +13,7 @@ Check out these helpful videos:
 
 ---
 
-#### Competencies and Preparation
+## Competencies and Preparation
 
 The exam covers the following key competencies:
 
@@ -26,7 +26,7 @@ The exam covers the following key competencies:
 
 ---
 
-#### Where to Start
+## Where to Start
 
 Begin with the _Content Hub for Administrators_ e-learning course on [learning.sitecore.com](https://learning.sitecore.com/).  
 Also, get access to a **sandbox** to explore the platform in practice.
@@ -35,9 +35,9 @@ To go beyond the basics and prepare for the exam, check the sections below.
 
 ---
 
-#### Asset Management in Content Hub DAM
+## Asset Management in Content Hub DAM
 
-##### Entities (Schema)
+### Entities (Schema)
 
 Entities are the foundation of Content Hub, so explore them thoroughly. 
 
@@ -58,7 +58,7 @@ Finally, understand the difference between **Option Lists** and **Taxonomies** �
 
 _Suggestion:_ Create a custom entity type, taxonomy, and option list. Add validation and security rules to practice configuration.
 
-##### Assets
+### Assets
 
 Assets are a major part of the exam. Review all **asset statuses** in DAM, CMP, and MRM to understand the full lifecycle — from creation to approval and archiving.  
 
@@ -75,7 +75,7 @@ _Suggestion:_ Upload and export assets, import data from Excel, review statuses,
 
 ---
 
-#### Content Creation & Management and State Flow with CMP
+## Content Creation & Management and State Flow with CMP
 
 The **Content Marketing Platform (CMP)** focuses on content lifecycle — from idea to publication.
 Start by exploring the **out-of-the-box (OOTB) state flows** provided by Sitecore. Observe each state and transition to understand how ideas become approved content.  
@@ -92,7 +92,7 @@ _Suggestion:_ Explore entity details in CMP, create a new Content Type, and link
 
 ---
 
-#### Content Hub DAM Configuration
+## Content Hub DAM Configuration
 
 Explore **default pages** such as *Assets*, *Create New Asset (Upload)*, *Create New Entity*, and *Asset Details*.
 
@@ -106,7 +106,7 @@ _Suggestion:_ Recreate pages from scratch to practice component setup and config
 
 ---
 
-#### Project Management with MRM
+## Project Management with MRM
 
 In the **Marketing Resource Management (MRM)** module, understand how **projects**, **tasks**, and **jobs** are related.  
 
@@ -119,7 +119,7 @@ _Suggestion:_ Review entity details to understand how jobs differ from projects.
 
 ---
 
-#### Security & Rights Management for Content Hub DAM
+## Security & Rights Management for Content Hub DAM
 
 Experiment with **security rules and access conditions**.  
 
@@ -132,7 +132,7 @@ Then, configure **policy combinations** using **“When All”** and **“When A
 
 ---
 
-#### Bonus
+## Bonus
 
 Check these questions to test your readiness:
 
@@ -169,7 +169,7 @@ Answers are located [here](https://gist.github.com/izharikov/277da9bd2cc42f6f3d4
 
 ---
 
-#### Conclusion
+## Conclusion
 
 I hope this guide helps you prepare effectively for the Sitecore Content Hub Administrator Certification.  
 Good luck with your exam!
