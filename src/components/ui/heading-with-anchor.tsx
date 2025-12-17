@@ -7,23 +7,37 @@ import { LinkIcon } from 'lucide-react';
 import Link from 'next/link';
 
 type AnchorProps = {
+    anchor?: string;
     anchorVisibility?: 'hover' | 'always' | 'never';
+    disableCopyToClipboard?: boolean;
 };
 
 const Anchor = ({
+    anchor,
+    disableCopyToClipboard = false,
     anchorVisibility = 'always',
 }: AnchorProps) => {
+    function copyToClipboard() {
+        if (disableCopyToClipboard) return;
+        const currentUrl = window.location.href.replace(/#.*$/, '');
+        const urlWithId = `${currentUrl}#${anchor}`;
+
+        void navigator.clipboard.writeText(urlWithId);
+    }
+
     return (
         <div
             className={cn(
                 'ms-2 pt-1',
                 anchorVisibility === 'always' && 'visible',
                 anchorVisibility === 'never' && 'hidden',
-                anchorVisibility === 'hover' && 'invisible group-hover:visible',
+                anchorVisibility === 'hover' && 'md:invisible group-hover:visible',
             )}
         >
             {/* modify `Link` to `a` if you are not using Next.js */}
-            <LinkIcon className="text-gray-600 hover:text-gray-400" />
+            <Link href={`#${anchor}`} onClick={copyToClipboard}>
+                <LinkIcon className="text-gray-600 hover:text-gray-400" />
+            </Link>
         </div>
     );
 };
@@ -69,34 +83,27 @@ const BaseHeading = ({
     ...props
 }: BaseHeadingProps) => {
     const Comp = asChild ? Slot : variant;
-    function copyToClipboard() {
-        if (disableCopyToClipboard) return;
-        const currentUrl = window.location.href.replace(/#.*$/, '');
-        const urlWithId = `${currentUrl}#${anchor}`;
-
-        void navigator.clipboard.writeText(urlWithId);
-    }
     return (
         <>
-            <Link href={`#${anchor}`} onClick={copyToClipboard}>
-                <Comp
-                    id={anchor}
-                    {...props}
-                    className={cn(
-                        anchor && 'flex scroll-m-20 items-center gap-1', // modify `scroll-m-20` according to your header height.
-                        anchorAlignment === 'spaced' && 'justify-between',
-                        anchorVisibility === 'hover' && 'group',
-                        headingVariants({ variant, className }),
-                    )}
-                >
-                    {children}
-                    {anchor && (
-                        <Anchor
-                            anchorVisibility={anchorVisibility}
-                        />
-                    )}
-                </Comp>
-            </Link>
+            <Comp
+                id={anchor}
+                {...props}
+                className={cn(
+                    anchor && 'flex scroll-m-20 items-center gap-1', // modify `scroll-m-20` according to your header height.
+                    // anchorAlignment === 'spaced' && 'justify-between',
+                    anchorVisibility === 'hover' && 'group',
+                    headingVariants({ variant, className }),
+                )}
+            >
+                {children}
+                {anchor && (
+                    <Anchor
+                        anchor={anchor}
+                        anchorVisibility={anchorVisibility}
+                        disableCopyToClipboard={disableCopyToClipboard}
+                    />
+                )}
+            </Comp>
         </>
     );
 };
