@@ -4,6 +4,7 @@
 import { BlogMeta } from '@/types/blog';
 
 export const blogSlugToPath: Record<string, string> = {
+    "sitecore-marketplace-vercel-ai-tools": "8-sitecore-marketplace-ai-tools",
     "sitecore-marketplace-december-updates": "7-sitecore-marketplace-updates",
     "sitecore-marketers-mcp-server-resource-parameter-required": "6-sitecore-mcp-server-issue",
     "sitecoreai-mcp-marketplace-symposium2025-recap": "5-sitecoreai-mcp-marketplace-symposium2025-recap",
@@ -14,6 +15,19 @@ export const blogSlugToPath: Record<string, string> = {
 };
 
 export const blogManifest: BlogMeta[] = [
+    {
+        "path": "8-sitecore-marketplace-ai-tools",
+        "title": "Sitecore Marketplace SDK Integration with Vercel AI SDK",
+        "slug": "sitecore-marketplace-vercel-ai-tools",
+        "logo": "/images/2025/vercel-ai-tools/logo.png",
+        "description": "sitecore-ai-sdk-tools: a new npm package to integrate Sitecore Marketplace SDK with Vercel AI SDK",
+        "tags": [
+            "Marketplace",
+            "Sitecore AI",
+            "Vercel AI SDK"
+        ],
+        "date": "22.02.2026"
+    },
     {
         "path": "7-sitecore-marketplace-updates",
         "title": "Sitecore Marketplace Updates (December 2025)",

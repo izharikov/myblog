@@ -1,0 +1,193 @@
+export const meta = {
+    title: `Sitecore Marketplace SDK Integration with Vercel AI SDK`,
+    slug: "sitecore-marketplace-vercel-ai-tools",
+    logo: "/images/2025/vercel-ai-tools/logo.png",
+    description: "sitecore-ai-sdk-tools: a new npm package to integrate Sitecore Marketplace SDK with Vercel AI SDK",
+    tags: ["Marketplace", "Sitecore AI", "Vercel AI SDK"],
+    date: "22.02.2026",
+};
+
+{/* ----- */}
+
+The Sitecore Marketplace application is a great place for AI integrations, and [Vercel AI SDK](https://ai-sdk.dev/) is one of the most popular frameworks for building them.
+
+Vercel AI SDK not only defines how to integrate LLMs with custom tools, but also provides a [Tools Registry](https://ai-sdk.dev/tools-registry) with pre-made functionality.
+
+I've created a [package](https://www.npmjs.com/package/sitecore-ai-sdk-tools) that lets you use the Sitecore Marketplace SDK within Vercel AI SDK as LLM tools.
+
+## Introduction
+
+### Vercel AI SDK
+
+#### Example
+
+Server-side (e.g. in `route.ts`):
+
+```typescript
+const stream = await streamText({
+  model: yourModel,
+  prompt: "Get the list of sites",
+  tools: {
+    weather: tool({
+      description: 'Get the weather in a location',
+      inputSchema: z.object({
+        location: z.string().describe('The location to get the weather for'),
+      }),
+      execute: async ({ location }) => ({
+        location,
+        temperature: 72 + Math.floor(Math.random() * 21) - 10,
+      }),
+    }),
+  },
+});
+return stream.toUIMessageStreamResponse();
+```
+
+Client-side (with `react`):
+
+```typescript
+const { messages, input, setInput, handleSubmit } = useChat({
+  transport: new DefaultChatTransport({
+    api: "/api/chat",
+  })
+});
+```
+
+### Tools
+
+Vercel AI SDK supports custom [tools](https://ai-sdk.dev/docs/ai-sdk-core/tools-and-tool-calling) — as shown in the basic `weather` tool example above. The following additional features are also supported:
+
+- **Tool approval:** Control tool execution with the `needsApproval` flag
+- **MCP tools:** Connect to MCP servers
+- **Active tools:** Control which tools are active based on user role or current context
+- **Client-side tool execution:** Execute tools on either the client or server side. See an example [here](https://ai-sdk.dev/docs/ai-sdk-ui/chatbot-tool-usage#example) with `getLocation`
+
+## Agent API Tools
+
+The Sitecore [Agent API](https://api-docs.sitecore.com/sai/agent-api) provides an AI-first API. The Marketplace SDK wraps it with the `@sitecore-marketplace-sdk/xmc` package, enabling use in both Node.js and browser environments.
+
+Since Vercel AI SDK supports both server-side and client-side tool execution, the `sitecore-ai-sdk-tools` package provides two modes of operation.
+
+| Integration / Mode | Server-side | Client-side |
+|---|---|---|
+| Marketplace Authentication | ⚠️ Custom authorization required (harder to set up) | ✅ OOTB (no config required) |
+| Vercel AI SDK integration | ✅ OOTB | ⚠️ Custom tool call handling via `onFinish` or `onToolCall` callbacks |
+
+Server-side configuration has stricter prerequisites — you need to configure custom authorization in your Marketplace Application — but offers simpler Vercel AI SDK integration. Client-side configuration, on the other hand, requires no additional authentication setup but involves more complex tool call handling via `onFinish` or `onToolCall` callbacks.
+
+### Server-side
+
+Works with the server-side (full-stack) authentication flow in Marketplace Application. For more details on custom authorization, see [App architecture and authorization options](https://doc.sitecore.com/mp/en/developers/marketplace/app-architecture-and-authorization-options.html#authorization).
+
+Use `execution: 'server'` when running in a Node.js environment (e.g. a Next.js API route or server action), providing a pre-initialized `experimental_XMC` client:
+
+```typescript
+import { createAgentTools } from "sitecore-ai-sdk-tools";
+import { experimental_XMC } from "@sitecore-marketplace-sdk/xmc";
+import { generateText } from "ai";
+
+const xmcClient = new experimental_XMC({
+  /* your config */
+});
+
+const tools = createAgentTools({
+  execution: "server",
+  client: xmcClient,
+  sitecoreContextId: "your-context-id",
+});
+
+const result = await generateText({
+  model: yourModel,
+  prompt: "Get the list of sites",
+  tools,
+});
+```
+
+### Client-side
+
+Works with the client-side authentication flow in Marketplace Application (the default). No additional authentication configuration is needed, but tool execution handling is more involved.
+
+Use `execution: 'client'` in your `router.ts` file:
+
+```typescript
+import { createAgentTools, executeSitecoreTool } from "sitecore-ai-sdk-tools";
+import { generateText } from "ai";
+
+const tools = createAgentTools({ execution: "client" });
+
+const result = await generateText({
+  model: yourModel,
+  prompt: "List all sites",
+  tools,
+});
+```
+
+Handle tool calls client-side using `useChat` and the `onFinish` callback:
+
+```ts
+// define sitecoreContextId
+const executeTool = async (toolPart: ToolUIPart) => {
+    const toolName = toolPart.type.substring('tool-'.length);
+    if (!sitecoreContextId) {
+      throw new Error('No Sitecore context found');
+    }
+    try {
+      let res = await executeSitecoreTool(
+        { client, sitecoreContextId },
+        { toolName, input: toolPart.input }
+      );
+      if (!res.success) {
+        res = await executePageBuilderTool(
+          { client, sitecoreContextId },
+          { toolName, input: toolPart.input }
+        );
+      }
+    } catch (error) {
+      console.error('Error executing tool:', error);
+    }
+}
+
+const chat = useChat({
+    transport: ...,
+    onFinish: async ({ message, finishReason }) => {
+        // Only proceed if the chat finished due to a tool call
+        if (finishReason !== 'tool-calls') {
+            return;
+        }
+        for (const part of message.parts) {
+            if (!part.type.startsWith('tool')) {
+                continue;
+            }
+            const toolPart = part as ToolUIPart;
+            if (toolPart.type.startsWith('tool')) {
+                // Execute the tool if input is available
+                if (toolPart.state === 'input-available') {
+                    await executeTool(toolPart);
+                }
+            }
+        }
+    }
+});
+```
+
+## Page Builder Tools
+
+`pageBuilderTools` provides tools for navigating and controlling the XM Cloud Page Builder UI. These are only available client-side:
+
+```typescript
+import { pageBuilderTools } from "sitecore-ai-sdk-tools";
+
+const tools = pageBuilderTools();
+```
+
+Handle the execution of Page Builder tools in the `onFinish` callback — similar to agent tools, but using the `executePageBuilderTool` function.
+
+## Conclusion
+
+The full list of available tools can be found in the [package repository](https://github.com/izharikov/sitecore-ai-sdk-tools?tab=readme-ov-file#available-tools).
+
+I hope this package makes it easier to integrate Sitecore Marketplace with Vercel AI SDK.
+
+**_Bonus:_** If you're interested in seeing this in action, come to my presentation **Building AI-powered Marketplace Apps with Vercel AI SDK** at [SUGCON Europe 2026](https://europe.sugcon.events/Venue). I'll walk through the configuration, explain the Vercel AI SDK integration in detail, and show live examples.
+
+Also check out my [marketers-chat](https://github.com/izharikov/marketers-chat) extension, where I use this package to bring AI-powered features to marketers.

@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { CodeBlock } from '@/components/code-block'
 import { H2, H3, H4, H5, H6 } from '@/components/ui/heading-with-anchor';
 
-const anchor = (text: any) => text.toString().toLowerCase().replace(/\s/g, '-');
+const anchor = (text: string) => text.toString().toLowerCase().replace(/\s/g, '-');
 
 const components: MDXComponents = {
     // Headings
