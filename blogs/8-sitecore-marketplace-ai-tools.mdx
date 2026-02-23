@@ -4,7 +4,7 @@ export const meta = {
     logo: "/images/2025/vercel-ai-tools/logo.png",
     description: "sitecore-ai-sdk-tools: a new npm package to integrate Sitecore Marketplace SDK with Vercel AI SDK",
     tags: ["Marketplace", "Sitecore AI", "Vercel AI SDK"],
-    date: "22.02.2026",
+    date: "23.02.2026",
 };
 
 {/* ----- */}
@@ -110,7 +110,7 @@ Works with the client-side authentication flow in Marketplace Application (the d
 Use `execution: 'client'` in your `router.ts` file:
 
 ```typescript
-import { createAgentTools, executeSitecoreTool } from "sitecore-ai-sdk-tools";
+import { createAgentTools, executeAgentTool } from "sitecore-ai-sdk-tools";
 import { generateText } from "ai";
 
 const tools = createAgentTools({ execution: "client" });
@@ -132,7 +132,7 @@ const executeTool = async (toolPart: ToolUIPart) => {
       throw new Error('No Sitecore context found');
     }
     try {
-      let res = await executeSitecoreTool(
+      let res = await executeAgentTool(
         { client, sitecoreContextId },
         { toolName, input: toolPart.input }
       );

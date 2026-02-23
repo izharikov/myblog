@@ -26,7 +26,7 @@ export const blogManifest: BlogMeta[] = [
             "Sitecore AI",
             "Vercel AI SDK"
         ],
-        "date": "22.02.2026"
+        "date": "23.02.2026"
     },
     {
         "path": "7-sitecore-marketplace-updates",
