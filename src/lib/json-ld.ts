@@ -9,7 +9,7 @@ export function personJsonLd(): WithContext<Person> {
         name: siteConfig.author.name,
         email: siteConfig.author.email,
         url: siteConfig.site,
-        image: `${siteConfig.site}/myphoto.jpg`,
+        image: `${siteConfig.site}/profile.jpg`,
         sameAs: [siteConfig.site, siteConfig.social.github, siteConfig.social.linkedin, siteConfig.social.twitter],
     };
 }
