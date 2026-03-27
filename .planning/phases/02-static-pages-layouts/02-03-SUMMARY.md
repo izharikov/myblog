@@ -43,7 +43,7 @@ metrics:
 | Task | Description | Commit | Files |
 |------|-------------|--------|-------|
 | 1 | Create all four pages and delete test-collections | a5aa1ed | src/pages/index.astro, src/pages/about.astro, src/pages/blogs/index.astro, src/pages/blogs/[slug].astro, src/pages/test-collections.astro (deleted) |
-| 2 | Verify all pages render correctly in browser | CHECKPOINT — awaiting human verification | — |
+| 2 | Verify all pages render correctly in browser | CHECKPOINT — approved by user | — |
 
 ## What Was Built
 
