@@ -49,9 +49,9 @@
 
 ### Theme
 
-- [ ] **THEME-01**: Dark/light theme toggle as SolidJS island
-- [ ] **THEME-02**: Theme preference persisted to localStorage
-- [ ] **THEME-03**: No FOUC — inline blocking script sets theme before first paint
+- [x] **THEME-01**: Dark/light theme toggle as SolidJS island
+- [x] **THEME-02**: Theme preference persisted to localStorage
+- [x] **THEME-03**: No FOUC — inline blocking script sets theme before first paint
 
 ### SEO
 
@@ -133,9 +133,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | MDX-05 | Phase 3 | Complete |
 | MDX-06 | Phase 3 | Complete |
 | MDX-07 | Phase 3 | Complete |
-| THEME-01 | Phase 4 | Pending |
-| THEME-02 | Phase 4 | Pending |
-| THEME-03 | Phase 4 | Pending |
+| THEME-01 | Phase 4 | Complete |
+| THEME-02 | Phase 4 | Complete |
+| THEME-03 | Phase 4 | Complete |
 | NAV-02 | Phase 4 | Pending |
 | DEPLOY-01 | Phase 5 | Pending |
 | DEPLOY-02 | Phase 5 | Pending |

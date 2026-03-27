@@ -82,7 +82,7 @@ Plans:
   4. All Tailwind `dark:` variant styles apply correctly in dark mode across all pages
 **Plans**: 2 plans
 Plans:
-- [ ] 04-01-PLAN.md — Fix Tailwind dark variant, add FOUC-prevention blocking script to BaseLayout, create ThemeToggle SolidJS island
+- [x] 04-01-PLAN.md — Fix Tailwind dark variant, add FOUC-prevention blocking script to BaseLayout, create ThemeToggle SolidJS island
 - [ ] 04-02-PLAN.md — Create MobileMenu SolidJS island, wire both islands into Header.astro, verify in browser
 **UI hint**: yes
 
@@ -108,5 +108,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | 1. Foundation & Content Pipeline | 3/3 | Complete   | 2026-03-27 |
 | 2. Static Pages & Layouts | 3/3 | Complete    | 2026-03-27 |
 | 3. MDX Components | 1/2 | Complete    | 2026-03-27 |
-| 4. SolidJS Islands | 0/2 | Not started | - |
+| 4. SolidJS Islands | 1/2 | In Progress|  |
 | 5. Deployment & Validation | 0/? | Not started | - |

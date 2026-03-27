@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: verifying
-stopped_at: Completed 03-02 Task 1 — awaiting human verification checkpoint (Task 2)
-last_updated: "2026-03-27T22:03:07.904Z"
+status: executing
+stopped_at: Completed 04-01 — ThemeToggle island and FOUC-free dark mode
+last_updated: "2026-03-27T22:28:50.121Z"
 last_activity: 2026-03-27
 progress:
   total_phases: 5
   completed_phases: 3
-  total_plans: 8
-  completed_plans: 8
+  total_plans: 10
+  completed_plans: 9
   percent: 0
 ---
 
@@ -21,13 +21,13 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-27)
 
 **Core value:** Ship a faster, leaner blog that preserves all existing content and features while moving to Astro + SolidJS.
-**Current focus:** Phase 03 — mdx-components
+**Current focus:** Phase 04 — solidjs-islands
 
 ## Current Position
 
-Phase: 4
-Plan: Not started
-Status: Phase complete — ready for verification
+Phase: 04 (solidjs-islands) — EXECUTING
+Plan: 2 of 2
+Status: Ready to execute
 Last activity: 2026-03-27
 
 Progress: [░░░░░░░░░░] 0%
@@ -61,6 +61,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 02-static-pages-layouts P03 | 20 | 2 tasks | 5 files |
 | Phase 03-mdx-components P01 | 2 | 1 tasks | 9 files |
 | Phase 03-mdx-components P02 | 8 | 1 tasks | 6 files |
+| Phase 04-solidjs-islands P01 | 8 | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -88,6 +89,8 @@ Recent decisions affecting current work:
 - [Phase 03-mdx-components]: Shiki dual-theme configured at markdown level in astro.config.mjs — mdx() integration inherits automatically
 - [Phase 03-mdx-components]: img.tsx kept unchanged — post 9 explicit JSX import coexists with components map img override
 - [Phase 03-mdx-components]: Prose typography via global .prose CSS selectors, not per-element Astro components
+- [Phase 04-solidjs-islands]: client:only="solid-js" used for ThemeToggle to avoid build-time SSR errors when reading document.documentElement at signal init
+- [Phase 04-solidjs-islands]: Fixed Tailwind v4 @custom-variant dark to :where(.dark, .dark *) — :is(.dark *) only matched descendants, not root element itself
 
 ### Pending Todos
 
@@ -102,6 +105,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-27T21:35:38.941Z
-Stopped at: Completed 03-02 Task 1 — awaiting human verification checkpoint (Task 2)
+Last session: 2026-03-27T22:28:50.115Z
+Stopped at: Completed 04-01 — ThemeToggle island and FOUC-free dark mode
 Resume file: None
