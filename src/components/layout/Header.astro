@@ -12,11 +12,11 @@ import MobileMenu from '@/components/layout/MobileMenu';
           {item.name}
         </a>
       ))}
-      <ThemeToggle client:only="solid-js" />
+      <ThemeToggle client:load />
     </nav>
     <div class="flex items-center gap-2 md:hidden">
-      <ThemeToggle client:only="solid-js" />
-      <MobileMenu client:only="solid-js" />
+      <ThemeToggle client:load />
+      <MobileMenu client:load />
     </div>
   </div>
 </header>

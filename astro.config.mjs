@@ -5,6 +5,7 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import remarkGfm from 'remark-gfm';
+import fs from 'node:fs';
 
 export default defineConfig({
   site: 'https://izharikov.dev',
@@ -27,5 +28,15 @@ export default defineConfig({
   ],
   vite: {
     plugins: [tailwindcss()],
+    optimizeDeps: {
+      include: ['solid-js', 'solid-js/web', 'lucide-solid'],
+    },
+    server: {
+      host: 'blog.local',
+      https: {
+        key: fs.readFileSync('.certs/key.pem'),
+        cert: fs.readFileSync('.certs/cert.pem'),
+      },
+    },
   },
 });
