@@ -1,6 +1,16 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BlogLayout from '@/layouts/BlogLayout.astro';
+import H2 from '@/components/mdx/H2.astro';
+import H3 from '@/components/mdx/H3.astro';
+import H4 from '@/components/mdx/H4.astro';
+import H5 from '@/components/mdx/H5.astro';
+import H6 from '@/components/mdx/H6.astro';
+import CodeBlock from '@/components/mdx/CodeBlock.astro';
+import Img from '@/components/mdx/Img.astro';
+import Link from '@/components/mdx/Link.astro';
+import Table from '@/components/mdx/Table.astro';
+import Blockquote from '@/components/mdx/Blockquote.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -12,6 +22,19 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+const mdxComponents = {
+  h2: H2,
+  h3: H3,
+  h4: H4,
+  h5: H5,
+  h6: H6,
+  pre: CodeBlock,
+  img: Img,
+  a: Link,
+  table: Table,
+  blockquote: Blockquote,
+};
 ---
 <BlogLayout
   title={post.data.title}
@@ -21,5 +44,5 @@ const { Content } = await render(post);
   logo={post.data.logo}
   tags={post.data.tags}
 >
-  <Content />
+  <Content components={mdxComponents} />
 </BlogLayout>

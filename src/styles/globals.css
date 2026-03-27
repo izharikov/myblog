@@ -140,3 +140,19 @@
 :not(pre) > code {
   @apply relative rounded bg-muted text-primary py-[0.2rem] font-mono text-sm font-semibold px-1;
 }
+
+/* MDX table styling */
+.prose thead { @apply bg-muted; }
+.prose tr { @apply border-b border-border transition-colors hover:bg-muted/50; }
+.prose th { @apply border border-border px-4 py-2 text-left font-bold; }
+.prose td { @apply border border-border px-4 py-2 text-left; }
+
+/* MDX prose typography */
+.prose p { @apply leading-7 [&:not(:first-child)]:mt-6 text-muted-foreground; }
+.prose ul { @apply my-6 ml-6 list-disc [&>li]:mt-2 text-muted-foreground; }
+.prose ol { @apply my-6 ml-6 list-decimal [&>li]:mt-2 text-muted-foreground; }
+.prose li { @apply leading-7; }
+.prose hr { @apply my-8 border-border; }
+.prose strong { @apply font-bold text-foreground; }
+.prose em { @apply italic; }
+.prose img { @apply my-6 max-w-full w-full m-auto h-auto; }

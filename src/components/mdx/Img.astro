@@ -1,0 +1,12 @@
+---
+const { src, alt, ...rest } = Astro.props;
+---
+<span class="my-6 block">
+  <img
+    src={src}
+    alt={alt || ''}
+    loading="lazy"
+    class="max-w-full w-full m-auto h-auto border-2"
+    {...rest}
+  />
+</span>
