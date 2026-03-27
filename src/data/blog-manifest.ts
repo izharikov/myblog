@@ -4,6 +4,7 @@
 import { BlogMeta } from '@/types/blog';
 
 export const blogSlugToPath: Record<string, string> = {
+    "sitecore-marketplace-app-custom-authorization-setup": "9-sitecore-marketplace-app-server-side-authentication",
     "sitecore-marketplace-vercel-ai-tools": "8-sitecore-marketplace-ai-tools",
     "sitecore-marketplace-december-updates": "7-sitecore-marketplace-updates",
     "sitecore-marketers-mcp-server-resource-parameter-required": "6-sitecore-mcp-server-issue",
@@ -15,6 +16,20 @@ export const blogSlugToPath: Record<string, string> = {
 };
 
 export const blogManifest: BlogMeta[] = [
+    {
+        "path": "9-sitecore-marketplace-app-server-side-authentication",
+        "title": "Sitecore Marketplace Apps: Custom Authorization Setup",
+        "slug": "sitecore-marketplace-app-custom-authorization-setup",
+        "logo": "/images/2026/9-auth-setup/logo.png",
+        "description": "Step-by-step guide to setting up custom authorization (Auth0) for Sitecore Marketplace apps with server-side API calls",
+        "tags": [
+            "Marketplace",
+            "Sitecore AI",
+            "Auth0",
+            "Next.js"
+        ],
+        "date": "27.03.2026"
+    },
     {
         "path": "8-sitecore-marketplace-ai-tools",
         "title": "Sitecore Marketplace SDK Integration with Vercel AI SDK",

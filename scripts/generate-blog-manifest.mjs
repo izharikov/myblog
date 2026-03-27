@@ -6,8 +6,11 @@ import * as runtime from 'react/jsx-runtime';
 async function extractMeta(filePath) {
     const fileContent = await fs.readFile(filePath, 'utf-8');
 
+    // Strip import statements to avoid resolution errors during meta extraction
+    const strippedContent = fileContent.replace(/^import\s.+$/gm, '');
+
     // Compile MDX to JavaScript
-    const compiled = await compile(fileContent, {
+    const compiled = await compile(strippedContent, {
         outputFormat: 'function-body',
         development: false
     });
