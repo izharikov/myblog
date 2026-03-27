@@ -9,6 +9,15 @@ import remarkGfm from 'remark-gfm';
 export default defineConfig({
   site: 'https://izharikov.dev',
   output: 'static',
+  markdown: {
+    shikiConfig: {
+      themes: {
+        light: 'github-light',
+        dark: 'github-dark',
+      },
+      defaultColor: false,
+    },
+  },
   integrations: [
     solidJs(),
     mdx({
