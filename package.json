@@ -10,23 +10,25 @@
     "deploy": "astro build && wrangler pages deploy dist/"
   },
   "dependencies": {
-    "astro": "^6.1.1",
-    "@astrojs/solid-js": "^6.0.1",
+    "@astrojs/cloudflare": "^13.1.4",
     "@astrojs/mdx": "^5.0.3",
     "@astrojs/sitemap": "^3.7.2",
-    "@astrojs/cloudflare": "^13.1.4",
-    "solid-js": "^1.9.12",
-    "tailwindcss": "^4.2.2",
-    "@tailwindcss/vite": "^4.2.2",
+    "@astrojs/solid-js": "^6.0.1",
     "@fontsource-variable/geist": "^5.2.8",
     "@fontsource-variable/geist-mono": "^5.2.7",
-    "remark-gfm": "^4.0.1",
+    "@tailwindcss/vite": "^4.2.2",
+    "astro": "^6.1.1",
     "clsx": "^2.0.0",
+    "lucide-solid": "^0.577.0",
+    "remark-gfm": "^4.0.1",
+    "solid-js": "^1.9.12",
     "tailwind-merge": "^3.0.0",
-    "lucide-solid": "^0.577.0"
+    "tailwindcss": "^4.2.2"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.8",
     "typescript": "^6.0.2",
+    "vite": "^8.0.3",
     "wrangler": "^4.0.0"
   }
 }

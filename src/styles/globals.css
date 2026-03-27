@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+/* Geist Variable fonts — self-hosted via Fontsource, replaces next/font/google */
+@import "@fontsource-variable/geist/wght.css";
+@import "@fontsource-variable/geist-mono/wght.css";
+
+/* CSS variables for font families — replaces Next.js automatic CSS variable injection */
+:root {
+  --font-geist-sans: 'Geist Variable', sans-serif;
+  --font-geist-mono: 'Geist Mono Variable', monospace;
+}
