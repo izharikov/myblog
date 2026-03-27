@@ -1,0 +1,52 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { generateBlogJsonLd } from '@/lib/json-ld';
+import { parseDate, formatDate } from '@/lib/date';
+import { siteConfig } from '@/config/site';
+
+interface Props {
+  title: string;
+  description: string;
+  date: string;       // DD.MM.YYYY from frontmatter
+  slug: string;       // post.id from collection
+  logo: string;
+  tags: string[];
+}
+
+const { title, description, date, slug, logo, tags } = Astro.props;
+const parsedDate = parseDate(date);
+const dateDisplay = formatDate(parsedDate);
+const ogImage = new URL(logo, siteConfig.site).href;
+
+const jsonLd = generateBlogJsonLd({
+  title,
+  description,
+  date: parsedDate,
+  dateDisplay,
+  slug,
+  logo,
+  tags,
+  path: slug,
+});
+---
+<BaseLayout title={title} description={description} ogImage={ogImage} ogType="article">
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <article class="container max-w-screen-xl mx-auto px-4 py-8">
+    <header class="mb-8 space-y-4">
+      <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">{title}</h1>
+      <div class="flex items-center gap-4 text-sm text-muted-foreground">
+        <time datetime={parsedDate.toISOString().split('T')[0]}>{dateDisplay}</time>
+      </div>
+      <div class="flex gap-2 flex-wrap">
+        {tags.map(tag => (
+          <span class="inline-flex items-center rounded-full border border-transparent bg-secondary text-secondary-foreground px-2 py-0.5 text-xs font-medium">
+            {tag}
+          </span>
+        ))}
+      </div>
+    </header>
+    <div class="prose prose-lg max-w-none">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>

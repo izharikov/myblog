@@ -21,6 +21,7 @@
     "clsx": "^2.0.0",
     "lucide-solid": "^0.577.0",
     "remark-gfm": "^4.0.1",
+    "schema-dts": "^2.0.0",
     "solid-js": "^1.9.12",
     "tailwind-merge": "^3.0.0",
     "tailwindcss": "^4.2.2"
