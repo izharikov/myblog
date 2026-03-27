@@ -35,7 +35,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 3 plans
 Plans:
 - [x] 01-01-PLAN.md — Convert all 9 MDX blog posts from export const meta to YAML frontmatter
-- [ ] 01-02-PLAN.md — Delete Next.js files; install Astro 6 scaffold (package.json, astro.config.mjs, tsconfig.json, globals.css, placeholder page)
+- [x] 01-02-PLAN.md — Delete Next.js files; install Astro 6 scaffold (package.json, astro.config.mjs, tsconfig.json, globals.css, placeholder page)
 - [ ] 01-03-PLAN.md — Wire content collections (src/content.config.ts), verify site.ts, smoke-test all 9 posts via /test-collections
 
 ### Phase 2: Static Pages & Layouts

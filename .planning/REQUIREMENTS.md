@@ -7,11 +7,11 @@
 
 ### Foundation
 
-- [ ] **FOUND-01**: Astro 6 project scaffold with TypeScript 6, Vite 7, Node 22+
-- [ ] **FOUND-02**: Tailwind CSS 4.2.2 configured via @tailwindcss/vite plugin
-- [ ] **FOUND-03**: SolidJS integration (@astrojs/solid-js 6.0.0) enabled for islands
+- [x] **FOUND-01**: Astro 6 project scaffold with TypeScript 6, Vite 7, Node 22+
+- [x] **FOUND-02**: Tailwind CSS 4.2.2 configured via @tailwindcss/vite plugin
+- [x] **FOUND-03**: SolidJS integration (@astrojs/solid-js 6.0.0) enabled for islands
 - [ ] **FOUND-04**: Site config (name, nav, socials, author) ported to Astro
-- [ ] **FOUND-05**: Path aliases (@/* → ./src/*) configured in tsconfig
+- [x] **FOUND-05**: Path aliases (@/* → ./src/*) configured in tsconfig
 
 ### Content
 
@@ -104,11 +104,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FOUND-01 | Phase 1 | Pending |
-| FOUND-02 | Phase 1 | Pending |
-| FOUND-03 | Phase 1 | Pending |
+| FOUND-01 | Phase 1 | Complete |
+| FOUND-02 | Phase 1 | Complete |
+| FOUND-03 | Phase 1 | Complete |
 | FOUND-04 | Phase 1 | Pending |
-| FOUND-05 | Phase 1 | Pending |
+| FOUND-05 | Phase 1 | Complete |
 | CONT-01 | Phase 1 | Complete |
 | CONT-04 | Phase 1 | Complete |
 | CONT-05 | Phase 1 | Complete |
