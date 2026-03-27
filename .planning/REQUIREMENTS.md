@@ -16,8 +16,8 @@
 ### Content
 
 - [x] **CONT-01**: All existing MDX blog posts render correctly in Astro content collections
-- [ ] **CONT-02**: Blog listing page displays all posts in grid with cards
-- [ ] **CONT-03**: Blog detail page renders MDX content at /blogs/[slug]
+- [x] **CONT-02**: Blog listing page displays all posts in grid with cards
+- [x] **CONT-03**: Blog detail page renders MDX content at /blogs/[slug]
 - [x] **CONT-04**: Blog slugs match current URL structure (no broken links)
 - [x] **CONT-05**: Frontmatter metadata (title, date, tags, logo) parsed via Zod schema
 - [x] **CONT-06**: Date formatting and display matches current behavior
@@ -42,10 +42,10 @@
 
 ### Pages
 
-- [ ] **PAGE-01**: Home page with hero section and 3 latest blog posts
-- [ ] **PAGE-02**: About page with hero section
-- [ ] **PAGE-03**: Blogs listing page (/blogs)
-- [ ] **PAGE-04**: Blog detail page (/blogs/[slug])
+- [x] **PAGE-01**: Home page with hero section and 3 latest blog posts
+- [x] **PAGE-02**: About page with hero section
+- [x] **PAGE-03**: Blogs listing page (/blogs)
+- [x] **PAGE-04**: Blog detail page (/blogs/[slug])
 
 ### Theme
 
@@ -57,7 +57,7 @@
 
 - [x] **SEO-01**: Per-page metadata (title, description, canonical URL)
 - [x] **SEO-02**: Open Graph tags (og:title, og:description, og:image, article type)
-- [ ] **SEO-03**: Sitemap XML generated via @astrojs/sitemap
+- [x] **SEO-03**: Sitemap XML generated via @astrojs/sitemap
 
 ### Deployment
 
@@ -112,20 +112,20 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CONT-01 | Phase 1 | Complete |
 | CONT-04 | Phase 1 | Complete |
 | CONT-05 | Phase 1 | Complete |
-| CONT-02 | Phase 2 | Pending |
-| CONT-03 | Phase 2 | Pending |
+| CONT-02 | Phase 2 | Complete |
+| CONT-03 | Phase 2 | Complete |
 | CONT-06 | Phase 2 | Complete |
 | CONT-07 | Phase 2 | Complete |
-| PAGE-01 | Phase 2 | Pending |
-| PAGE-02 | Phase 2 | Pending |
-| PAGE-03 | Phase 2 | Pending |
-| PAGE-04 | Phase 2 | Pending |
+| PAGE-01 | Phase 2 | Complete |
+| PAGE-02 | Phase 2 | Complete |
+| PAGE-03 | Phase 2 | Complete |
+| PAGE-04 | Phase 2 | Complete |
 | NAV-01 | Phase 2 | Complete |
 | NAV-03 | Phase 2 | Complete |
 | NAV-04 | Phase 2 | Complete |
 | SEO-01 | Phase 2 | Complete |
 | SEO-02 | Phase 2 | Complete |
-| SEO-03 | Phase 2 | Pending |
+| SEO-03 | Phase 2 | Complete |
 | MDX-01 | Phase 3 | Pending |
 | MDX-02 | Phase 3 | Pending |
 | MDX-03 | Phase 3 | Pending |

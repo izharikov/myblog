@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: executing
-stopped_at: Completed 02-static-pages-layouts-02-02-PLAN.md
-last_updated: "2026-03-27T20:50:43.179Z"
+status: verifying
+stopped_at: "Checkpoint: 02-03 Task 2 awaiting human visual verification"
+last_updated: "2026-03-27T20:53:22.337Z"
 last_activity: 2026-03-27
 progress:
   total_phases: 5
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 6
-  completed_plans: 5
+  completed_plans: 6
   percent: 0
 ---
 
@@ -27,7 +27,7 @@ See: .planning/PROJECT.md (updated 2026-03-27)
 
 Phase: 02 (static-pages-layouts) — EXECUTING
 Plan: 3 of 3
-Status: Ready to execute
+Status: Phase complete — ready for verification
 Last activity: 2026-03-27
 
 Progress: [░░░░░░░░░░] 0%
@@ -57,6 +57,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 01-foundation-content-pipeline P03 | 8 | 2 tasks | 2 files |
 | Phase 02-static-pages-layouts P01 | 197 | 2 tasks | 6 files |
 | Phase 02-static-pages-layouts P02 | 2 | 2 tasks | 6 files |
+| Phase 02-static-pages-layouts P03 | 5 | 1 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -78,6 +79,7 @@ Recent decisions affecting current work:
 - [Phase 02-static-pages-layouts]: Inline SVG icons in Footer instead of lucide-solid — no SolidJS island needed for static social links
 - [Phase 02-static-pages-layouts]: ThemeToggle and mobile menu are placeholder divs/comments in Header — wired in Phase 4
 - [Phase 02-static-pages-layouts]: Plain <img> tag in HeroSection and BlogCard (not Astro Image) — public/ assets and external URLs bypass Astro image optimization
+- [Phase 02-static-pages-layouts]: post.id used as slug param in getStaticPaths — generateId already strips numeric prefix, preserving slug parity
 
 ### Pending Todos
 
@@ -92,6 +94,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-27T20:50:43.173Z
-Stopped at: Completed 02-static-pages-layouts-02-02-PLAN.md
+Last session: 2026-03-27T20:53:22.330Z
+Stopped at: Checkpoint: 02-03 Task 2 awaiting human visual verification
 Resume file: None

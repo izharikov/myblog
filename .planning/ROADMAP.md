@@ -52,7 +52,7 @@ Plans:
 Plans:
 - [x] 02-01-PLAN.md — Port Tailwind v4 CSS tokens, create date utilities, build BaseLayout + BlogLayout
 - [x] 02-02-PLAN.md — Create static components (Header, Footer, HeroSection, BlogCard, BlogGrid) and wire into BaseLayout
-- [ ] 02-03-PLAN.md — Create all four pages (home, about, blogs, blog detail), delete test page, verify in browser
+- [x] 02-03-PLAN.md — Create all four pages (home, about, blogs, blog detail), delete test page, verify in browser
 **UI hint**: yes
 
 ### Phase 3: MDX Components
