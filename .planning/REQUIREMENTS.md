@@ -25,13 +25,13 @@
 
 ### MDX Components
 
-- [ ] **MDX-01**: Custom heading components with proper styling
-- [ ] **MDX-02**: Code blocks with Shiki syntax highlighting (build-time, zero JS)
-- [ ] **MDX-03**: Dual-theme syntax highlighting (light/dark via CSS variables)
-- [ ] **MDX-04**: Copy-to-clipboard button on code blocks
+- [x] **MDX-01**: Custom heading components with proper styling
+- [x] **MDX-02**: Code blocks with Shiki syntax highlighting (build-time, zero JS)
+- [x] **MDX-03**: Dual-theme syntax highlighting (light/dark via CSS variables)
+- [x] **MDX-04**: Copy-to-clipboard button on code blocks
 - [ ] **MDX-05**: Custom image component replacing next/image imports in MDX
 - [ ] **MDX-06**: Custom link, table, and blockquote components
-- [ ] **MDX-07**: Anchor links on headings (hover-reveal, copy URL)
+- [x] **MDX-07**: Anchor links on headings (hover-reveal, copy URL)
 
 ### Layout & Navigation
 
@@ -126,13 +126,13 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SEO-01 | Phase 2 | Complete |
 | SEO-02 | Phase 2 | Complete |
 | SEO-03 | Phase 2 | Complete |
-| MDX-01 | Phase 3 | Pending |
-| MDX-02 | Phase 3 | Pending |
-| MDX-03 | Phase 3 | Pending |
-| MDX-04 | Phase 3 | Pending |
+| MDX-01 | Phase 3 | Complete |
+| MDX-02 | Phase 3 | Complete |
+| MDX-03 | Phase 3 | Complete |
+| MDX-04 | Phase 3 | Complete |
 | MDX-05 | Phase 3 | Pending |
 | MDX-06 | Phase 3 | Pending |
-| MDX-07 | Phase 3 | Pending |
+| MDX-07 | Phase 3 | Complete |
 | THEME-01 | Phase 4 | Pending |
 | THEME-02 | Phase 4 | Pending |
 | THEME-03 | Phase 4 | Pending |

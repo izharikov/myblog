@@ -67,7 +67,7 @@ Plans:
   5. All custom MDX components (image, link, table, blockquote) render without import errors in all 9+ MDX posts
 **Plans**: 2 plans
 Plans:
-- [ ] 03-01-PLAN.md — Configure Shiki dual-theme, create heading components (H2-H6) with anchor links, CodeBlock with copy button, InlineCode
+- [x] 03-01-PLAN.md — Configure Shiki dual-theme, create heading components (H2-H6) with anchor links, CodeBlock with copy button, InlineCode
 - [ ] 03-02-PLAN.md — Create simple MDX components (Img, Link, Table, Blockquote), wire all components into [slug].astro, add prose CSS, verify in browser
 **UI hint**: yes
 
@@ -104,6 +104,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 |-------|----------------|--------|-----------|
 | 1. Foundation & Content Pipeline | 3/3 | Complete   | 2026-03-27 |
 | 2. Static Pages & Layouts | 3/3 | Complete    | 2026-03-27 |
-| 3. MDX Components | 0/2 | In progress | - |
+| 3. MDX Components | 1/2 | In Progress|  |
 | 4. SolidJS Islands | 0/? | Not started | - |
 | 5. Deployment & Validation | 0/? | Not started | - |
