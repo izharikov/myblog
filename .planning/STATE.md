@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 02-static-pages-layouts-02-01-PLAN.md
-last_updated: "2026-03-27T20:46:39.516Z"
+stopped_at: Completed 02-static-pages-layouts-02-02-PLAN.md
+last_updated: "2026-03-27T20:50:43.179Z"
 last_activity: 2026-03-27
 progress:
   total_phases: 5
   completed_phases: 1
   total_plans: 6
-  completed_plans: 4
+  completed_plans: 5
   percent: 0
 ---
 
@@ -26,7 +26,7 @@ See: .planning/PROJECT.md (updated 2026-03-27)
 ## Current Position
 
 Phase: 02 (static-pages-layouts) — EXECUTING
-Plan: 2 of 3
+Plan: 3 of 3
 Status: Ready to execute
 Last activity: 2026-03-27
 
@@ -56,6 +56,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 01-foundation-content-pipeline P02 | 11 | 2 tasks | 20 files |
 | Phase 01-foundation-content-pipeline P03 | 8 | 2 tasks | 2 files |
 | Phase 02-static-pages-layouts P01 | 197 | 2 tasks | 6 files |
+| Phase 02-static-pages-layouts P02 | 2 | 2 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -74,6 +75,9 @@ Recent decisions affecting current work:
 - [Phase 01-foundation-content-pipeline]: z imported from astro:content not bare zod — Astro 6 bundles Zod 4 with breaking changes vs Zod 3
 - [Phase 02-static-pages-layouts]: schema-dts installed with --legacy-peer-deps due to pre-existing typescript@6 vs @astrojs/check peer conflict
 - [Phase 02-static-pages-layouts]: BaseLayout uses single default slot; Header/Footer added directly in Plan 02 once those components exist
+- [Phase 02-static-pages-layouts]: Inline SVG icons in Footer instead of lucide-solid — no SolidJS island needed for static social links
+- [Phase 02-static-pages-layouts]: ThemeToggle and mobile menu are placeholder divs/comments in Header — wired in Phase 4
+- [Phase 02-static-pages-layouts]: Plain <img> tag in HeroSection and BlogCard (not Astro Image) — public/ assets and external URLs bypass Astro image optimization
 
 ### Pending Todos
 
@@ -88,6 +92,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-27T20:46:39.508Z
-Stopped at: Completed 02-static-pages-layouts-02-01-PLAN.md
+Last session: 2026-03-27T20:50:43.173Z
+Stopped at: Completed 02-static-pages-layouts-02-02-PLAN.md
 Resume file: None

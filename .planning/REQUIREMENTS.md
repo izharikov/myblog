@@ -21,7 +21,7 @@
 - [x] **CONT-04**: Blog slugs match current URL structure (no broken links)
 - [x] **CONT-05**: Frontmatter metadata (title, date, tags, logo) parsed via Zod schema
 - [x] **CONT-06**: Date formatting and display matches current behavior
-- [ ] **CONT-07**: Blog tags displayed on cards and detail pages
+- [x] **CONT-07**: Blog tags displayed on cards and detail pages
 
 ### MDX Components
 
@@ -35,10 +35,10 @@
 
 ### Layout & Navigation
 
-- [ ] **NAV-01**: Sticky header with logo and navigation links
+- [x] **NAV-01**: Sticky header with logo and navigation links
 - [ ] **NAV-02**: Mobile menu/drawer as SolidJS island (replaces Radix Sheet)
-- [ ] **NAV-03**: Footer with consistent styling
-- [ ] **NAV-04**: Responsive layout across all breakpoints
+- [x] **NAV-03**: Footer with consistent styling
+- [x] **NAV-04**: Responsive layout across all breakpoints
 
 ### Pages
 
@@ -115,14 +115,14 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CONT-02 | Phase 2 | Pending |
 | CONT-03 | Phase 2 | Pending |
 | CONT-06 | Phase 2 | Complete |
-| CONT-07 | Phase 2 | Pending |
+| CONT-07 | Phase 2 | Complete |
 | PAGE-01 | Phase 2 | Pending |
 | PAGE-02 | Phase 2 | Pending |
 | PAGE-03 | Phase 2 | Pending |
 | PAGE-04 | Phase 2 | Pending |
-| NAV-01 | Phase 2 | Pending |
-| NAV-03 | Phase 2 | Pending |
-| NAV-04 | Phase 2 | Pending |
+| NAV-01 | Phase 2 | Complete |
+| NAV-03 | Phase 2 | Complete |
+| NAV-04 | Phase 2 | Complete |
 | SEO-01 | Phase 2 | Complete |
 | SEO-02 | Phase 2 | Complete |
 | SEO-03 | Phase 2 | Pending |
