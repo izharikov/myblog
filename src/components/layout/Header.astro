@@ -1,0 +1,18 @@
+---
+import { siteConfig } from '@/config/site';
+---
+<header class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+  <div class="container max-w-screen-xl mx-auto px-4 flex h-16 items-center justify-between">
+    <a href="/" class="font-bold text-lg">{siteConfig.logo}</a>
+    <nav class="hidden md:flex items-center gap-6">
+      {siteConfig.navigation.map(item => (
+        <a href={item.href} class="text-sm font-medium hover:text-primary transition-colors">
+          {item.name}
+        </a>
+      ))}
+      <!-- ThemeToggle placeholder — replaced by SolidJS island in Phase 4 -->
+      <div class="w-9 h-9" aria-hidden="true"></div>
+    </nav>
+    <!-- Mobile menu button placeholder — replaced in Phase 4 -->
+  </div>
+</header>
