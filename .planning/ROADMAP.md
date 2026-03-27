@@ -12,7 +12,7 @@ Five phases transform an existing Next.js + React blog into an Astro + SolidJS s
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation & Content Pipeline** - Delete Next.js/React files, Astro scaffold, Tailwind v4, SolidJS integration, content collections, MDX frontmatter conversion, URL-safe slugs
+- [x] **Phase 1: Foundation & Content Pipeline** - Delete Next.js/React files, Astro scaffold, Tailwind v4, SolidJS integration, content collections, MDX frontmatter conversion, URL-safe slugs (completed 2026-03-27)
 - [ ] **Phase 2: Static Pages & Layouts** - All routes rendering (home, about, /blogs, /blogs/[slug]); BaseLayout, BlogLayout; SEO metadata; sitemap; image handling
 - [ ] **Phase 3: MDX Components** - Custom heading, code block (Shiki dual-theme), copy-to-clipboard, custom image/link/table/blockquote, anchor links
 - [ ] **Phase 4: SolidJS Islands** - ThemeToggle island (FOUC-free), mobile menu/drawer island; dark mode wiring across all Tailwind dark: variants
@@ -36,7 +36,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 Plans:
 - [x] 01-01-PLAN.md — Convert all 9 MDX blog posts from export const meta to YAML frontmatter
 - [x] 01-02-PLAN.md — Delete Next.js files; install Astro 6 scaffold (package.json, astro.config.mjs, tsconfig.json, globals.css, placeholder page)
-- [ ] 01-03-PLAN.md — Wire content collections (src/content.config.ts), verify site.ts, smoke-test all 9 posts via /test-collections
+- [x] 01-03-PLAN.md — Wire content collections (src/content.config.ts), verify site.ts, smoke-test all 9 posts via /test-collections
 
 ### Phase 2: Static Pages & Layouts
 **Goal**: Every page and route exists, renders correct HTML, and has proper SEO metadata — with no React or Next.js dependencies remaining
@@ -95,7 +95,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation & Content Pipeline | 1/3 | In Progress|  |
+| 1. Foundation & Content Pipeline | 3/3 | Complete   | 2026-03-27 |
 | 2. Static Pages & Layouts | 0/? | Not started | - |
 | 3. MDX Components | 0/? | Not started | - |
 | 4. SolidJS Islands | 0/? | Not started | - |

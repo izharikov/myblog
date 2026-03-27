@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: executing
-stopped_at: Completed 01-foundation-content-pipeline-01-02-PLAN.md
-last_updated: "2026-03-27T19:21:04.210Z"
+status: verifying
+stopped_at: Completed 01-foundation-content-pipeline-01-03-PLAN.md
+last_updated: "2026-03-27T19:26:20.107Z"
 last_activity: 2026-03-27
 progress:
   total_phases: 5
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 3
-  completed_plans: 2
+  completed_plans: 3
   percent: 0
 ---
 
@@ -27,7 +27,7 @@ See: .planning/PROJECT.md (updated 2026-03-27)
 
 Phase: 01 (Foundation & Content Pipeline) — EXECUTING
 Plan: 3 of 3
-Status: Ready to execute
+Status: Phase complete — ready for verification
 Last activity: 2026-03-27
 
 Progress: [░░░░░░░░░░] 0%
@@ -54,6 +54,7 @@ Progress: [░░░░░░░░░░] 0%
 *Updated after each plan completion*
 | Phase 01-foundation-content-pipeline P01 | 2 | 2 tasks | 9 files |
 | Phase 01-foundation-content-pipeline P02 | 11 | 2 tasks | 20 files |
+| Phase 01-foundation-content-pipeline P03 | 8 | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -68,6 +69,8 @@ Recent decisions affecting current work:
 - [Phase 01-foundation-content-pipeline]: Single-quoted YAML used for post 6 when value contains double quotes; post 9 import { Img } preserved intentionally for Phase 3
 - [Phase 01-foundation-content-pipeline]: Removed cloudflare adapter from astro.config.mjs — @cloudflare/vite-plugin crashes on Windows with output: static; deployment via wrangler.jsonc pages_build_output_dir
 - [Phase 01-foundation-content-pipeline]: Legacy src/components, src/lib, src/types excluded from tsconfig.json to allow astro check to pass on scaffold files — these will be migrated in Phases 3-5
+- [Phase 01-foundation-content-pipeline]: generateId strips numeric prefix in content.config.ts; explicit slug in YAML frontmatter takes priority — all 9 slugs match originals
+- [Phase 01-foundation-content-pipeline]: z imported from astro:content not bare zod — Astro 6 bundles Zod 4 with breaking changes vs Zod 3
 
 ### Pending Todos
 
@@ -82,6 +85,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-27T19:21:04.204Z
-Stopped at: Completed 01-foundation-content-pipeline-01-02-PLAN.md
+Last session: 2026-03-27T19:26:20.101Z
+Stopped at: Completed 01-foundation-content-pipeline-01-03-PLAN.md
 Resume file: None
