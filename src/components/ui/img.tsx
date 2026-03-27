@@ -1,7 +1,10 @@
+/** @jsxImportSource solid-js */
+
 /**
- * Stub replacement for the deleted next/image-based Img component.
- * Used by blog post 9 via MDX import. Phase 3 will replace with a proper MDX component.
+ * Explicit image component for MDX posts that need non-full-width images.
+ * Used by blog post 9 via `import { Img } from '@/components/ui/img'`.
+ * Markdown ![alt](src) images go through src/components/mdx/Img.astro instead.
  */
 export function Img(props: { src: string; alt: string }) {
-  return <img src={props.src} alt={props.alt} loading="lazy" />;
+  return <img src={props.src} alt={props.alt} loading="lazy" class="max-w-full h-auto m-auto border-2 my-6" />;
 }
