@@ -47,7 +47,7 @@ Plans:
   2. The home page shows the 3 most recent posts; /blogs shows all posts in grid with cards including tags and dates
   3. `<head>` on each page contains correct title, description, canonical URL, and Open Graph tags
   4. `sitemap.xml` is accessible at /sitemap-index.xml and lists all blog post URLs
-  5. Astro `<Image>` renders blog images without error in both dev and preview modes
+  5. Blog images render without broken image errors in both dev and preview modes
 **Plans**: 3 plans
 Plans:
 - [ ] 02-01-PLAN.md — Port Tailwind v4 CSS tokens, create date utilities, build BaseLayout + BlogLayout
