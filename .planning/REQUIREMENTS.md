@@ -15,11 +15,11 @@
 
 ### Content
 
-- [ ] **CONT-01**: All existing MDX blog posts render correctly in Astro content collections
+- [x] **CONT-01**: All existing MDX blog posts render correctly in Astro content collections
 - [ ] **CONT-02**: Blog listing page displays all posts in grid with cards
 - [ ] **CONT-03**: Blog detail page renders MDX content at /blogs/[slug]
-- [ ] **CONT-04**: Blog slugs match current URL structure (no broken links)
-- [ ] **CONT-05**: Frontmatter metadata (title, date, tags, logo) parsed via Zod schema
+- [x] **CONT-04**: Blog slugs match current URL structure (no broken links)
+- [x] **CONT-05**: Frontmatter metadata (title, date, tags, logo) parsed via Zod schema
 - [ ] **CONT-06**: Date formatting and display matches current behavior
 - [ ] **CONT-07**: Blog tags displayed on cards and detail pages
 
@@ -109,9 +109,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | FOUND-03 | Phase 1 | Pending |
 | FOUND-04 | Phase 1 | Pending |
 | FOUND-05 | Phase 1 | Pending |
-| CONT-01 | Phase 1 | Pending |
-| CONT-04 | Phase 1 | Pending |
-| CONT-05 | Phase 1 | Pending |
+| CONT-01 | Phase 1 | Complete |
+| CONT-04 | Phase 1 | Complete |
+| CONT-05 | Phase 1 | Complete |
 | CONT-02 | Phase 2 | Pending |
 | CONT-03 | Phase 2 | Pending |
 | CONT-06 | Phase 2 | Pending |

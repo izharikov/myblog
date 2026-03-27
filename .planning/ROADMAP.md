@@ -34,7 +34,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   6. A SolidJS component renders in an Astro page without build error (island smoke test)
 **Plans**: 3 plans
 Plans:
-- [ ] 01-01-PLAN.md — Convert all 9 MDX blog posts from export const meta to YAML frontmatter
+- [x] 01-01-PLAN.md — Convert all 9 MDX blog posts from export const meta to YAML frontmatter
 - [ ] 01-02-PLAN.md — Delete Next.js files; install Astro 6 scaffold (package.json, astro.config.mjs, tsconfig.json, globals.css, placeholder page)
 - [ ] 01-03-PLAN.md — Wire content collections (src/content.config.ts), verify site.ts, smoke-test all 9 posts via /test-collections
 
@@ -95,7 +95,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation & Content Pipeline | 0/3 | Planned | - |
+| 1. Foundation & Content Pipeline | 1/3 | In Progress|  |
 | 2. Static Pages & Layouts | 0/? | Not started | - |
 | 3. MDX Components | 0/? | Not started | - |
 | 4. SolidJS Islands | 0/? | Not started | - |
