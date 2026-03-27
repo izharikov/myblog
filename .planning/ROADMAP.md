@@ -32,7 +32,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   4. Each post's slug matches its current URL path (no numeric prefix, no broken links)
   5. Tailwind utility classes apply to a test element in the browser (e.g., a colored heading is visually correct)
   6. A SolidJS component renders in an Astro page without build error (island smoke test)
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 01-01-PLAN.md — Convert all 9 MDX blog posts from export const meta to YAML frontmatter
+- [ ] 01-02-PLAN.md — Delete Next.js files; install Astro 6 scaffold (package.json, astro.config.mjs, tsconfig.json, globals.css, placeholder page)
+- [ ] 01-03-PLAN.md — Wire content collections (src/content.config.ts), verify site.ts, smoke-test all 9 posts via /test-collections
 
 ### Phase 2: Static Pages & Layouts
 **Goal**: Every page and route exists, renders correct HTML, and has proper SEO metadata — with no React or Next.js dependencies remaining
@@ -91,7 +95,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation & Content Pipeline | 0/? | Not started | - |
+| 1. Foundation & Content Pipeline | 0/3 | Planned | - |
 | 2. Static Pages & Layouts | 0/? | Not started | - |
 | 3. MDX Components | 0/? | Not started | - |
 | 4. SolidJS Islands | 0/? | Not started | - |
