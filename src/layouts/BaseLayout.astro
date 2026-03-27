@@ -31,6 +31,13 @@ const fullOgImage = ogImage ? new URL(ogImage, siteConfig.site).href : undefined
     <meta property="og:type" content={ogType} />
     {fullOgImage && <meta property="og:image" content={fullOgImage} />}
     <meta name="generator" content={Astro.generator} />
+    <script is:inline>
+      document.documentElement.classList.toggle(
+        "dark",
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
+      );
+    </script>
   </head>
   <body class="min-h-screen bg-background text-foreground font-sans antialiased">
     <Header />
