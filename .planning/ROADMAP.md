@@ -48,7 +48,11 @@ Plans:
   3. `<head>` on each page contains correct title, description, canonical URL, and Open Graph tags
   4. `sitemap.xml` is accessible at /sitemap-index.xml and lists all blog post URLs
   5. Astro `<Image>` renders blog images without error in both dev and preview modes
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 02-01-PLAN.md — Port Tailwind v4 CSS tokens, create date utilities, build BaseLayout + BlogLayout
+- [ ] 02-02-PLAN.md — Create static components (Header, Footer, HeroSection, BlogCard, BlogGrid) and wire into BaseLayout
+- [ ] 02-03-PLAN.md — Create all four pages (home, about, blogs, blog detail), delete test page, verify in browser
 **UI hint**: yes
 
 ### Phase 3: MDX Components
@@ -96,7 +100,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation & Content Pipeline | 3/3 | Complete   | 2026-03-27 |
-| 2. Static Pages & Layouts | 0/? | Not started | - |
+| 2. Static Pages & Layouts | 0/3 | Planned | - |
 | 3. MDX Components | 0/? | Not started | - |
 | 4. SolidJS Islands | 0/? | Not started | - |
 | 5. Deployment & Validation | 0/? | Not started | - |
