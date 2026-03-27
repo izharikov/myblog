@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: executing
-stopped_at: Completed 03-01-PLAN.md — Shiki dual-theme and MDX heading/code components
-last_updated: "2026-03-27T21:32:20.933Z"
+status: verifying
+stopped_at: Completed 03-02 Task 1 — awaiting human verification checkpoint (Task 2)
+last_updated: "2026-03-27T21:35:38.949Z"
 last_activity: 2026-03-27
 progress:
   total_phases: 5
-  completed_phases: 2
+  completed_phases: 3
   total_plans: 8
-  completed_plans: 7
+  completed_plans: 8
   percent: 0
 ---
 
@@ -27,7 +27,7 @@ See: .planning/PROJECT.md (updated 2026-03-27)
 
 Phase: 03 (mdx-components) — EXECUTING
 Plan: 2 of 2
-Status: Ready to execute
+Status: Phase complete — ready for verification
 Last activity: 2026-03-27
 
 Progress: [░░░░░░░░░░] 0%
@@ -60,6 +60,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 02-static-pages-layouts P03 | 5 | 1 tasks | 5 files |
 | Phase 02-static-pages-layouts P03 | 20 | 2 tasks | 5 files |
 | Phase 03-mdx-components P01 | 2 | 1 tasks | 9 files |
+| Phase 03-mdx-components P02 | 8 | 1 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -85,6 +86,8 @@ Recent decisions affecting current work:
 - [Phase 02-static-pages-layouts]: post.id used as slug param in getStaticPaths — generateId already strips numeric prefix, preserving slug parity
 - [Phase 03-mdx-components]: InlineCode.astro not mapped in MDX components prop — global CSS :not(pre) > code avoids interfering with Shiki pre>code output
 - [Phase 03-mdx-components]: Shiki dual-theme configured at markdown level in astro.config.mjs — mdx() integration inherits automatically
+- [Phase 03-mdx-components]: img.tsx kept unchanged — post 9 explicit JSX import coexists with components map img override
+- [Phase 03-mdx-components]: Prose typography via global .prose CSS selectors, not per-element Astro components
 
 ### Pending Todos
 
@@ -99,6 +102,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-27T21:32:20.928Z
-Stopped at: Completed 03-01-PLAN.md — Shiki dual-theme and MDX heading/code components
+Last session: 2026-03-27T21:35:38.941Z
+Stopped at: Completed 03-02 Task 1 — awaiting human verification checkpoint (Task 2)
 Resume file: None

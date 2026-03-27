@@ -68,7 +68,7 @@ Plans:
 **Plans**: 2 plans
 Plans:
 - [x] 03-01-PLAN.md — Configure Shiki dual-theme, create heading components (H2-H6) with anchor links, CodeBlock with copy button, InlineCode
-- [ ] 03-02-PLAN.md — Create simple MDX components (Img, Link, Table, Blockquote), wire all components into [slug].astro, add prose CSS, verify in browser
+- [x] 03-02-PLAN.md — Create simple MDX components (Img, Link, Table, Blockquote), wire all components into [slug].astro, add prose CSS, verify in browser
 **UI hint**: yes
 
 ### Phase 4: SolidJS Islands
