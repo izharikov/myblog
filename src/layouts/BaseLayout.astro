@@ -1,6 +1,8 @@
 ---
 import '@/styles/globals.css';
 import { siteConfig } from '@/config/site';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
 
 interface Props {
   title: string;
@@ -31,8 +33,10 @@ const fullOgImage = ogImage ? new URL(ogImage, siteConfig.site).href : undefined
     <meta name="generator" content={Astro.generator} />
   </head>
   <body class="min-h-screen bg-background text-foreground font-sans antialiased">
+    <Header />
     <main>
       <slot />
     </main>
+    <Footer />
   </body>
 </html>
