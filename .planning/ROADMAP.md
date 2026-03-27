@@ -65,7 +65,10 @@ Plans:
   3. A code block's copy button copies the code to the clipboard when clicked
   4. Hovering a heading reveals an anchor icon; clicking it copies the URL with the correct fragment ID (matching current site's slug format)
   5. All custom MDX components (image, link, table, blockquote) render without import errors in all 9+ MDX posts
-**Plans**: TBD
+**Plans**: 2 plans
+Plans:
+- [ ] 03-01-PLAN.md — Configure Shiki dual-theme, create heading components (H2-H6) with anchor links, CodeBlock with copy button, InlineCode
+- [ ] 03-02-PLAN.md — Create simple MDX components (Img, Link, Table, Blockquote), wire all components into [slug].astro, add prose CSS, verify in browser
 **UI hint**: yes
 
 ### Phase 4: SolidJS Islands
@@ -100,7 +103,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation & Content Pipeline | 3/3 | Complete   | 2026-03-27 |
-| 2. Static Pages & Layouts | 2/3 | Complete    | 2026-03-27 |
-| 3. MDX Components | 0/? | Not started | - |
+| 2. Static Pages & Layouts | 3/3 | Complete    | 2026-03-27 |
+| 3. MDX Components | 0/2 | In progress | - |
 | 4. SolidJS Islands | 0/? | Not started | - |
 | 5. Deployment & Validation | 0/? | Not started | - |
