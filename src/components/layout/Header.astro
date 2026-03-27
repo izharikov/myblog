@@ -1,5 +1,7 @@
 ---
 import { siteConfig } from '@/config/site';
+import ThemeToggle from '@/components/layout/ThemeToggle';
+import MobileMenu from '@/components/layout/MobileMenu';
 ---
 <header class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
   <div class="container max-w-screen-xl mx-auto px-4 flex h-16 items-center justify-between">
@@ -10,9 +12,11 @@ import { siteConfig } from '@/config/site';
           {item.name}
         </a>
       ))}
-      <!-- ThemeToggle placeholder — replaced by SolidJS island in Phase 4 -->
-      <div class="w-9 h-9" aria-hidden="true"></div>
+      <ThemeToggle client:only="solid-js" />
     </nav>
-    <!-- Mobile menu button placeholder — replaced in Phase 4 -->
+    <div class="flex items-center gap-2 md:hidden">
+      <ThemeToggle client:only="solid-js" />
+      <MobileMenu client:only="solid-js" />
+    </div>
   </div>
 </header>
