@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation & Content Pipeline** - Delete Next.js/React files, Astro scaffold, Tailwind v4, SolidJS integration, content collections, MDX frontmatter conversion, URL-safe slugs (completed 2026-03-27)
 - [x] **Phase 2: Static Pages & Layouts** - All routes rendering (home, about, /blogs, /blogs/[slug]); BaseLayout, BlogLayout; SEO metadata; sitemap; image handling (completed 2026-03-27)
-- [ ] **Phase 3: MDX Components** - Custom heading, code block (Shiki dual-theme), copy-to-clipboard, custom image/link/table/blockquote, anchor links
+- [x] **Phase 3: MDX Components** - Custom heading, code block (Shiki dual-theme), copy-to-clipboard, custom image/link/table/blockquote, anchor links (completed 2026-03-27)
 - [ ] **Phase 4: SolidJS Islands** - ThemeToggle island (FOUC-free), mobile menu/drawer island; dark mode wiring across all Tailwind dark: variants
 - [ ] **Phase 5: Deployment & Validation** - Cloudflare Pages adapter wired; wrangler restructured; production build verified; Lighthouse >= 95; bundle smaller than Next.js
 
@@ -104,6 +104,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 |-------|----------------|--------|-----------|
 | 1. Foundation & Content Pipeline | 3/3 | Complete   | 2026-03-27 |
 | 2. Static Pages & Layouts | 3/3 | Complete    | 2026-03-27 |
-| 3. MDX Components | 1/2 | In Progress|  |
+| 3. MDX Components | 1/2 | Complete    | 2026-03-27 |
 | 4. SolidJS Islands | 0/? | Not started | - |
 | 5. Deployment & Validation | 0/? | Not started | - |
