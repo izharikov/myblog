@@ -20,7 +20,7 @@
 - [ ] **CONT-03**: Blog detail page renders MDX content at /blogs/[slug]
 - [x] **CONT-04**: Blog slugs match current URL structure (no broken links)
 - [x] **CONT-05**: Frontmatter metadata (title, date, tags, logo) parsed via Zod schema
-- [ ] **CONT-06**: Date formatting and display matches current behavior
+- [x] **CONT-06**: Date formatting and display matches current behavior
 - [ ] **CONT-07**: Blog tags displayed on cards and detail pages
 
 ### MDX Components
@@ -55,8 +55,8 @@
 
 ### SEO
 
-- [ ] **SEO-01**: Per-page metadata (title, description, canonical URL)
-- [ ] **SEO-02**: Open Graph tags (og:title, og:description, og:image, article type)
+- [x] **SEO-01**: Per-page metadata (title, description, canonical URL)
+- [x] **SEO-02**: Open Graph tags (og:title, og:description, og:image, article type)
 - [ ] **SEO-03**: Sitemap XML generated via @astrojs/sitemap
 
 ### Deployment
@@ -114,7 +114,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CONT-05 | Phase 1 | Complete |
 | CONT-02 | Phase 2 | Pending |
 | CONT-03 | Phase 2 | Pending |
-| CONT-06 | Phase 2 | Pending |
+| CONT-06 | Phase 2 | Complete |
 | CONT-07 | Phase 2 | Pending |
 | PAGE-01 | Phase 2 | Pending |
 | PAGE-02 | Phase 2 | Pending |
@@ -123,8 +123,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | NAV-01 | Phase 2 | Pending |
 | NAV-03 | Phase 2 | Pending |
 | NAV-04 | Phase 2 | Pending |
-| SEO-01 | Phase 2 | Pending |
-| SEO-02 | Phase 2 | Pending |
+| SEO-01 | Phase 2 | Complete |
+| SEO-02 | Phase 2 | Complete |
 | SEO-03 | Phase 2 | Pending |
 | MDX-01 | Phase 3 | Pending |
 | MDX-02 | Phase 3 | Pending |

@@ -50,7 +50,7 @@ Plans:
   5. Blog images render without broken image errors in both dev and preview modes
 **Plans**: 3 plans
 Plans:
-- [ ] 02-01-PLAN.md — Port Tailwind v4 CSS tokens, create date utilities, build BaseLayout + BlogLayout
+- [x] 02-01-PLAN.md — Port Tailwind v4 CSS tokens, create date utilities, build BaseLayout + BlogLayout
 - [ ] 02-02-PLAN.md — Create static components (Header, Footer, HeroSection, BlogCard, BlogGrid) and wire into BaseLayout
 - [ ] 02-03-PLAN.md — Create all four pages (home, about, blogs, blog detail), delete test page, verify in browser
 **UI hint**: yes
@@ -100,7 +100,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation & Content Pipeline | 3/3 | Complete   | 2026-03-27 |
-| 2. Static Pages & Layouts | 0/3 | Planned | - |
+| 2. Static Pages & Layouts | 1/3 | In Progress|  |
 | 3. MDX Components | 0/? | Not started | - |
 | 4. SolidJS Islands | 0/? | Not started | - |
 | 5. Deployment & Validation | 0/? | Not started | - |

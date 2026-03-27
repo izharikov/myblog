@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: verifying
-stopped_at: Completed 01-foundation-content-pipeline-01-03-PLAN.md
-last_updated: "2026-03-27T19:33:14.127Z"
+status: executing
+stopped_at: Completed 02-static-pages-layouts-02-01-PLAN.md
+last_updated: "2026-03-27T20:46:39.516Z"
 last_activity: 2026-03-27
 progress:
   total_phases: 5
   completed_phases: 1
-  total_plans: 3
-  completed_plans: 3
+  total_plans: 6
+  completed_plans: 4
   percent: 0
 ---
 
@@ -21,13 +21,13 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-27)
 
 **Core value:** Ship a faster, leaner blog that preserves all existing content and features while moving to Astro + SolidJS.
-**Current focus:** Phase 01 — Foundation & Content Pipeline
+**Current focus:** Phase 02 — static-pages-layouts
 
 ## Current Position
 
-Phase: 2
-Plan: Not started
-Status: Phase complete — ready for verification
+Phase: 02 (static-pages-layouts) — EXECUTING
+Plan: 2 of 3
+Status: Ready to execute
 Last activity: 2026-03-27
 
 Progress: [░░░░░░░░░░] 0%
@@ -55,6 +55,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 01-foundation-content-pipeline P01 | 2 | 2 tasks | 9 files |
 | Phase 01-foundation-content-pipeline P02 | 11 | 2 tasks | 20 files |
 | Phase 01-foundation-content-pipeline P03 | 8 | 2 tasks | 2 files |
+| Phase 02-static-pages-layouts P01 | 197 | 2 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -71,6 +72,8 @@ Recent decisions affecting current work:
 - [Phase 01-foundation-content-pipeline]: Legacy src/components, src/lib, src/types excluded from tsconfig.json to allow astro check to pass on scaffold files — these will be migrated in Phases 3-5
 - [Phase 01-foundation-content-pipeline]: generateId strips numeric prefix in content.config.ts; explicit slug in YAML frontmatter takes priority — all 9 slugs match originals
 - [Phase 01-foundation-content-pipeline]: z imported from astro:content not bare zod — Astro 6 bundles Zod 4 with breaking changes vs Zod 3
+- [Phase 02-static-pages-layouts]: schema-dts installed with --legacy-peer-deps due to pre-existing typescript@6 vs @astrojs/check peer conflict
+- [Phase 02-static-pages-layouts]: BaseLayout uses single default slot; Header/Footer added directly in Plan 02 once those components exist
 
 ### Pending Todos
 
@@ -85,6 +88,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-27T19:26:20.101Z
-Stopped at: Completed 01-foundation-content-pipeline-01-03-PLAN.md
+Last session: 2026-03-27T20:46:39.508Z
+Stopped at: Completed 02-static-pages-layouts-02-01-PLAN.md
 Resume file: None
