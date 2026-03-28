@@ -20,7 +20,7 @@ const { posts, title = "Latest Posts", showLink = true } = Astro.props;
       {title}
     </h2>
     <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-      {posts.map(post => (
+      {posts.map((post, i) => (
         <BlogCard
           title={post.title}
           description={post.description}
@@ -28,6 +28,7 @@ const { posts, title = "Latest Posts", showLink = true } = Astro.props;
           logo={post.logo}
           dateDisplay={post.dateDisplay}
           tags={post.tags}
+          priority={i === 0}
         />
       ))}
     </div>

@@ -9,17 +9,18 @@ interface Props {
   logo: string;
   dateDisplay: string;
   tags: string[];
+  priority?: boolean;
 }
-const { title, description, slug, logo, dateDisplay, tags } = Astro.props;
+const { title, description, slug, logo, dateDisplay, tags, priority } = Astro.props;
 const logoImage = resolveImage(logo);
 ---
 <a href={`/blogs/${slug}`}>
   <div class="overflow-hidden rounded-xl border bg-card text-card-foreground flex flex-col gap-6 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 h-full">
     <div class="aspect-video w-full bg-secondary flex items-center justify-center overflow-hidden">
       {logoImage ? (
-        <Image src={logoImage()} alt={title} width={600} height={338} class="object-cover w-full h-full" />
+        <Image src={logoImage()} alt={title} width={600} height={338} class="object-cover w-full h-full" loading={priority ? "eager" : "lazy"} fetchpriority={priority ? "high" : undefined} />
       ) : (
-        <img src={logo} alt={title} width="600" height="338" class="object-cover w-full h-full" loading="lazy" />
+        <img src={logo} alt={title} width="600" height="338" class="object-cover w-full h-full" loading={priority ? "eager" : "lazy"} fetchpriority={priority ? "high" : undefined} />
       )}
     </div>
     <div class="px-6 pb-6 space-y-3">
