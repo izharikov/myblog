@@ -10,9 +10,10 @@ interface Props {
   canonicalUrl?: string;
   ogImage?: string;
   ogType?: 'website' | 'article';
+  alternateMarkdown?: string;
 }
 
-const { title, description, canonicalUrl, ogImage, ogType = 'website' } = Astro.props;
+const { title, description, canonicalUrl, ogImage, ogType = 'website', alternateMarkdown } = Astro.props;
 const canonical = canonicalUrl ?? new URL(Astro.url.pathname, siteConfig.site).href;
 const fullOgImage = ogImage ? new URL(ogImage, siteConfig.site).href : undefined;
 ---
@@ -30,6 +31,7 @@ const fullOgImage = ogImage ? new URL(ogImage, siteConfig.site).href : undefined
     <meta property="og:url" content={canonical} />
     <meta property="og:type" content={ogType} />
     {fullOgImage && <meta property="og:image" content={fullOgImage} />}
+    {alternateMarkdown && <link rel="alternate" type="text/markdown" href={alternateMarkdown} />}
     <meta name="generator" content={Astro.generator} />
     <script is:inline>
       document.documentElement.classList.toggle(
