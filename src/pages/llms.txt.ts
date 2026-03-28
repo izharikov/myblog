@@ -1,13 +1,14 @@
 import { getCollection } from 'astro:content';
 import { siteConfig } from '@/config/site';
 import { getSlug } from '@/lib/blog';
+import { parseDate } from '@/lib/date';
 
 export const prerender = true;
 
 export async function GET() {
   const posts = await getCollection('blog');
   const sorted = [...posts].sort((a, b) =>
-    b.data.date.localeCompare(a.data.date)
+    parseDate(b.data.date).getTime() - parseDate(a.data.date).getTime()
   );
 
   const body = `# ${siteConfig.name}
