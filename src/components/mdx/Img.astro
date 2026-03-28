@@ -10,7 +10,7 @@ const resolved = src ? resolveImage(src) : undefined;
     <Image
       src={resolved()}
       alt={alt || ''}
-      class="max-w-full w-full m-auto h-auto border-2"
+      class="max-w-full h-auto m-auto border-2"
       {...rest}
     />
   ) : (
@@ -18,7 +18,7 @@ const resolved = src ? resolveImage(src) : undefined;
       src={src}
       alt={alt || ''}
       loading="lazy"
-      class="max-w-full w-full m-auto h-auto border-2"
+      class="max-w-full h-auto m-auto border-2"
       {...rest}
     />
   )}

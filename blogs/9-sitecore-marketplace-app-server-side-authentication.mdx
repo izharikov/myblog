@@ -7,7 +7,6 @@ tags: ["Marketplace", "Sitecore AI", "Auth0", "Next.js"]
 date: "27.03.2026"
 ---
 
-import Img from '@/components/ui/Img.astro';
 
 If your Sitecore Marketplace app needs to make server-side API calls to SitecoreAI APIs (e.g., AI agents, agentic workflows) or you want to protect it with Sitecore authentication, you need a **full-stack app with custom authorization**.
 
@@ -71,7 +70,7 @@ In the Sitecore Cloud Portal, navigate to your app's **Client credentials** sect
 
 **Select "Single-page app (SPA)"** as the application type — even for full-stack Next.js apps, because the SDK quick start templates use `@auth0/auth0-react` for client-side authentication.
 
-<Img src="/images/2026/9-auth-setup/step-1.png" alt="SPA vs Regular web app options" />
+![SPA vs Regular web app options](/images/2026/9-auth-setup/step-1.png)
 
 Fill in the credential details:
 - **Alias:** give your credentials a name (e.g., `spa`)
@@ -80,7 +79,7 @@ Fill in the credential details:
 - **Allowed origins URLs:** `https://myapp.local:3000`
 - **Allowed web origins URLs:** `https://myapp.local:3000`
 
-<Img src="/images/2026/9-auth-setup/step-2.png" alt="Edit credentials dialog with Authorization URLs filled in" />
+![Edit credentials dialog with Authorization URLs filled in](/images/2026/9-auth-setup/step-2.png)
 
 After saving, copy the **Client ID** — you'll need it in the next step.
 
