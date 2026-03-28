@@ -61,9 +61,9 @@
 
 ### Deployment
 
-- [ ] **DEPLOY-01**: Builds and deploys to Cloudflare Pages via @astrojs/cloudflare 13.x
-- [ ] **DEPLOY-02**: All pages render correctly in production
-- [ ] **DEPLOY-03**: Image optimization works in both dev and production
+- [x] **DEPLOY-01**: Builds and deploys to Cloudflare Pages via @astrojs/cloudflare 13.x
+- [x] **DEPLOY-02**: All pages render correctly in production
+- [x] **DEPLOY-03**: Image optimization works in both dev and production
 
 ### Performance
 
@@ -137,9 +137,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | THEME-02 | Phase 4 | Complete |
 | THEME-03 | Phase 4 | Complete |
 | NAV-02 | Phase 4 | Pending |
-| DEPLOY-01 | Phase 5 | Pending |
-| DEPLOY-02 | Phase 5 | Pending |
-| DEPLOY-03 | Phase 5 | Pending |
+| DEPLOY-01 | Phase 5 | Complete |
+| DEPLOY-02 | Phase 5 | Complete |
+| DEPLOY-03 | Phase 5 | Complete |
 | PERF-01 | Phase 5 | Pending |
 | PERF-02 | Phase 5 | Pending |
 

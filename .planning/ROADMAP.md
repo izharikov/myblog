@@ -112,4 +112,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | 2. Static Pages & Layouts | 3/3 | Complete    | 2026-03-27 |
 | 3. MDX Components | 1/2 | Complete    | 2026-03-27 |
 | 4. SolidJS Islands | 1/2 | Complete    | 2026-03-27 |
-| 5. Deployment & Validation | 0/2 | Not started | - |
+| 5. Deployment & Validation | 0/2 | Planned    |  |

@@ -10,8 +10,8 @@ progress:
   total_phases: 5
   completed_phases: 4
   total_plans: 10
-  completed_plans: 10
-  percent: 0
+  completed_plans: 11
+  percent: 92
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-27)
 
 **Core value:** Ship a faster, leaner blog that preserves all existing content and features while moving to Astro + SolidJS.
-**Current focus:** Phase 04 — solidjs-islands
+**Current focus:** Phase 05 — deployment-validation
 
 ## Current Position
 
-Phase: 5
-Plan: Not started
-Status: Ready to execute
-Last activity: 2026-03-27
+Phase: 05 (deployment-validation) — EXECUTING
+Plan: 2 of 2
+Status: Executing Phase 05
+Last activity: 2026-03-28 -- Completed 05-01 pre-deploy fixes
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [█████████░] 92%
 
 ## Performance Metrics
 
@@ -62,6 +62,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 03-mdx-components P01 | 2 | 1 tasks | 9 files |
 | Phase 03-mdx-components P02 | 8 | 1 tasks | 6 files |
 | Phase 04-solidjs-islands P01 | 8 | 2 tasks | 3 files |
+| Phase 05-deployment-validation P01 | 2 | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -91,6 +92,8 @@ Recent decisions affecting current work:
 - [Phase 03-mdx-components]: Prose typography via global .prose CSS selectors, not per-element Astro components
 - [Phase 04-solidjs-islands]: client:only="solid-js" used for ThemeToggle to avoid build-time SSR errors when reading document.documentElement at signal init
 - [Phase 04-solidjs-islands]: Fixed Tailwind v4 @custom-variant dark to :where(.dark, .dark *) — :is(.dark *) only matched descendants, not root element itself
+- [Phase 05-deployment-validation]: llms.txt links to HTML pages (/blogs/{slug}), not .md files — only 5 of 9 raw filenames match slugs
+- [Phase 05-deployment-validation]: deploy:preview uses --project-name flag to override wrangler.jsonc default project name
 
 ### Pending Todos
 
@@ -105,6 +108,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-27T22:28:50.115Z
-Stopped at: Completed 04-01 — ThemeToggle island and FOUC-free dark mode
+Last session: 2026-03-28T08:19:34Z
+Stopped at: Completed 05-01 — pre-deploy fixes (llms.txt, robots.txt, _headers, deploy:preview)
 Resume file: None
