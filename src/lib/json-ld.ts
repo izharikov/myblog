@@ -1,6 +1,6 @@
-import { BlogPost } from '@/types/blog';
+import type { BlogPost } from '@/types/blog';
 import { siteConfig } from '@/config/site';
-import { BlogPosting, Person, WithContext } from 'schema-dts';
+import type { BlogPosting, Person, WithContext } from 'schema-dts';
 
 export function personJsonLd(): WithContext<Person> {
     return {

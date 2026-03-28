@@ -1,0 +1,51 @@
+---
+import '@/styles/globals.css';
+import { siteConfig } from '@/config/site';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalUrl?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  alternateMarkdown?: string;
+}
+
+const { title, description, canonicalUrl, ogImage, ogType = 'website', alternateMarkdown } = Astro.props;
+const canonical = canonicalUrl ?? new URL(Astro.url.pathname, siteConfig.site).href;
+const fullOgImage = ogImage ? new URL(ogImage, siteConfig.site).href : undefined;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content={ogType} />
+    {fullOgImage && <meta property="og:image" content={fullOgImage} />}
+    {alternateMarkdown && <link rel="alternate" type="text/markdown" href={alternateMarkdown} />}
+    <meta name="generator" content={Astro.generator} />
+    <script is:inline>
+      document.documentElement.classList.toggle(
+        "dark",
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
+      );
+    </script>
+  </head>
+  <body class="min-h-screen bg-background text-foreground font-sans antialiased">
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

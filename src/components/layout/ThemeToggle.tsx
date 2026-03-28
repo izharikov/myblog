@@ -1,19 +1,39 @@
-"use client"
+import { createSignal, createEffect, onMount } from "solid-js";
 
-import { Moon, Sun } from "lucide-react"
-import { useTheme } from "next-themes"
+const SunIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="4" /><path d="M12 2v2" /><path d="M12 20v2" /><path d="m4.93 4.93 1.41 1.41" /><path d="m17.66 17.66 1.41 1.41" /><path d="M2 12h2" /><path d="M20 12h2" /><path d="m6.34 17.66-1.41 1.41" /><path d="m19.07 4.93-1.41 1.41" />
+  </svg>
+);
 
-import { Button } from "@/components/ui/button"
+const MoonIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+  </svg>
+);
 
+export default function ThemeToggle() {
+  const [isDark, setIsDark] = createSignal(false);
+  const [ready, setReady] = createSignal(false);
 
-export function ThemeToggle() {
-    const { setTheme, theme } = useTheme()
+  onMount(() => {
+    setIsDark(document.documentElement.classList.contains("dark"));
+    setReady(true);
+  });
 
-    return (
-        <Button variant="outline" size="icon" onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
-            <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
-            <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
-            <span className="sr-only">Toggle theme</span>
-        </Button>
-    )
+  createEffect(() => {
+    if (!ready()) return;
+    document.documentElement.classList.toggle("dark", isDark());
+    localStorage.setItem("theme", isDark() ? "dark" : "light");
+  });
+
+  return (
+    <button
+      onClick={() => setIsDark(d => !d)}
+      aria-label={isDark() ? "Switch to light mode" : "Switch to dark mode"}
+      class="w-9 h-9 flex items-center justify-center rounded-md hover:bg-muted transition-colors"
+    >
+      {isDark() ? <SunIcon /> : <MoonIcon />}
+    </button>
+  );
 }

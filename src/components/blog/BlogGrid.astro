@@ -1,0 +1,43 @@
+---
+interface Props {
+  posts: Array<{
+    title: string;
+    description: string;
+    slug: string;
+    logo: string;
+    dateDisplay: string;
+    tags: string[];
+  }>;
+  title?: string;
+  showLink?: boolean;
+}
+import BlogCard from './BlogCard.astro';
+const { posts, title = "Latest Posts", showLink = true } = Astro.props;
+---
+<section class="py-16" id="blogs">
+  <div class="container max-w-screen-xl mx-auto px-4 space-y-12">
+    <h2 class="text-3xl font-bold tracking-tight sm:text-4xl text-center">
+      {title}
+    </h2>
+    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+      {posts.map((post, i) => (
+        <BlogCard
+          title={post.title}
+          description={post.description}
+          slug={post.slug}
+          logo={post.logo}
+          dateDisplay={post.dateDisplay}
+          tags={post.tags}
+          priority={i === 0}
+        />
+      ))}
+    </div>
+    {showLink && (
+      <div class="text-center pt-8">
+        <a href="/blogs" class="inline-flex items-center justify-center rounded-md border border-input bg-background px-6 py-3 text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors">
+          See All Blog Posts &rarr;
+        </a>
+      </div>
+    )}
+  </div>
+</section>

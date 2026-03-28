@@ -1,3 +1,7 @@
-# https://developers.cloudflare.com/workers/static-assets/headers
-/_next/static/*
-  Cache-Control: public,max-age=31536000,immutable
+# Cache Astro hashed assets immutably
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML pages: always revalidate
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
