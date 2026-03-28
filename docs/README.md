@@ -68,14 +68,14 @@ Everything else is static Astro — zero JS shipped for non-interactive content.
 
 ## Deployment
 
-Static output via `@astrojs/cloudflare`. Deploy with:
+Static output to `dist/`, deployed to Cloudflare Pages via wrangler.
 
-```bash
-npm run deploy          # production: izharikov.dev
-npm run deploy:preview  # preview environment
-```
+| Command | Target |
+|---------|--------|
+| `npm run deploy` | Production (`blog` project) |
+| `npm run deploy:preview` | Preview (`blog-astro-preview` project) |
 
-Uses `wrangler pages deploy dist/` under the hood.
+Dev server runs at `https://blog.local:4321` (requires `::1 blog.local` in hosts file + local certs in `.certs/`).
 
 ## Feature Tracking
 
