@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import { resolveImage } from '@/lib/images';
 
 const { src, alt, ...rest } = Astro.props;
@@ -7,8 +7,9 @@ const resolved = src ? resolveImage(src) : undefined;
 ---
 <span class="my-6 block">
   {resolved ? (
-    <Image
+    <Picture
       src={resolved()}
+      formats={['avif', 'webp']}
       alt={alt || ''}
       class="max-w-full h-auto m-auto border-2"
       {...rest}

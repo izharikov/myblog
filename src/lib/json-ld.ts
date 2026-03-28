@@ -1,4 +1,4 @@
-import { BlogPost } from '@/types/blog';
+import type { BlogPost } from '@/types/blog';
 import { siteConfig } from '@/config/site';
 import type { BlogPosting, Person, WithContext } from 'schema-dts';
 

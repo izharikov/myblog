@@ -29,7 +29,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
     optimizeDeps: {
-      include: ['solid-js', 'solid-js/web', 'lucide-solid'],
+      include: ['solid-js', 'solid-js/web'],
     },
     server: {
       host: 'blog.local',

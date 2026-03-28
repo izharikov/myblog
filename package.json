@@ -20,7 +20,6 @@
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^6.1.1",
     "clsx": "^2.0.0",
-    "lucide-solid": "^0.577.0",
     "remark-gfm": "^4.0.1",
     "schema-dts": "^2.0.0",
     "solid-js": "^1.9.12",
