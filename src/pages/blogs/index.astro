@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { getSlug } from '@/lib/blog';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import BlogGrid from '@/components/blog/BlogGrid.astro';
 import { parseDate, formatDate } from '@/lib/date';
@@ -11,7 +12,7 @@ const sorted = posts
   .map(post => ({
     title: post.data.title,
     description: post.data.description,
-    slug: post.id,
+    slug: getSlug(post),
     logo: post.data.logo,
     dateDisplay: formatDate(parseDate(post.data.date)),
     tags: post.data.tags,

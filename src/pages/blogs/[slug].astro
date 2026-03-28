@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
+import { getSlug } from '@/lib/blog';
 import BlogLayout from '@/layouts/BlogLayout.astro';
 import H2 from '@/components/mdx/H2.astro';
 import H3 from '@/components/mdx/H3.astro';
@@ -15,7 +16,7 @@ import Blockquote from '@/components/mdx/Blockquote.astro';
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
   return posts.map(post => ({
-    params: { slug: post.id },
+    params: { slug: getSlug(post) },
     props: { post },
   }));
 }
@@ -40,7 +41,7 @@ const mdxComponents = {
   title={post.data.title}
   description={post.data.description}
   date={post.data.date}
-  slug={post.id}
+  slug={getSlug(post)}
   logo={post.data.logo}
   tags={post.data.tags}
 >

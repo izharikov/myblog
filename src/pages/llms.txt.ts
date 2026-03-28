@@ -1,5 +1,6 @@
 import { getCollection } from 'astro:content';
 import { siteConfig } from '@/config/site';
+import { getSlug } from '@/lib/blog';
 
 export const prerender = true;
 
@@ -14,7 +15,7 @@ export async function GET() {
 ${siteConfig.description}
 
 ## Blogs
-${sorted.map(p => `- [${p.data.title}](${siteConfig.site}/blogs/${p.id})`).join('\n')}
+${sorted.map(p => `- [${p.data.title}](${siteConfig.site}/blogs/${getSlug(p)}.md)`).join('\n')}
 `;
 
   return new Response(body, {
