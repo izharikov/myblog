@@ -1,0 +1,21 @@
+---
+import { Image } from 'astro:assets';
+import { resolveImage } from '@/lib/images';
+
+const { src, alt } = Astro.props;
+const resolved = src ? resolveImage(src) : undefined;
+---
+{resolved ? (
+  <Image
+    src={resolved()}
+    alt={alt || ''}
+    class="max-w-full h-auto m-auto border-2 my-6"
+  />
+) : (
+  <img
+    src={src}
+    alt={alt || ''}
+    loading="lazy"
+    class="max-w-full h-auto m-auto border-2 my-6"
+  />
+)}

@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import { resolveImage } from '@/lib/images';
+
 interface Props {
   title: string;
   description: string;
@@ -8,11 +11,16 @@ interface Props {
   tags: string[];
 }
 const { title, description, slug, logo, dateDisplay, tags } = Astro.props;
+const logoImage = resolveImage(logo);
 ---
 <a href={`/blogs/${slug}`}>
   <div class="overflow-hidden rounded-xl border bg-card text-card-foreground flex flex-col gap-6 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 h-full">
     <div class="aspect-video w-full bg-secondary flex items-center justify-center overflow-hidden">
-      <img src={logo} alt={title} width="600" height="338" class="object-cover w-full h-full" loading="lazy" />
+      {logoImage ? (
+        <Image src={logoImage()} alt={title} width={600} height={338} class="object-cover w-full h-full" />
+      ) : (
+        <img src={logo} alt={title} width="600" height="338" class="object-cover w-full h-full" loading="lazy" />
+      )}
     </div>
     <div class="px-6 pb-6 space-y-3">
       <h3 class="text-xl font-bold line-clamp-2">
