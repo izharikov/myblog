@@ -98,7 +98,7 @@ Plans:
   5. Total JS bundle shipped to the browser is smaller than the current Next.js build output
 **Plans**: 2 plans
 Plans:
-- [ ] 05-01-PLAN.md — Create llms.txt endpoint, fix robots.txt and _headers for Astro, add deploy:preview script
+- [x] 05-01-PLAN.md — Create llms.txt endpoint, fix robots.txt and _headers for Astro, add deploy:preview script
 - [ ] 05-02-PLAN.md — Deploy to Cloudflare Pages preview, validate all routes, measure bundle size and Lighthouse
 
 ## Progress
@@ -112,4 +112,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | 2. Static Pages & Layouts | 3/3 | Complete    | 2026-03-27 |
 | 3. MDX Components | 1/2 | Complete    | 2026-03-27 |
 | 4. SolidJS Islands | 1/2 | Complete    | 2026-03-27 |
-| 5. Deployment & Validation | 0/2 | Planned    |  |
+| 5. Deployment & Validation | 1/2 | In progress | - |
