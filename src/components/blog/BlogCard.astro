@@ -16,7 +16,7 @@ const logoImage = resolveImage(logo);
 ---
 <a href={`/blogs/${slug}`}>
   <div class="overflow-hidden rounded-xl border bg-card text-card-foreground flex flex-col gap-6 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 h-full">
-    <div class="aspect-video w-full bg-secondary flex items-center justify-center overflow-hidden">
+    <div class="aspect-video border-b border-border/50 w-full bg-secondary flex items-center justify-center overflow-hidden">
       {logoImage ? (
         <Image src={logoImage()} alt={title} width={600} height={338} class="object-cover w-full h-full" loading={priority ? "eager" : "lazy"} fetchpriority={priority ? "high" : undefined} />
       ) : (
