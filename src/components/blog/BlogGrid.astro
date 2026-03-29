@@ -34,30 +34,26 @@ const years = Object.keys(grouped).sort((a, b) => +b - +a);
       {years.map(year => (
         <div class="mb-8">
           <h3 class="text-lg font-bold mb-4 text-text-secondary">{year}</h3>
-          <div class="space-y-1">
-            {grouped[year].map(post => {
-              const logoFn = resolveImage(post.logo);
-              return (
-                <a href={`/blogs/${post.slug}`} class="flex items-center gap-4 py-3 px-3 -mx-3 rounded-lg hover:bg-surface-alt transition-colors group">
-                  {logoFn ? (
-                    <Image src={logoFn()} alt="" class="hidden sm:block w-28 h-14 rounded-lg border object-cover shrink-0" width={400} quality={90} />
-                  ) : (
-                    <div class="hidden sm:block w-28 h-14 rounded-lg bg-surface-alt border shrink-0" />
-                  )}
-                  <div class="min-w-0 flex-1">
-                    <span class="font-medium group-hover:text-accent transition-colors">{post.title}</span>
-                    <p class="text-sm text-text-secondary my-0.5 line-clamp-3">{post.description}</p>
-                    <div class="flex items-center gap-3 mt-1">
-                      <time class="text-xs text-text-secondary">{post.dateDisplay}</time>
-                      <div class="flex gap-1.5">
-                        {post.tags.map(t => <span class="text-xs font-medium text-accent bg-code-bg px-1.5 py-0.5 rounded">{t}</span>)}
-                      </div>
-                    </div>
+          {grouped[year].map(post => {
+            const logoFn = resolveImage(post.logo);
+            return (
+              <a href={`/blogs/${post.slug}`} class="flex items-center gap-4 py-3 px-3 -mx-3 border-b border-border hover:bg-surface-alt transition-colors group">
+                {logoFn ? (
+                  <Image src={logoFn()} alt="" class="hidden sm:block w-28 h-14 rounded-lg border object-cover shrink-0" width={400} quality={90} />
+                ) : (
+                  <div class="hidden sm:block w-28 h-14 rounded-lg bg-surface-alt border shrink-0" />
+                )}
+                <div class="min-w-0 flex-1">
+                  <span class="font-medium group-hover:text-accent transition-colors">{post.title}</span>
+                  <p class="text-sm text-text-secondary my-0.5 line-clamp-3">{post.description}</p>
+                  <time class="text-xs text-text-secondary mt-1 block">{post.dateDisplay}</time>
+                  <div class="flex gap-1.5 flex-wrap mt-2">
+                    {post.tags.map(t => <span class="text-xs font-medium text-accent bg-code-bg px-1.5 py-0.5 rounded">{t}</span>)}
                   </div>
-                </a>
-              );
-            })}
-          </div>
+                </div>
+              </a>
+            );
+          })}
         </div>
       ))}
     </div>
