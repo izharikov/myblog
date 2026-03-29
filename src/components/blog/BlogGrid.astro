@@ -24,9 +24,9 @@ const grouped = posts.reduce<Record<string, typeof posts>>((acc, post) => {
 }, {});
 const years = Object.keys(grouped).sort((a, b) => +b - +a);
 ---
-<section class="py-16" id="blogs">
+<section class="my-8" id="blogs">
   <div class="container max-w-screen-xl mx-auto px-4 space-y-12">
-    <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">
+    <h2 class="text-3xl font-bold tracking-tight sm:text-4xl mb-8">
       {title}
     </h2>
 
@@ -46,7 +46,7 @@ const years = Object.keys(grouped).sort((a, b) => +b - +a);
                   )}
                   <div class="min-w-0 flex-1">
                     <span class="font-medium group-hover:text-accent transition-colors">{post.title}</span>
-                    <p class="text-sm text-text-secondary mt-0.5 line-clamp-1">{post.description}</p>
+                    <p class="text-sm text-text-secondary my-0.5 line-clamp-3">{post.description}</p>
                     <div class="flex items-center gap-3 mt-1">
                       <time class="text-xs text-text-secondary">{post.dateDisplay}</time>
                       <div class="flex gap-1.5">
