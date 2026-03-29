@@ -3,12 +3,12 @@ import { siteConfig } from '@/config/site';
 import ThemeToggle from '@/components/layout/ThemeToggle';
 import MobileMenu from '@/components/layout/MobileMenu';
 ---
-<header class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+<header class="sticky top-0 z-50 w-full border-b bg-surface/95 backdrop-blur supports-[backdrop-filter]:bg-surface/60">
   <div class="container max-w-screen-xl mx-auto px-4 flex h-16 items-center justify-between">
     <a href="/" class="font-bold text-lg">{siteConfig.logo}</a>
     <nav class="hidden md:flex items-center gap-6">
       {siteConfig.navigation.map(item => (
-        <a href={item.href} class="text-sm font-medium hover:text-primary transition-colors">
+        <a href={item.href} class="text-sm font-medium hover:text-accent transition-colors">
           {item.name}
         </a>
       ))}

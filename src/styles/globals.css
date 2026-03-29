@@ -1,132 +1,78 @@
 @import "tailwindcss";
 
-/* Geist Variable fonts — self-hosted via Fontsource, replaces next/font/google */
-@import "@fontsource-variable/geist/wght.css";
-@import "@fontsource-variable/geist-mono/wght.css";
+/* Fonts — Space Grotesk (headings + body) + IBM Plex Mono (code) */
+@import "@fontsource-variable/space-grotesk/wght.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-code);
+
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
   --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --color-accent-hover: var(--accent-hover);
+  --color-border: var(--border);
+  --color-code-bg: var(--code-bg);
+  --color-destructive: var(--destructive);
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
 }
 
 :root {
-  --font-geist-sans: 'Geist Variable', sans-serif;
-  --font-geist-mono: 'Geist Mono Variable', monospace;
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --font-body: 'Space Grotesk Variable', system-ui, sans-serif;
+  --font-code: 'IBM Plex Mono', ui-monospace, monospace;
+
+  /* Warm Charcoal & Amber — Light */
+  --surface:      oklch(0.98 0.005 80);
+  --surface-alt:  oklch(0.95 0.008 80);
+  --text-primary: oklch(0.18 0.01 60);
+  --text-secondary: oklch(0.45 0.01 60);
+  --accent:       oklch(0.50 0.18 55);
+  --accent-hover: oklch(0.44 0.18 55);
+  --border:       oklch(0.88 0.01 80);
+  --code-bg:      oklch(0.95 0.01 80);
+  --destructive:  oklch(0.577 0.245 27.325);
 }
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  /* Warm Charcoal & Amber — Dark */
+  --surface:      oklch(0.14 0.01 60);
+  --surface-alt:  oklch(0.18 0.01 60);
+  --text-primary: oklch(0.92 0.005 80);
+  --text-secondary: oklch(0.62 0.01 60);
+  --accent:       oklch(0.72 0.16 55);
+  --accent-hover: oklch(0.78 0.16 55);
+  --border:       oklch(0.26 0.01 60);
+  --code-bg:      oklch(0.19 0.01 55);
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-surface text-text-primary;
   }
 }
 
-/* Shiki dual-theme: dark colors activated by .dark class on <html> */
+/* Shiki dual-theme: map CSS variables to actual properties for both themes */
+.astro-code,
+.astro-code span {
+  color: var(--shiki-light) !important;
+  background-color: var(--shiki-light-bg) !important;
+  font-style: var(--shiki-light-font-style) !important;
+  font-weight: var(--shiki-light-font-weight) !important;
+  text-decoration: var(--shiki-light-text-decoration) !important;
+}
+
 .dark .astro-code,
 .dark .astro-code span {
   color: var(--shiki-dark) !important;
@@ -136,23 +82,23 @@
   text-decoration: var(--shiki-dark-text-decoration) !important;
 }
 
-/* Inline code styling (backtick code outside of code blocks) */
+/* Inline code styling */
 :not(pre) > code {
-  @apply relative rounded bg-muted text-primary py-[0.2rem] font-mono text-sm font-semibold px-1;
+  @apply relative rounded bg-code-bg text-text-primary py-[0.2rem] font-mono text-sm font-semibold px-1;
 }
 
 /* MDX table styling */
-.prose thead { @apply bg-muted; }
-.prose tr { @apply border-b border-border transition-colors hover:bg-muted/50; }
+.prose thead { @apply bg-surface-alt; }
+.prose tr { @apply border-b border-border transition-colors hover:bg-surface-alt/50; }
 .prose th { @apply border border-border px-4 py-2 text-left font-bold; }
 .prose td { @apply border border-border px-4 py-2 text-left; }
 
 /* MDX prose typography */
-.prose p { @apply leading-7 [&:not(:first-child)]:mt-6 text-muted-foreground; }
-.prose ul { @apply my-6 ml-6 list-disc [&>li]:mt-2 text-muted-foreground; }
-.prose ol { @apply my-6 ml-6 list-decimal [&>li]:mt-2 text-muted-foreground; }
+.prose p { @apply leading-7 [&:not(:first-child)]:mt-6 text-text-secondary; }
+.prose ul { @apply my-6 ml-6 list-disc [&>li]:mt-2 text-text-secondary; }
+.prose ol { @apply my-6 ml-6 list-decimal [&>li]:mt-2 text-text-secondary; }
 .prose li { @apply leading-7; }
 .prose hr { @apply my-8 border-border; }
-.prose strong { @apply font-bold text-foreground; }
+.prose strong { @apply font-bold text-text-primary; }
 .prose em { @apply italic; }
 .prose img { @apply my-6 max-w-full h-auto m-auto; }

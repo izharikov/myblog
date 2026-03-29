@@ -1,0 +1,336 @@
+---
+// Design variant preview — not linked from nav, dev-only
+// Visit /dev/preview to compare color schemes and font pairings
+
+const codeHtml = `<span class="syn-kw">import</span> <span class="syn-pl">{ </span><span class="syn-ty">McpServer</span><span class="syn-pl"> } </span><span class="syn-kw">from</span> <span class="syn-str">"@modelcontextprotocol/sdk"</span><span class="syn-pl">;</span>
+
+<span class="syn-kw">const</span> <span class="syn-pl">server = </span><span class="syn-kw">new</span> <span class="syn-ty">McpServer</span><span class="syn-pl">({</span>
+  <span class="syn-pl">name: </span><span class="syn-str">"my-mcp-server"</span><span class="syn-pl">,</span>
+  <span class="syn-pl">version: </span><span class="syn-str">"1.0.0"</span><span class="syn-pl">,</span>
+<span class="syn-pl">});</span>
+
+<span class="syn-cm">// Register a tool that AI agents can call</span>
+<span class="syn-pl">server.</span><span class="syn-fn">tool</span><span class="syn-pl">(</span><span class="syn-str">"get-weather"</span><span class="syn-pl">, { city: z.</span><span class="syn-fn">string</span><span class="syn-pl">() },</span>
+  <span class="syn-kw">async</span> <span class="syn-pl">({ city }) =&gt;</span> <span class="syn-pl">{</span>
+    <span class="syn-kw">const</span> <span class="syn-pl">data = </span><span class="syn-kw">await</span> <span class="syn-fn">fetchWeather</span><span class="syn-pl">(city);</span>
+    <span class="syn-kw">return</span><span class="syn-pl"> { content: [{ type: </span><span class="syn-str">"text"</span><span class="syn-pl">, text: data }] };</span>
+  <span class="syn-pl">}</span>
+<span class="syn-pl">);</span>`;
+
+const schemes = [
+  { id: 'scheme-1', name: '1 \u2014 Ink & Blue' },
+  { id: 'scheme-2', name: '2 \u2014 Warm Charcoal & Amber' },
+  { id: 'scheme-3', name: '3 \u2014 Stone & Emerald' },
+  { id: 'scheme-4', name: '4 \u2014 Pure Mono & Violet' },
+  { id: 'scheme-5', name: '5 \u2014 Zinc & Coral' },
+];
+---
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Design Preview</title>
+
+  <!-- Font imports -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    @import "@fontsource-variable/geist/wght.css";
+    @import "@fontsource-variable/geist-mono/wght.css";
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #f5f5f5; padding: 2rem; font-family: system-ui; }
+    .dark body { background: #111; }
+
+    /* Font families */
+    .font-a { --ff-heading: 'Geist Variable', sans-serif; --ff-body: 'Geist Variable', sans-serif; --ff-code: 'Geist Mono Variable', monospace; }
+    .font-b { --ff-heading: 'Inter', sans-serif; --ff-body: 'Inter', sans-serif; --ff-code: 'JetBrains Mono', monospace; }
+    .font-c { --ff-heading: 'Bricolage Grotesque', sans-serif; --ff-body: 'Geist Variable', sans-serif; --ff-code: 'Geist Mono Variable', monospace; }
+    .font-d { --ff-heading: 'Space Grotesk', sans-serif; --ff-body: 'Space Grotesk', sans-serif; --ff-code: 'IBM Plex Mono', monospace; }
+    .font-e { --ff-heading: 'Outfit', sans-serif; --ff-body: 'Outfit', sans-serif; --ff-code: 'Fira Code', monospace; }
+
+    /* Color scheme 1: Ink & Blue */
+    .scheme-1 { --surface: oklch(0.99 0 0); --surface-alt: oklch(0.96 0 0); --text-1: oklch(0.13 0 0); --text-2: oklch(0.44 0 0); --accent: oklch(0.55 0.18 250); --accent-hover: oklch(0.48 0.18 250); --border: oklch(0.90 0 0); --code-bg: oklch(0.96 0.005 250); --syn-keyword: oklch(0.55 0.18 250); --syn-string: oklch(0.52 0.12 150); --syn-func: oklch(0.48 0.15 290); --syn-comment: oklch(0.58 0 0); --syn-type: oklch(0.55 0.14 200); --syn-plain: oklch(0.30 0 0); }
+    .dark .scheme-1 { --surface: oklch(0.12 0 0); --surface-alt: oklch(0.16 0 0); --text-1: oklch(0.93 0 0); --text-2: oklch(0.63 0 0); --accent: oklch(0.68 0.16 250); --accent-hover: oklch(0.75 0.16 250); --border: oklch(0.24 0 0); --code-bg: oklch(0.17 0.005 250); --syn-keyword: oklch(0.72 0.16 250); --syn-string: oklch(0.70 0.12 150); --syn-func: oklch(0.72 0.14 290); --syn-comment: oklch(0.50 0 0); --syn-type: oklch(0.70 0.12 200); --syn-plain: oklch(0.80 0 0); }
+
+    /* Color scheme 2: Warm Charcoal & Amber */
+    .scheme-2 { --surface: oklch(0.98 0.005 80); --surface-alt: oklch(0.95 0.008 80); --text-1: oklch(0.18 0.01 60); --text-2: oklch(0.45 0.01 60); --accent: oklch(0.62 0.18 55); --accent-hover: oklch(0.55 0.18 55); --border: oklch(0.88 0.01 80); --code-bg: oklch(0.95 0.01 80); --syn-keyword: oklch(0.55 0.16 55); --syn-string: oklch(0.52 0.12 145); --syn-func: oklch(0.48 0.14 280); --syn-comment: oklch(0.55 0.01 60); --syn-type: oklch(0.52 0.12 200); --syn-plain: oklch(0.32 0.01 60); }
+    .dark .scheme-2 { --surface: oklch(0.14 0.01 60); --surface-alt: oklch(0.18 0.01 60); --text-1: oklch(0.92 0.005 80); --text-2: oklch(0.62 0.01 60); --accent: oklch(0.72 0.16 55); --accent-hover: oklch(0.78 0.16 55); --border: oklch(0.26 0.01 60); --code-bg: oklch(0.19 0.01 55); --syn-keyword: oklch(0.74 0.16 55); --syn-string: oklch(0.70 0.12 145); --syn-func: oklch(0.72 0.14 280); --syn-comment: oklch(0.48 0.01 60); --syn-type: oklch(0.70 0.12 200); --syn-plain: oklch(0.78 0.01 80); }
+
+    /* Color scheme 3: Stone & Emerald */
+    .scheme-3 { --surface: oklch(0.98 0.003 150); --surface-alt: oklch(0.95 0.005 150); --text-1: oklch(0.15 0.005 150); --text-2: oklch(0.45 0.01 150); --accent: oklch(0.55 0.15 160); --accent-hover: oklch(0.48 0.15 160); --border: oklch(0.89 0.005 150); --code-bg: oklch(0.95 0.008 160); --syn-keyword: oklch(0.55 0.15 160); --syn-string: oklch(0.52 0.12 55); --syn-func: oklch(0.48 0.14 270); --syn-comment: oklch(0.55 0.005 150); --syn-type: oklch(0.52 0.12 210); --syn-plain: oklch(0.30 0.005 150); }
+    .dark .scheme-3 { --surface: oklch(0.13 0.005 150); --surface-alt: oklch(0.17 0.008 150); --text-1: oklch(0.92 0.003 150); --text-2: oklch(0.62 0.008 150); --accent: oklch(0.68 0.14 160); --accent-hover: oklch(0.74 0.14 160); --border: oklch(0.25 0.005 150); --code-bg: oklch(0.18 0.008 160); --syn-keyword: oklch(0.72 0.14 160); --syn-string: oklch(0.70 0.12 55); --syn-func: oklch(0.72 0.12 270); --syn-comment: oklch(0.48 0.005 150); --syn-type: oklch(0.68 0.12 210); --syn-plain: oklch(0.78 0.003 150); }
+
+    /* Color scheme 4: Pure Mono & Violet */
+    .scheme-4 { --surface: oklch(1.0 0 0); --surface-alt: oklch(0.96 0 0); --text-1: oklch(0.0 0 0); --text-2: oklch(0.40 0 0); --accent: oklch(0.55 0.20 290); --accent-hover: oklch(0.48 0.22 290); --border: oklch(0.88 0 0); --code-bg: oklch(0.96 0.008 290); --syn-keyword: oklch(0.55 0.20 290); --syn-string: oklch(0.50 0.12 145); --syn-func: oklch(0.48 0.16 30); --syn-comment: oklch(0.55 0 0); --syn-type: oklch(0.50 0.14 220); --syn-plain: oklch(0.25 0 0); }
+    .dark .scheme-4 { --surface: oklch(0.08 0 0); --surface-alt: oklch(0.13 0 0); --text-1: oklch(1.0 0 0); --text-2: oklch(0.60 0 0); --accent: oklch(0.70 0.18 290); --accent-hover: oklch(0.76 0.18 290); --border: oklch(0.22 0 0); --code-bg: oklch(0.13 0.008 290); --syn-keyword: oklch(0.72 0.18 290); --syn-string: oklch(0.70 0.12 145); --syn-func: oklch(0.72 0.14 30); --syn-comment: oklch(0.45 0 0); --syn-type: oklch(0.68 0.14 220); --syn-plain: oklch(0.82 0 0); }
+
+    /* Color scheme 5: Zinc & Coral */
+    .scheme-5 { --surface: oklch(0.99 0 0); --surface-alt: oklch(0.96 0.003 260); --text-1: oklch(0.18 0.01 260); --text-2: oklch(0.45 0.01 260); --accent: oklch(0.62 0.19 18); --accent-hover: oklch(0.55 0.20 18); --border: oklch(0.89 0.005 260); --code-bg: oklch(0.96 0.005 260); --syn-keyword: oklch(0.55 0.18 18); --syn-string: oklch(0.52 0.12 145); --syn-func: oklch(0.50 0.14 260); --syn-comment: oklch(0.55 0.01 260); --syn-type: oklch(0.52 0.14 210); --syn-plain: oklch(0.30 0.01 260); }
+    .dark .scheme-5 { --surface: oklch(0.12 0.008 260); --surface-alt: oklch(0.16 0.01 260); --text-1: oklch(0.93 0.003 260); --text-2: oklch(0.62 0.008 260); --accent: oklch(0.72 0.17 18); --accent-hover: oklch(0.78 0.17 18); --border: oklch(0.24 0.008 260); --code-bg: oklch(0.17 0.008 260); --syn-keyword: oklch(0.72 0.16 18); --syn-string: oklch(0.70 0.12 145); --syn-func: oklch(0.70 0.12 260); --syn-comment: oklch(0.45 0.008 260); --syn-type: oklch(0.68 0.12 210); --syn-plain: oklch(0.78 0.003 260); }
+
+    /* Syntax highlighting tokens — must be unscoped since set:html injects raw spans */
+
+    /* Controls bar */
+    .controls {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: white;
+      border-bottom: 1px solid #ddd;
+      padding: 1rem 2rem;
+      margin: -2rem -2rem 2rem;
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .dark .controls { background: #1a1a1a; border-color: #333; color: #eee; }
+    .controls label { font-size: 0.875rem; font-weight: 600; }
+    .controls select {
+      padding: 0.375rem 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 0.375rem;
+      font-size: 0.875rem;
+      background: white;
+    }
+    .dark .controls select { background: #222; border-color: #444; color: #eee; }
+    .controls button {
+      padding: 0.375rem 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 0.375rem;
+      font-size: 0.875rem;
+      cursor: pointer;
+      background: white;
+    }
+    .dark .controls button { background: #222; border-color: #444; color: #eee; }
+
+    /* Card grid */
+    .grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+
+    /* Preview card */
+    .preview-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 2rem;
+      font-family: var(--ff-body);
+      color: var(--text-1);
+    }
+    .preview-card .label {
+      font-size: 0.75rem;
+      font-family: system-ui;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    /* Sample content inside card */
+    .preview-card h1 {
+      font-family: var(--ff-heading);
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+    .preview-card .meta {
+      font-size: 0.875rem;
+      color: var(--text-2);
+      margin-bottom: 1.25rem;
+    }
+    .preview-card .meta a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .preview-card .meta a:hover {
+      color: var(--accent-hover);
+    }
+    .preview-card p {
+      color: var(--text-2);
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    .preview-card a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .preview-card a:hover {
+      color: var(--accent-hover);
+    }
+    .preview-card h2 {
+      font-family: var(--ff-heading);
+      font-size: 1.375rem;
+      font-weight: 600;
+      margin: 1.5rem 0 0.75rem;
+    }
+    .preview-card code {
+      font-family: var(--ff-code);
+      font-size: 0.875em;
+      background: var(--code-bg);
+      padding: 0.15em 0.4em;
+      border-radius: 0.25rem;
+    }
+    .preview-card pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      padding: 1rem;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+    .preview-card pre code {
+      background: none;
+      padding: 0;
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+
+    /* Blog card preview */
+    .blog-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .blog-card-sample {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      padding: 1.25rem;
+    }
+    .blog-card-sample .tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--accent);
+      background: var(--code-bg);
+      padding: 0.15rem 0.5rem;
+      border-radius: 0.25rem;
+      margin-right: 0.375rem;
+    }
+    .blog-card-sample h3 {
+      font-family: var(--ff-heading);
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.75rem 0 0.375rem;
+    }
+    .blog-card-sample .desc {
+      font-size: 0.875rem;
+      color: var(--text-2);
+      line-height: 1.5;
+    }
+  </style>
+  <style is:global>
+    .syn-kw { color: var(--syn-keyword); font-weight: 500; }
+    .syn-str { color: var(--syn-string); }
+    .syn-fn { color: var(--syn-func); }
+    .syn-cm { color: var(--syn-comment); font-style: italic; }
+    .syn-ty { color: var(--syn-type); }
+    .syn-pl { color: var(--syn-plain); }
+  </style>
+</head>
+<body>
+  <div class="controls">
+    <div>
+      <label for="font-select">Font: </label>
+      <select id="font-select">
+        <option value="font-a">A — Geist</option>
+        <option value="font-b">B — Inter + JetBrains</option>
+        <option value="font-c">C — Bricolage + Geist</option>
+        <option value="font-d">D — Space Grotesk + IBM Plex</option>
+        <option value="font-e">E — Outfit + Fira Code</option>
+      </select>
+    </div>
+    <div>
+      <label for="scheme-select">Scheme: </label>
+      <select id="scheme-select">
+        <option value="all">All schemes</option>
+        <option value="scheme-1">1 — Ink & Blue</option>
+        <option value="scheme-2">2 — Warm Charcoal & Amber</option>
+        <option value="scheme-3">3 — Stone & Emerald</option>
+        <option value="scheme-4">4 — Pure Mono & Violet</option>
+        <option value="scheme-5">5 — Zinc & Coral</option>
+      </select>
+    </div>
+    <button id="dark-toggle">Toggle Dark</button>
+  </div>
+
+  <div class="grid" id="grid">
+    {schemes.map(scheme => (
+      <div class={`preview-card font-a ${scheme.id}`} data-scheme={scheme.id}>
+        <div class="label">{scheme.name}</div>
+
+        <h1>Building an MCP Server with Cloudflare Workers</h1>
+        <div class="meta">
+          March 15, 2026 &middot; <a href="#">Sitecore</a>, <a href="#">MCP</a>, <a href="#">AI</a>
+        </div>
+
+        <p>
+          The Model Context Protocol is changing how AI agents interact with external
+          services. In this post, we'll build a production-ready MCP server that runs
+          on Cloudflare Workers, handling <code>tool/list</code> and <code>tool/call</code> requests.
+        </p>
+
+        <h2>Why MCP on the Edge?</h2>
+        <p>
+          Running MCP servers on edge infrastructure gives you sub-50ms latency
+          globally. Combined with <a href="#">Durable Objects</a> for state management,
+          it's the ideal platform for AI tool servers.
+        </p>
+
+        <pre><code><Fragment set:html={codeHtml} /></code></pre>
+
+        <div class="blog-cards">
+          <div class="blog-card-sample">
+            <div>
+              <span class="tag">Astro</span>
+              <span class="tag">Migration</span>
+            </div>
+            <h3>Migrating from Next.js to Astro</h3>
+            <div class="desc">A practical guide to moving a content-heavy site from Next.js to Astro's island architecture.</div>
+          </div>
+          <div class="blog-card-sample">
+            <div>
+              <span class="tag">Sitecore</span>
+              <span class="tag">DevOps</span>
+            </div>
+            <h3>CI/CD for Sitecore XM Cloud</h3>
+            <div class="desc">Setting up automated deployments with GitHub Actions and the Sitecore CLI.</div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <script is:inline>
+    const fontSelect = document.getElementById('font-select');
+    const schemeSelect = document.getElementById('scheme-select');
+    const darkToggle = document.getElementById('dark-toggle');
+    const cards = document.querySelectorAll('.preview-card');
+
+    fontSelect.addEventListener('change', () => {
+      const font = fontSelect.value;
+      cards.forEach(card => {
+        card.className = card.className.replace(/font-[a-e]/g, '').trim();
+        card.classList.add(font);
+      });
+    });
+
+    schemeSelect.addEventListener('change', () => {
+      const val = schemeSelect.value;
+      cards.forEach(card => {
+        card.style.display = (val === 'all' || card.dataset.scheme === val) ? '' : 'none';
+      });
+    });
+
+    darkToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+    });
+  </script>
+</body>
+</html>

@@ -37,12 +37,12 @@ const jsonLd = generateBlogJsonLd({
   <article class="container max-w-screen-xl mx-auto px-4 py-8">
     <header class="mb-8 space-y-4">
       <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">{title}</h1>
-      <div class="flex items-center gap-4 text-sm text-muted-foreground">
+      <div class="flex items-center gap-4 text-sm text-text-secondary">
         <time datetime={parsedDate.toISOString().split('T')[0]}>{dateDisplay}</time>
       </div>
       <div class="flex gap-2 flex-wrap">
         {tags.map(tag => (
-          <span class="inline-flex items-center rounded-full border border-transparent bg-secondary text-secondary-foreground px-2 py-0.5 text-xs font-medium">
+          <span class="inline-flex items-center rounded-full border border-transparent bg-surface-alt text-text-primary px-2 py-0.5 text-xs font-medium">
             {tag}
           </span>
         ))}
@@ -59,6 +59,6 @@ const jsonLd = generateBlogJsonLd({
       <slot />
     </div>
     <hr class="my-6" />
-    <a class="font-medium text-primary underline underline-offset-4 hover:text-primary/80 transition-colors" href={`/blogs/${slug}.md`} target="_blank">View article as markdown</a>
+    <a class="font-medium text-accent underline underline-offset-4 hover:text-accent-hover transition-colors" href={`/blogs/${slug}.md`} target="_blank">View article as markdown</a>
   </article>
 </BaseLayout>

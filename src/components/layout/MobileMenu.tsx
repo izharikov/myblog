@@ -37,7 +37,7 @@ export default function MobileMenu() {
   return (
     <>
       <button
-        class="md:hidden w-9 h-9 flex items-center justify-center rounded-md hover:bg-muted transition-colors"
+        class="md:hidden w-9 h-9 flex items-center justify-center rounded-md hover:bg-surface-alt transition-colors"
         onClick={() => setOpen(o => !o)}
         aria-label="Toggle navigation menu"
         aria-expanded={open()}
@@ -52,13 +52,13 @@ export default function MobileMenu() {
             aria-hidden="true"
           />
           <nav
-            class="fixed top-0 right-0 h-full w-64 bg-background border-l border-border z-[70] p-6 flex flex-col gap-4"
+            class="fixed top-0 right-0 h-full w-64 bg-surface border-l border-border z-[70] p-6 flex flex-col gap-4"
           >
             <div class="flex justify-end">
               <button
                 onClick={() => setOpen(false)}
                 aria-label="Close menu"
-                class="w-9 h-9 flex items-center justify-center rounded-md hover:bg-muted transition-colors"
+                class="w-9 h-9 flex items-center justify-center rounded-md hover:bg-surface-alt transition-colors"
               >
                 <XIcon />
               </button>
@@ -66,7 +66,7 @@ export default function MobileMenu() {
             {siteConfig.navigation.map(item => (
               <a
                 href={item.href}
-                class="text-sm font-medium hover:text-primary transition-colors"
+                class="text-sm font-medium hover:text-accent transition-colors"
                 onClick={() => setOpen(false)}
               >
                 {item.name}
