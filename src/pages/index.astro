@@ -11,7 +11,7 @@ import { personJsonLd } from '@/lib/json-ld';
 const posts = await getCollection('blog');
 const sorted = posts
   .sort((a, b) => parseDate(b.data.date).getTime() - parseDate(a.data.date).getTime())
-  .slice(0, 3)
+  .slice(0, 10)
   .map(post => ({
     title: post.data.title,
     description: post.data.description,

@@ -1,10 +1,24 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { resolveImage } from '@/lib/images';
 
 // Dev only — redirect to home in production
 if (import.meta.env.PROD) {
   return Astro.redirect('/');
 }
+
+const posts = [
+  { title: "Sitecore Marketplace Apps: Custom Authorization Setup", date: "Mar 27, 2026", tags: ["Marketplace", "Auth0", "Next.js"], desc: "Step-by-step guide to setting up custom authorization for Sitecore Marketplace apps with server-side API calls", logo: "/images/2026/9-auth-setup/logo.png" },
+  { title: "Sitecore Marketplace SDK Integration with Vercel AI SDK", date: "Feb 23, 2026", tags: ["Marketplace", "Vercel AI SDK"], desc: "sitecore-ai-sdk-tools: a new npm package to integrate Sitecore Marketplace SDK with Vercel AI SDK", logo: "/images/2025/vercel-ai-tools/logo.png" },
+  { title: "Sitecore Marketplace Updates (December 2025)", date: "Dec 12, 2025", tags: ["Marketplace", "Sitecore AI"], desc: "Latest Sitecore Marketplace updates: Blok components GA, new permissions and event subscriptions", logo: "/images/2025/marketplace-updates/logo.png" },
+  { title: 'Fix "Resource parameter is required" in Sitecore Marketers MCP', date: "Dec 11, 2025", tags: ["MCP", "Sitecore"], desc: 'How to fix "Resource parameter is required" error in Sitecore Marketers MCP', logo: "/images/2025/marketers-mcp-issue/logo.png" },
+  { title: "SitecoreAI, Marketer MCP, Agents API — Symposium 2025 Recap", date: "Nov 11, 2025", tags: ["SitecoreAI", "Symposium"], desc: "Key announcements from Sitecore Symposium 2025 — SitecoreAI, Agentic Studio, Marketer MCP, and Marketplace", logo: "/images/2025/sym/logo.png" },
+  { title: "Sitecore Content Hub Administrator Certification Guide", date: "Oct 27, 2025", tags: ["Content Hub", "Certification"], desc: "Practical guide to prepare for the Sitecore Content Hub Administrator Certification", logo: "/images/2025/ch/logo.png" },
+  { title: "Optimizing Sitecore Builds: CI/CD Performance Tips", date: "Oct 6, 2025", tags: ["CI/CD", "Docker", "Performance"], desc: "Optimize Sitecore CI/CD pipelines with practical tips for faster frontend builds and Docker image performance", logo: "/images/2025/cicd/logo.png" },
+  { title: "Unlocking Sitecore Send for LLMs via the MCP Server", date: "Jun 20, 2025", tags: ["Send", "MCP", "LLM"], desc: "Integrate Sitecore Send with LLMs using the Model Context Protocol Server", logo: "/images/2025/send-mcp/logo.png" },
+  { title: "Sitecore XP MVC Views Precompilation: 4x Faster Startup", date: "Jan 20, 2025", tags: ["XP", "MVC", "Performance"], desc: "Learn how to precompile Sitecore XP MVC views to speed up your website startup time", logo: "/images/sitecore-techtalks.png" },
+];
 ---
 
 <BaseLayout title="Design Preview" description="Dev-only design token preview">
@@ -154,5 +168,273 @@ if (import.meta.env.PROD) {
         <span class="text-xs font-medium text-accent bg-code-bg px-2 py-1 rounded">Tag Three</span>
       </div>
     </section>
+  </div>
+
+  {/* ═══════ BLOG LIST LAYOUTS ═══════ */}
+  <div class="border-t mt-16">
+    <div class="max-w-screen-xl mx-auto px-4 py-16">
+      <h2 class="text-3xl font-bold tracking-tight text-center mb-2">Blog List Layouts</h2>
+      <p class="text-text-secondary text-center mb-16">Compare four approaches — scroll to review each</p>
+
+      {/* ── Layout A: Featured + Compact List ── */}
+      <section class="mb-24">
+        <div class="mb-6">
+          <span class="text-xs font-medium text-accent bg-code-bg px-2 py-1 rounded">Layout A</span>
+          <h3 class="text-2xl font-semibold mt-2">Featured + Compact List</h3>
+          <p class="text-sm text-text-secondary">Top post gets a hero card. Rest are scannable text rows.</p>
+        </div>
+
+        {/* Featured post */}
+        <a href="#" class="group block rounded-xl border bg-surface overflow-hidden mb-6 transition-colors hover:bg-surface-alt">
+          <div class="aspect-[3/1] bg-surface-alt flex items-center justify-center border-b">
+            <span class="text-text-secondary text-sm">Featured image</span>
+          </div>
+          <div class="p-6">
+            <div class="flex gap-2 mb-3">
+              {posts[0].tags.map(t => <span class="text-xs font-medium text-accent bg-code-bg px-2 py-0.5 rounded">{t}</span>)}
+            </div>
+            <h4 class="text-xl font-bold group-hover:text-accent transition-colors">{posts[0].title}</h4>
+            <p class="mt-2 text-text-secondary leading-relaxed">{posts[0].desc}</p>
+            <p class="mt-3 text-xs text-text-secondary">{posts[0].date}</p>
+          </div>
+        </a>
+
+        {/* Compact list */}
+        <div class="divide-y divide-border rounded-xl border overflow-hidden">
+          {posts.slice(1).map(p => (
+            <a href="#" class="flex items-center justify-between gap-4 px-5 py-4 hover:bg-surface-alt transition-colors group">
+              <div class="min-w-0 flex-1">
+                <h4 class="font-medium truncate group-hover:text-accent transition-colors">{p.title}</h4>
+                <div class="flex gap-2 mt-1">
+                  {p.tags.slice(0, 2).map(t => <span class="text-xs text-text-secondary">{t}</span>)}
+                </div>
+              </div>
+              <time class="text-xs text-text-secondary shrink-0">{p.date}</time>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Layout B: Featured + 2-col Horizontal Cards ── */}
+      <section class="mb-24">
+        <div class="mb-6">
+          <span class="text-xs font-medium text-accent bg-code-bg px-2 py-1 rounded">Layout B</span>
+          <h3 class="text-2xl font-semibold mt-2">Featured + 2-col Horizontal Cards</h3>
+          <p class="text-sm text-text-secondary">Hero card on top, remaining posts as image-left horizontal cards in 2 columns.</p>
+        </div>
+
+        {/* Featured */}
+        <a href="#" class="group block rounded-xl border bg-surface overflow-hidden mb-6 transition-colors hover:bg-surface-alt">
+          <div class="md:flex">
+            {resolveImage(posts[0].logo) ? (
+              <div class="md:w-2/5 aspect-video md:aspect-auto bg-surface-alt border-b md:border-b-0 md:border-r overflow-hidden">
+                <Image src={resolveImage(posts[0].logo)!()} alt="" class="w-full h-full object-cover" width={480} quality={90} />
+              </div>
+            ) : (
+              <div class="md:w-2/5 aspect-video md:aspect-auto bg-surface-alt border-b md:border-b-0 md:border-r" />
+            )}
+            <div class="p-6 md:w-3/5 flex flex-col justify-center">
+              <div class="flex gap-2 mb-3">
+                {posts[0].tags.map(t => <span class="text-xs font-medium text-accent bg-code-bg px-2 py-0.5 rounded">{t}</span>)}
+              </div>
+              <h4 class="text-xl font-bold group-hover:text-accent transition-colors">{posts[0].title}</h4>
+              <p class="mt-2 text-text-secondary leading-relaxed">{posts[0].desc}</p>
+              <p class="mt-3 text-xs text-text-secondary">{posts[0].date}</p>
+            </div>
+          </div>
+        </a>
+
+        {/* 2-col horizontal cards */}
+        <div class="grid gap-4 md:grid-cols-2">
+          {posts.slice(1).map(p => (
+            <a href="#" class="group flex rounded-lg border bg-surface overflow-hidden transition-colors hover:bg-surface-alt">
+              {resolveImage(p.logo) ? (
+                <div class="w-1/3 bg-surface-alt border-r shrink-0 overflow-hidden">
+                  <Image src={resolveImage(p.logo)!()} alt="" class="w-full h-full object-cover" width={300} quality={90} />
+                </div>
+              ) : (
+                <div class="w-1/3 bg-surface-alt border-r shrink-0" />
+              )}
+              <div class="p-4 flex flex-col justify-center min-w-0">
+                <div class="flex gap-1.5 mb-1.5">
+                  {p.tags.slice(0, 2).map(t => <span class="text-xs font-medium text-accent bg-code-bg px-1.5 py-0.5 rounded">{t}</span>)}
+                </div>
+                <h4 class="font-medium text-sm leading-snug group-hover:text-accent transition-colors line-clamp-2">{p.title}</h4>
+                <p class="mt-1.5 text-xs text-text-secondary line-clamp-2">{p.desc}</p>
+                <p class="mt-1.5 text-xs text-text-secondary">{p.date}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Layout C: Timeline / Grouped by Year (no images) ── */}
+      <section class="mb-24">
+        <div class="mb-6">
+          <span class="text-xs font-medium text-accent bg-code-bg px-2 py-1 rounded">Layout C</span>
+          <h3 class="text-2xl font-semibold mt-2">Timeline / Grouped by Year</h3>
+          <p class="text-sm text-text-secondary">Minimal, dev-blog style. Posts grouped by year, no images.</p>
+        </div>
+
+        {/* 2026 */}
+        <div class="mb-8">
+          <h4 class="text-lg font-bold mb-4 text-text-secondary">2026</h4>
+          <div class="space-y-1">
+            {posts.filter(p => p.date.includes('2026')).map(p => (
+              <a href="#" class="flex items-baseline gap-4 py-2.5 px-3 -mx-3 rounded-lg hover:bg-surface-alt transition-colors group">
+                <time class="text-sm text-text-secondary shrink-0 w-24 tabular-nums">{p.date}</time>
+                <div class="min-w-0 flex-1">
+                  <span class="font-medium group-hover:text-accent transition-colors">{p.title}</span>
+                  <div class="flex gap-2 mt-1">
+                    {p.tags.map(t => <span class="text-xs font-medium text-accent bg-code-bg px-1.5 py-0.5 rounded">{t}</span>)}
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* 2025 */}
+        <div class="mb-8">
+          <h4 class="text-lg font-bold mb-4 text-text-secondary">2025</h4>
+          <div class="space-y-1">
+            {posts.filter(p => p.date.includes('2025')).map(p => (
+              <a href="#" class="flex items-baseline gap-4 py-2.5 px-3 -mx-3 rounded-lg hover:bg-surface-alt transition-colors group">
+                <time class="text-sm text-text-secondary shrink-0 w-24 tabular-nums">{p.date}</time>
+                <div class="min-w-0 flex-1">
+                  <span class="font-medium group-hover:text-accent transition-colors">{p.title}</span>
+                  <div class="flex gap-2 mt-1">
+                    {p.tags.map(t => <span class="text-xs font-medium text-accent bg-code-bg px-1.5 py-0.5 rounded">{t}</span>)}
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Layout C2: Timeline + Thumbnail ── */}
+      <section class="mb-24">
+        <div class="mb-6">
+          <span class="text-xs font-medium text-accent bg-code-bg px-2 py-1 rounded">Layout C2</span>
+          <h3 class="text-2xl font-semibold mt-2">Timeline + Thumbnail</h3>
+          <p class="text-sm text-text-secondary">Same year-grouped timeline with a small image per row for visual anchor.</p>
+        </div>
+
+        {/* 2026 */}
+        <div class="mb-8">
+          <h4 class="text-lg font-bold mb-4 text-text-secondary">2026</h4>
+          <div class="space-y-1">
+            {posts.filter(p => p.date.includes('2026')).map(p => (
+              <a href="#" class="flex items-center gap-4 py-3 px-3 -mx-3 rounded-lg hover:bg-surface-alt transition-colors group">
+                {resolveImage(p.logo) ? (
+                  <Image src={resolveImage(p.logo)!()} alt="" class="hidden sm:block w-28 h-14 rounded-lg border object-cover shrink-0" width={400} quality={90} />
+                ) : (
+                  <div class="hidden sm:block w-28 h-14 rounded-lg bg-surface-alt border shrink-0" />
+                )}
+                <div class="min-w-0 flex-1">
+                  <span class="font-medium group-hover:text-accent transition-colors">{p.title}</span>
+                  <p class="text-sm text-text-secondary mt-0.5 line-clamp-1">{p.desc}</p>
+                  <div class="flex items-center gap-3 mt-1">
+                    <time class="text-xs text-text-secondary">{p.date}</time>
+                    <div class="flex gap-1.5">
+                      {p.tags.map(t => <span class="text-xs font-medium text-accent bg-code-bg px-1.5 py-0.5 rounded">{t}</span>)}
+                    </div>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* 2025 */}
+        <div class="mb-8">
+          <h4 class="text-lg font-bold mb-4 text-text-secondary">2025</h4>
+          <div class="space-y-1">
+            {posts.filter(p => p.date.includes('2025')).map(p => (
+              <a href="#" class="flex items-center gap-4 py-3 px-3 -mx-3 rounded-lg hover:bg-surface-alt transition-colors group">
+                {resolveImage(p.logo) ? (
+                  <Image src={resolveImage(p.logo)!()} alt="" class="hidden sm:block w-28 h-14 rounded-lg border object-cover shrink-0" width={400} quality={90} />
+                ) : (
+                  <div class="hidden sm:block w-28 h-14 rounded-lg bg-surface-alt border shrink-0" />
+                )}
+                <div class="min-w-0 flex-1">
+                  <span class="font-medium group-hover:text-accent transition-colors">{p.title}</span>
+                  <p class="text-sm text-text-secondary mt-0.5 line-clamp-1">{p.desc}</p>
+                  <div class="flex items-center gap-3 mt-1">
+                    <time class="text-xs text-text-secondary">{p.date}</time>
+                    <div class="flex gap-1.5">
+                      {p.tags.map(t => <span class="text-xs font-medium text-accent bg-code-bg px-1.5 py-0.5 rounded">{t}</span>)}
+                    </div>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Layout D: Mixed Density ── */}
+      <section class="mb-24">
+        <div class="mb-6">
+          <span class="text-xs font-medium text-accent bg-code-bg px-2 py-1 rounded">Layout D</span>
+          <h3 class="text-2xl font-semibold mt-2">Mixed Density</h3>
+          <p class="text-sm text-text-secondary">1 large featured, 2 medium, then compact rows. Visual hierarchy through diminishing size.</p>
+        </div>
+
+        {/* Row 1: 1 large featured */}
+        <a href="#" class="group block rounded-xl border bg-surface overflow-hidden mb-4 transition-colors hover:bg-surface-alt">
+          <div class="aspect-[3/1] bg-surface-alt flex items-center justify-center border-b">
+            <span class="text-text-secondary text-sm">Featured image</span>
+          </div>
+          <div class="p-6">
+            <div class="flex gap-2 mb-3">
+              {posts[0].tags.map(t => <span class="text-xs font-medium text-accent bg-code-bg px-2 py-0.5 rounded">{t}</span>)}
+            </div>
+            <h4 class="text-xl font-bold group-hover:text-accent transition-colors">{posts[0].title}</h4>
+            <p class="mt-2 text-text-secondary leading-relaxed">{posts[0].desc}</p>
+            <p class="mt-3 text-xs text-text-secondary">{posts[0].date}</p>
+          </div>
+        </a>
+
+        {/* Row 2: 2 medium cards */}
+        <div class="grid gap-4 md:grid-cols-2 mb-4">
+          {posts.slice(1, 3).map(p => (
+            <a href="#" class="group block rounded-xl border bg-surface overflow-hidden transition-colors hover:bg-surface-alt">
+              <div class="aspect-[2/1] bg-surface-alt flex items-center justify-center border-b">
+                <span class="text-text-secondary text-[10px]">Image</span>
+              </div>
+              <div class="p-5">
+                <div class="flex gap-2 mb-2">
+                  {p.tags.slice(0, 2).map(t => <span class="text-xs font-medium text-accent bg-code-bg px-1.5 py-0.5 rounded">{t}</span>)}
+                </div>
+                <h4 class="font-semibold group-hover:text-accent transition-colors">{p.title}</h4>
+                <p class="mt-1.5 text-sm text-text-secondary line-clamp-2">{p.desc}</p>
+                <p class="mt-2 text-xs text-text-secondary">{p.date}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        {/* Row 3+: compact rows, no images */}
+        <div class="divide-y divide-border rounded-xl border overflow-hidden">
+          {posts.slice(3).map(p => (
+            <a href="#" class="flex items-center justify-between gap-4 px-5 py-4 hover:bg-surface-alt transition-colors group">
+              <div class="min-w-0 flex-1">
+                <h4 class="font-medium truncate group-hover:text-accent transition-colors">{p.title}</h4>
+                <p class="text-sm text-text-secondary mt-0.5 truncate">{p.desc}</p>
+              </div>
+              <div class="text-right shrink-0">
+                <div class="flex gap-1.5 justify-end mb-1">
+                  {p.tags.slice(0, 2).map(t => <span class="text-xs font-medium text-accent bg-code-bg px-1.5 py-0.5 rounded">{t}</span>)}
+                </div>
+                <time class="text-xs text-text-secondary">{p.date}</time>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+    </div>
   </div>
 </BaseLayout>

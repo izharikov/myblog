@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import { resolveImage } from '@/lib/images';
+
 interface Props {
   posts: Array<{
     title: string;
@@ -11,29 +14,56 @@ interface Props {
   title?: string;
   showLink?: boolean;
 }
-import BlogCard from './BlogCard.astro';
 const { posts, title = "Latest Posts", showLink = true } = Astro.props;
+
+// Group posts by year
+const grouped = posts.reduce<Record<string, typeof posts>>((acc, post) => {
+  const year = post.dateDisplay.split(', ').pop()!;
+  (acc[year] ??= []).push(post);
+  return acc;
+}, {});
+const years = Object.keys(grouped).sort((a, b) => +b - +a);
 ---
 <section class="py-16" id="blogs">
   <div class="container max-w-screen-xl mx-auto px-4 space-y-12">
-    <h2 class="text-3xl font-bold tracking-tight sm:text-4xl text-center">
+    <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">
       {title}
     </h2>
-    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-      {posts.map((post, i) => (
-        <BlogCard
-          title={post.title}
-          description={post.description}
-          slug={post.slug}
-          logo={post.logo}
-          dateDisplay={post.dateDisplay}
-          tags={post.tags}
-          priority={i === 0}
-        />
+
+    <div>
+      {years.map(year => (
+        <div class="mb-8">
+          <h3 class="text-lg font-bold mb-4 text-text-secondary">{year}</h3>
+          <div class="space-y-1">
+            {grouped[year].map(post => {
+              const logoFn = resolveImage(post.logo);
+              return (
+                <a href={`/blogs/${post.slug}`} class="flex items-center gap-4 py-3 px-3 -mx-3 rounded-lg hover:bg-surface-alt transition-colors group">
+                  {logoFn ? (
+                    <Image src={logoFn()} alt="" class="hidden sm:block w-28 h-14 rounded-lg border object-cover shrink-0" width={400} quality={90} />
+                  ) : (
+                    <div class="hidden sm:block w-28 h-14 rounded-lg bg-surface-alt border shrink-0" />
+                  )}
+                  <div class="min-w-0 flex-1">
+                    <span class="font-medium group-hover:text-accent transition-colors">{post.title}</span>
+                    <p class="text-sm text-text-secondary mt-0.5 line-clamp-1">{post.description}</p>
+                    <div class="flex items-center gap-3 mt-1">
+                      <time class="text-xs text-text-secondary">{post.dateDisplay}</time>
+                      <div class="flex gap-1.5">
+                        {post.tags.map(t => <span class="text-xs font-medium text-accent bg-code-bg px-1.5 py-0.5 rounded">{t}</span>)}
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </div>
       ))}
     </div>
+
     {showLink && (
-      <div class="text-center pt-8">
+      <div class="text-center">
         <a href="/blogs" class="inline-flex items-center justify-center rounded-md border border-border bg-surface px-6 py-3 text-sm font-medium hover:bg-surface-alt hover:text-accent transition-colors">
           See All Blog Posts &rarr;
         </a>
