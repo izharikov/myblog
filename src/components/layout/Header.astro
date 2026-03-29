@@ -5,7 +5,15 @@ import MobileMenu from '@/components/layout/MobileMenu';
 ---
 <header class="sticky top-0 z-50 w-full border-b bg-surface/95 backdrop-blur supports-[backdrop-filter]:bg-surface/60">
   <div class="container max-w-screen-xl mx-auto px-4 flex h-16 items-center justify-between">
-    <a href="/" class="font-bold text-lg">{siteConfig.logo}</a>
+    <a href="/" class="flex items-center gap-2 font-bold text-lg">
+      <svg width="24" height="24" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="shrink-0">
+        <rect x="6" y="6" width="13" height="13" rx="2" fill="currentColor" class="text-accent" />
+        <rect x="21" y="6" width="13" height="13" rx="2" fill="currentColor" class="text-accent opacity-60" />
+        <rect x="6" y="21" width="13" height="13" rx="2" fill="currentColor" class="text-accent opacity-35" />
+        <rect x="21" y="21" width="13" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="3 2" class="text-accent opacity-30" />
+      </svg>
+      <span>{siteConfig.logo}</span>
+    </a>
     <nav class="hidden md:flex items-center gap-6">
       {siteConfig.navigation.map(item => (
         <a href={item.href} class="text-sm font-medium hover:text-accent transition-colors">

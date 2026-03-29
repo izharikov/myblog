@@ -1,0 +1,43 @@
+---
+import { getCollection } from 'astro:content';
+import { getSlug } from '@/lib/blog';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { parseDate, formatDate } from '@/lib/date';
+
+const posts = await getCollection('blog');
+const recent = posts
+  .sort((a, b) => parseDate(b.data.date).getTime() - parseDate(a.data.date).getTime())
+  .slice(0, 5)
+  .map(post => ({
+    title: post.data.title,
+    slug: getSlug(post),
+    date: formatDate(parseDate(post.data.date)),
+  }));
+---
+
+<BaseLayout title="404 — Not Found" description="Page not found">
+  <div class="container max-w-screen-xl mx-auto px-4 my-8 md:my-10">
+    <div class="rounded-lg bg-code-bg border p-6 font-mono text-sm">
+      <p class="text-text-secondary">$ <span class="text-text-primary">GET</span> <span class="text-accent" id="path">/unknown</span></p>
+      <p class="text-text-secondary mt-2">HTTP/1.1 <span class="text-destructive font-semibold">404 Not Found</span></p>
+      <p class="text-text-secondary mt-4">Page not found. Maybe try one of these:</p>
+      <div class="mt-4 space-y-1">
+        {recent.map(post => (
+          <p>
+            <span class="text-text-secondary">&#x276F;</span>{" "}
+            <a href={`/blogs/${post.slug}`} class="text-accent hover:text-accent-hover underline underline-offset-4 transition-colors">{post.title}</a>
+          </p>
+        ))}
+      </div>
+      <p class="mt-6">
+        <span class="text-text-secondary">&#x276F;</span>{" "}
+        <a href="/" class="text-text-primary hover:text-accent underline underline-offset-4 transition-colors">cd ~</a>
+      </p>
+    </div>
+  </div>
+
+  <script is:inline>
+    const el = document.getElementById('path');
+    if (el) el.textContent = window.location.pathname;
+  </script>
+</BaseLayout>

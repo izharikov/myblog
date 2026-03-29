@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import BaseLayout from './BaseLayout.astro';
 import { generateBlogJsonLd } from '@/lib/json-ld';
 import { parseDate, formatDate } from '@/lib/date';
@@ -19,7 +19,14 @@ const { title, description, date, slug, logo, tags } = Astro.props;
 const logoImage = resolveImage(logo);
 const parsedDate = parseDate(date);
 const dateDisplay = formatDate(parsedDate);
-const ogImage = new URL(logo, siteConfig.site).href;
+
+// Resolve the processed image path for og:image and JSON-LD
+let resolvedLogoPath = logo;
+if (logoImage) {
+  const optimized = await getImage({ src: (await logoImage()).default, width: 1200 });
+  resolvedLogoPath = optimized.src;
+}
+const ogImage = new URL(resolvedLogoPath, siteConfig.site).href;
 
 const jsonLd = generateBlogJsonLd({
   title,
@@ -27,7 +34,7 @@ const jsonLd = generateBlogJsonLd({
   date: parsedDate,
   dateDisplay,
   slug,
-  logo,
+  logo: resolvedLogoPath,
   tags,
   path: slug,
 });

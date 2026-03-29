@@ -1,9 +1,10 @@
-<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
-  <!-- Background: VS Code Dark -->
-  <rect width="256" height="256" rx="50" fill="#1E1E1E"/>
-  
-  <!-- Text: Syntax Highlighting Blue -->
-  <text x="50%" y="54%" font-family="Consolas, monospace" font-weight="bold" font-size="110" fill="#569CD6" text-anchor="middle" dominant-baseline="middle">
-    &lt;IZ&gt;
-  </text>
+<svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @media (prefers-color-scheme: light) { .fill { fill: oklch(0.50 0.18 55); } .stroke { stroke: oklch(0.50 0.18 55); } }
+    @media (prefers-color-scheme: dark) { .fill { fill: oklch(0.72 0.16 55); } .stroke { stroke: oklch(0.72 0.16 55); } }
+  </style>
+  <rect x="6" y="6" width="13" height="13" rx="2" class="fill" />
+  <rect x="21" y="6" width="13" height="13" rx="2" class="fill" opacity="0.6" />
+  <rect x="6" y="21" width="13" height="13" rx="2" class="fill" opacity="0.35" />
+  <rect x="21" y="21" width="13" height="13" rx="2" class="stroke" fill="none" stroke-width="2" stroke-dasharray="3 2" opacity="0.3" />
 </svg>
