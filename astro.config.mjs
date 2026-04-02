@@ -10,6 +10,10 @@ import fs from 'node:fs';
 export default defineConfig({
   site: 'https://izharikov.dev',
   output: 'static',
+  trailingSlash: 'never',
+  build: {
+    format: 'file',
+  },
   markdown: {
     shikiConfig: {
       themes: {
