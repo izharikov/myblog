@@ -1,0 +1,88 @@
+---
+title: "Sitecore AI: Latest Updates and Experience Editor Deprecation Announcement"
+slug: "sitecore-ai-whats-new-june-2026"
+logo: "/images/2026/10-sitecore-news/logo.png"
+description: "Latest Sitecore AI updates: Experience Editor and Explorer deprecation, Page builder Content mode, Agent API v2.0, Agentic Studio in Page builder, and Marketplace file downloads."
+tags: ["Sitecore AI", "Page Builder", "Marketplace", "Agent API"]
+date: "16.06.2026"
+---
+
+Sitecore AI Latest Updates: Experience Editor and Explorer deprecated, publishing improvements and Agent API updates. Dates and details below.
+
+## Deprecation Timeline
+
+| Product | Deprecated on | Replacement |
+|---|---|---|
+| Explorer | October 1, 2026 | Page builder - Content mode |
+| Experience Editor | January 1, 2027 | Page builder |
+
+## Experience Editor Deprecation
+
+Effective **January 1, 2027**, Experience Editor is officially deprecated. **Page builder** becomes the supported editing experience in Sitecore AI.
+
+Capabilities that previously required Experience Editor are now available in Page builder:
+
+- **Custom editing interfaces** - Marketplace Custom Fields let developers build tailored UI components and rendering parameters directly in Page builder.
+- **Modern developer experience** - the **Content SDK** replaces legacy approaches. Combined with **Local Editing Host**, Sitecore claims up to **3× faster** page builds.
+- **Inline editing** - floating panel with inline text editing, configurable toolbars, direct item editing, and drag-and-drop component management - all on the canvas.
+- **Layers** - visualize and interact with page hierarchy in a structured view.
+- **Personalization & A/B testing** - now run directly in the canvas with built-in analytics.
+- **Content mode** - full-screen creation, search, and editing of pages and content items (including datasources) without switching to Content Editor.
+- **Publishing controls** - unpublish pages directly from Page builder (versions kept intact), plus status badges (draft, approved, live, scheduled).
+
+> **Warning:** If you still run **JSS in chromes mode**, you lose your only WYSIWYG editor - Page builder supports **Metadata Mode** only. Plan the migration before the cutoff.
+
+Sitecore points to the Page builder readiness recipe and docs to help plan the migration - worth starting before the cutoff.
+
+Read more in the [changelog](https://developers.sitecore.com/changelog/sitecoreai/10062026/effective-january-1%2c-2027%2c-experience-editor-will-be-officially-deprecated-and-page-builder-will-be-the-supported-editing-experience-in-sitecoreai).
+
+## Explorer Deprecation
+
+Effective **October 1, 2026**, Explorer is deprecated. Its content creation and discovery workflows move to **Content mode** in Page builder.
+
+Content mode covers the common Explorer workflows:
+
+- Create pages, folders, and content items via guided insert options.
+- Find content through fast, flat search instead of deep tree browsing.
+- Open content items in full-screen editing.
+- Search within an item to locate and edit specific fields.
+
+No immediate action required, but move everyday authoring to Content mode. Some advanced or admin scenarios may still need **Content Editor**, depending on setup and roles.
+
+## Publishing Insights
+
+Page builder now surfaces contextual publishing state across **strategy, site, page, and datasource** levels - so editors can see what's live before they publish.
+
+- **Status labels** - live, scheduled, no workflow, draft, and approved. Shown in the version drop-down, the page items context panel, the page references view used for publishing, and the right-hand panel.
+- **Inline version control** - create a new content item version and update its workflow state directly from the right-hand configuration panel.
+
+Net effect: more transparency into content status, fewer publishing mistakes, more confidence in what lands on the live site.
+
+Read more in the [changelog](https://developers.sitecore.com/changelog/sitecoreai/09062026/introducing-publishing-insights-across-site%2c-page%2c-and-datasource).
+
+## Agent API v2.0
+
+Agent REST API v2.0 is out. It adds endpoints for experiments, personalization, briefs, and flow definitions, includes a breaking change to the brief generation path, and deprecates the v1.0 personalization endpoints (removed **August 4, 2026**) and `POST /api/v1/briefs/generate` (removed **September 20, 2026**).
+
+- Changelog: [Agent API v2.0 release and endpoint updates](https://developers.sitecore.com/changelog/sitecoreai/18052026/-agent-api-v2.0-release-and-endpoint-updates)
+- Docs: [Agent API](https://api-docs.sitecore.com/sai/agent-api)
+
+## Agentic Studio in Page builder
+
+Agentic Studio chat and agents are now reachable directly from Page builder - via the **AI icon** in the top navigation toolbar.
+
+Open any Page builder-compatible agent in the left-hand context panel to run it against the current site collection, site, or page in the canvas. Actions stay scoped to your context, no workflow switching.
+
+## Marketplace App File Downloads
+
+Marketplace apps now support a permission for **file downloads** to the user's machine - useful for exporting analytics as CSV or PDF.
+
+- Enable it during app configuration in **App Studio**. If disabled, download functionality won't work.
+- Enabled permissions are listed at install time.
+- If permissions change on an already-installed app, an admin or owner must update it in **My Apps** to apply.
+
+## Conclusion
+
+The direction is clear: **Page builder is the single editing surface** in Sitecore AI, absorbing both Experience Editor and Explorer. With the v2.0 Agent API and Agentic Studio embedded in the canvas, the platform keeps consolidating editing, personalization, and AI into one place.
+
+Two dates to put on the calendar - **Explorer: Oct 1, 2026** and **Experience Editor: Jan 1, 2027**. If you're on JSS chromes mode, that second one needs a plan now.
