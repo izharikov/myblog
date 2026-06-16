@@ -15,6 +15,7 @@ MDX blog posts in `blogs/`, loaded via Astro content collections. SolidJS used o
 - PascalCase components, camelCase utilities, 2-space indent
 - Named exports, TypeScript strict mode
 - See `docs/README.md` for full architecture and project structure
+- Always "SitecoreAI", never Sitecore AI.
 
 ## Feature Tracking
 
