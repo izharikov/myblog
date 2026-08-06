@@ -49,4 +49,7 @@ next-env.d.ts
 !.env.example
 .claude/settings.local.json
 local
+
+# unpublished drafts
+*.private.mdx
 .certs/
