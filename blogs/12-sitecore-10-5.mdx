@@ -15,7 +15,7 @@ Sitecore 10.5 is out - grab it on the [download page](https://developers.sitecor
 - **SQL Server 2025** - 2022 still supported, **2019 dropped**
 - **Solr 10 only** - Solr 8 and 9 support removed, Basic Authentication mandatory
 - **.NET Framework 4.8.1** - up from 4.8, Sitecore Framework libraries on .NET 10
-- **Refreshed editor UI** - plus client translations for Danish, German, Japanese and Chinese
+- **Refreshed editor UI**
 - **Telerik 2020.3 to 2025.2** - your own licence key needed if you compile against Telerik
 - **GraphQL Playground and the Package Installer** - gone or off by default
 
@@ -31,6 +31,32 @@ The Sitecore Framework libraries moved to their **.NET 10** builds, with major v
 
 Always check the [compatibility table](https://support.sitecore.com/kb?id=kb_article_view&sysparm_article=KB0087164) for the exact supported versions.
 
+## UI reskin
+
+The editor UI moves to SitecoreAI branding - purple and grey in place of the classic XP chrome.
+
+It is a reskin, not a redesign. Same layout, same navigation, just a more modern look.
+
+Content Editor: flat light chrome, purple accents on the active tab and the application tabs at the bottom.
+
+![Content Editor in Sitecore 10.5](/images/2026/12-sitecore-10-5/screens/content-editor.png)
+
+Dialogs got the biggest visual change - rounded corners, pill buttons, purple primary action.
+
+![Publish Item dialog in Sitecore 10.5](/images/2026/12-sitecore-10-5/screens/publish-item.png)
+
+The reskin is not limited to Content Editor. Experience Editor gets the same treatment:
+
+![Select a Rendering dialog in Experience Editor](/images/2026/12-sitecore-10-5/screens/insert-rendering.png)
+
+Same for admin apps like the Control Panel and Indexing Manager:
+
+![Indexing Manager in Sitecore 10.5](/images/2026/12-sitecore-10-5/screens/indexing-manager.png)
+
+And Forms:
+
+![Form builder in Sitecore 10.5](/images/2026/12-sitecore-10-5/screens/form-builder.png)
+
 ## Solr 10
 
 Sitecore 10.4.1 ran on Solr 9.8.1. Sitecore XP 10.5 supports **Solr 10 only** - support for Solr 8 and Solr 9 has been removed. Solr 10.0.0 is the tested version, and Solr 10's **Basic Authentication is mandatory**.
@@ -42,7 +68,6 @@ Quick comparison of what Solr 10 brings:
 | Search engine | Lucene 9 | Lucene 10 |
 | Java (server) | 11 minimum, tested on 11, 17, 21 | 21 minimum |
 | Security | opt-in, configured by hand | Basic Authentication mandatory |
-| API | v1 legacy plus v2 | v2 |
 | Config | legacy `solrconfig` options still accepted | legacy options removed |
 
 The Solr admin UI now asks for credentials.
@@ -73,54 +98,27 @@ Fastest way to see 10.5 is the [containers deployment package](https://github.co
     -LicenseXmlPath C:\path\to\license.xml `
     -SolrAdminPassword <admin-password> `
     -SolrConnectionPassword <connection-password>
-docker-compose up -d
+docker compose up -d
 ```
 
 `compose-init.ps1` generates certificates, hosts entries and secrets, and fills in `.env` - run it from an elevated PowerShell session. After that `https://xp0cm.localhost` is your CM.
 
-Note the two new mandatory Solr parameters. There are no defaults, and they map to the two accounts described above: `admin` for the Solr admin UI, and `sitecore` for the connection user Sitecore uses. Both end up in `.env` and flow into the connection strings.
+Note the two new mandatory Solr parameters. There are no defaults, and they set up two separate accounts: `admin` for the Solr admin UI, and `sitecore` for the connection user Sitecore itself uses. Both end up in `.env` and flow into the connection strings.
 
-The 10.5 container tags, straight from that setup:
+Images come in `ltsc2022` and `ltsc2025` flavours - pick the one matching your host OS:
 
-| Image | Tag |
-|---|---|
-| `sitecore-xp0-cm`, `xconnect`, workers | `10.5-ltsc2025` |
-| `sitecore-identity` | `9.0-ltsc2025` |
-| `nonproduction/solr` | `10.0.0-ltsc2025` |
-| `nonproduction/mssql-developer` | `2025-ltsc2025` |
-| `traefik` | `v3.7.5-windowsservercore-ltsc2025` |
+| Image | Windows Server 2022 | Windows Server 2025 |
+|---|---|---|
+| `sitecore-xp0-cm`, `xconnect`, workers | `10.5-ltsc2022` | `10.5-ltsc2025` |
+| `sitecore-identity` | `9.0-ltsc2022` | `9.0-ltsc2025` |
+| `nonproduction/solr` | `10.0.0-ltsc2022` | `10.0.0-ltsc2025` |
+| `nonproduction/mssql-developer` | `2025-ltsc2022` | `2025-ltsc2025` |
 
-Registry stays `scr.sitecore.com/sxp/`.
-
-## UI reskin
-
-The editor UI moves to SitecoreAI branding - purple and grey in place of the classic XP chrome.
-
-It is a reskin, not a redesign. Same layout, same navigation, just a more modern look.
-
-Content Editor: flat light chrome, purple accents on the active tab and the application tabs at the bottom.
-
-![Content Editor in Sitecore 10.5](/images/2026/12-sitecore-10-5/screens/content-editor.png)
-
-Dialogs got the biggest visual change - rounded corners, pill buttons, purple primary action.
-
-![Publish Item dialog in Sitecore 10.5](/images/2026/12-sitecore-10-5/screens/publish-item.png)
-
-The reskin is not limited to Content Editor. Experience Editor gets the same treatment:
-
-![Select a Rendering dialog in Experience Editor](/images/2026/12-sitecore-10-5/screens/insert-rendering.png)
-
-Same for admin apps like the Control Panel and Indexing Manager:
-
-![Indexing Manager in Sitecore 10.5](/images/2026/12-sitecore-10-5/screens/indexing-manager.png)
-
-And Forms:
-
-![Form builder in Sitecore 10.5](/images/2026/12-sitecore-10-5/screens/form-builder.png)
+Registry stays `scr.sitecore.com/sxp/`. Full tag list lives in [sitecore-tags.md](https://raw.githubusercontent.com/Sitecore/docker-images/master/tags/sitecore-tags.md). Traefik comes from Docker Hub, pinned to `v3.7.5-windowsservercore-ltsc2025` / `v3.7.5-windowsservercore-ltsc2022` in the compose file.
 
 ## Breaking changes
 
-The [breaking changes page](https://developers.sitecore.com/downloads/Sitecore_Experience_Platform/105/Sitecore_Experience_Platform_105/Breaking_Changes) has the full list with exact type and member names. The parts worth to mention:
+The [breaking changes page](https://developers.sitecore.com/downloads/Sitecore_Experience_Platform/105/Sitecore_Experience_Platform_105/Breaking_Changes) has the full list with exact type and member names. The parts worth mentioning:
 
 ### Package Installer disabled by default
 
