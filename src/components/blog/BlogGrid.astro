@@ -39,7 +39,7 @@ const years = Object.keys(grouped).sort((a, b) => +b - +a);
             return (
               <a href={`/blogs/${post.slug}`} class="flex items-center gap-4 py-3 px-3 -mx-3 border-b border-border hover:bg-surface-alt transition-colors group">
                 {logoFn ? (
-                  <Image src={logoFn()} alt="" class="hidden sm:block w-28 h-14 rounded-lg border object-cover shrink-0" width={400} quality={90} />
+                  <Image src={logoFn()} alt="" class="hidden sm:block w-36 h-20 rounded-lg border object-cover shrink-0" width={400} quality={90} />
                 ) : (
                   <div class="hidden sm:block w-28 h-14 rounded-lg bg-surface-alt border shrink-0" />
                 )}

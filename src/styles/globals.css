@@ -34,7 +34,7 @@
   --surface:      oklch(0.98 0.005 80);
   --surface-alt:  oklch(0.95 0.008 80);
   --text-primary: oklch(0.18 0.01 60);
-  --text-secondary: oklch(0.45 0.01 60);
+  --text-secondary: oklch(0.25 0.01 60);
   --accent:       oklch(0.50 0.18 55);
   --accent-hover: oklch(0.44 0.18 55);
   --border:       oklch(0.88 0.01 80);
@@ -47,7 +47,7 @@
   --surface:      oklch(0.14 0.01 60);
   --surface-alt:  oklch(0.18 0.01 60);
   --text-primary: oklch(0.92 0.005 80);
-  --text-secondary: oklch(0.62 0.01 60);
+  --text-secondary: oklch(0.92 0.01 60);
   --accent:       oklch(0.72 0.16 55);
   --accent-hover: oklch(0.78 0.16 55);
   --border:       oklch(0.26 0.01 60);
@@ -84,7 +84,7 @@
 
 /* Inline code styling */
 :not(pre) > code {
-  @apply relative rounded bg-code-bg text-text-primary py-[0.2rem] font-mono text-sm font-semibold px-1;
+  @apply relative rounded bg-code-bg text-text-primary py-[0.2rem] font-mono font-semibold px-1;
 }
 
 /* MDX table styling */
@@ -94,8 +94,8 @@
 .prose td { @apply border border-border px-4 py-2 text-left; }
 
 /* MDX prose typography */
-.prose p { @apply leading-7 [&:not(:first-child)]:mt-6 text-text-secondary; }
-.prose ul { @apply my-6 ml-6 list-disc [&>li]:mt-2 text-text-secondary; }
+.prose p { @apply leading-7 [&:not(:first-child)]:mt-4 text-text-secondary; }
+.prose ul { @apply my-4 ml-6 list-disc [&>li]:mt-2 text-text-secondary; }
 .prose ol { @apply my-6 ml-6 list-decimal [&>li]:mt-2 text-text-secondary; }
 .prose li { @apply leading-7; }
 .prose hr { @apply my-8 border-border; }

@@ -11,6 +11,10 @@ const allImages = import.meta.glob<{ default: ImageMetadata }>(
  */
 export function resolveImage(path: string): (() => Promise<{ default: ImageMetadata }>) | undefined {
   // "/images/2025/ch/logo.png" → "/src/images/2025/ch/logo.png"
+  if (path.startsWith('/src/images/')) {
+    return allImages[path];
+  }
+
   const key = `/src/images${path.startsWith('/images') ? path.slice('/images'.length) : path}`;
   return allImages[key];
 }

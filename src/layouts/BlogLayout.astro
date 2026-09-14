@@ -54,9 +54,9 @@ const jsonLd = generateBlogJsonLd({
           </span>
         ))}
       </div>
-      <div class="max-w-[600px] mx-auto">
+      <div class="max-w-[800px] mx-auto">
         {logoImage ? (
-          <Image src={logoImage()} alt={title} width={600} height={338} class="rounded-xl w-full h-auto" loading="eager" fetchpriority="high" />
+          <Image src={logoImage()} alt={title} class="rounded-xl w-full h-auto" loading="eager" fetchpriority="high" />
         ) : (
           <img src={logo} alt={title} width="600" height="338" class="rounded-xl w-full h-auto" />
         )}
