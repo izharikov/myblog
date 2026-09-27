@@ -23,6 +23,7 @@ const fullOgImage = ogImage ? new URL(ogImage, siteConfig.site).href : undefined
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="only light" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -35,11 +36,7 @@ const fullOgImage = ogImage ? new URL(ogImage, siteConfig.site).href : undefined
     {alternateMarkdown && <link rel="alternate" type="text/markdown" href={alternateMarkdown} />}
     <meta name="generator" content={Astro.generator} />
     <script is:inline>
-      document.documentElement.classList.toggle(
-        "dark",
-        localStorage.theme === "dark" ||
-        (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
-      );
+      document.documentElement.classList.toggle("dark", localStorage.theme === "dark");
     </script>
   </head>
   <body class="min-h-screen flex flex-col bg-surface text-text-primary font-sans antialiased">
