@@ -1,0 +1,66 @@
+---
+import { Image } from 'astro:assets';
+import { resolveImage } from '@/lib/images';
+import badges from '@/data/credly.json';
+
+interface Props {
+  variant?: 'full' | 'compact' | 'sidebar';
+  class?: string;
+}
+const { variant = 'full', class: className } = Astro.props;
+
+const formatIssued = (date: string) =>
+  new Date(date).toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' });
+
+const withImage = (list: typeof badges) => list.map(badge => ({ ...badge, imageFn: resolveImage(badge.image) }));
+const mvp = withImage(badges.filter(b => b.name.includes('MVP')));
+const certifications = withImage(badges.filter(b => !b.name.includes('MVP')));
+const groups = [mvp, certifications];
+---
+{variant === 'sidebar' ? (
+  <div class={className}>
+    {/* <p class="mb-4 text-xs font-semibold uppercase tracking-wider text-text-secondary">Sitecore MVP</p> */}
+    <ul class="flex flex-col gap-5">
+      {mvp.map(badge => (
+        <li>
+          <a href="/about#certifications" class="group flex flex-col items-center gap-2 rounded-xl border border-border p-3 hover:bg-surface-alt transition-colors">
+            {badge.imageFn && <Image src={badge.imageFn()} alt={badge.name} width={288} class="size-36 object-contain" />}
+            <span class="text-sm font-medium group-hover:text-accent transition-colors">{badge.name.replace('Sitecore Technology ', '')}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+) : variant === 'compact' ? (
+  <div class:list={['flex items-center gap-3', className]}>
+    {mvp.map(badge => (
+      <a href="/about#certifications" title={badge.name} class="block shrink-0 transition-transform hover:-translate-y-0.5">
+        {badge.imageFn && <Image src={badge.imageFn()} alt={badge.name} width={128} class="size-16 object-contain" />}
+      </a>
+    ))}
+  </div>
+) : (
+  <section id="certifications" class="scroll-m-20 my-10">
+    <div>
+      <h2 class="text-2xl font-bold tracking-tight sm:text-3xl mb-6">Certifications</h2>
+      {groups.map(group => (
+        <ul class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 [&+&]:mt-4">
+          {group.map(badge => (
+            <li>
+              <a
+                href={badge.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group flex h-full flex-col items-center gap-3 rounded-xl border border-border p-4 text-center hover:bg-surface-alt transition-colors"
+              >
+                {badge.imageFn && <Image src={badge.imageFn()} alt="" width={192} class="size-24 object-contain" />}
+                <span class="text-sm font-medium leading-snug group-hover:text-accent transition-colors">{badge.name}</span>
+                <span class="mt-auto text-xs text-text-secondary">{badge.issuer} · {formatIssued(badge.issuedAt)}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      ))}
+    </div>
+  </section>
+)}

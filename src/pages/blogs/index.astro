@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import { getSlug } from '@/lib/blog';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import BlogGrid from '@/components/blog/BlogGrid.astro';
+import PageFrame from '@/components/layout/PageFrame.astro';
 import { parseDate, formatDate } from '@/lib/date';
 import { siteConfig } from '@/config/site';
 
@@ -19,5 +20,7 @@ const sorted = posts
   }));
 ---
 <BaseLayout title={`Blogs | ${siteConfig.name}`} description="All blog posts">
-  <BlogGrid posts={sorted} title="All Posts" showLink={false} />
+  <PageFrame>
+    <BlogGrid posts={sorted} title="All Posts" showLink={false} />
+  </PageFrame>
 </BaseLayout>

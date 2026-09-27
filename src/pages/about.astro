@@ -1,8 +1,13 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import HeroSection from '@/components/home/HeroSection.astro';
+import CredlyBadges from '@/components/about/CredlyBadges.astro';
+import PageFrame from '@/components/layout/PageFrame.astro';
 import { siteConfig } from '@/config/site';
 ---
 <BaseLayout title={`About | ${siteConfig.name}`} description={siteConfig.description}>
-  <HeroSection />
+  <PageFrame>
+    <HeroSection />
+    <CredlyBadges variant="full" />
+  </PageFrame>
 </BaseLayout>

@@ -1,6 +1,9 @@
 ---
 import { Image, getImage } from 'astro:assets';
+import type { MarkdownHeading } from 'astro';
 import BaseLayout from './BaseLayout.astro';
+import TableOfContents from '@/components/blog/TableOfContents.astro';
+import PageFrame from '@/components/layout/PageFrame.astro';
 import { generateBlogJsonLd } from '@/lib/json-ld';
 import { parseDate, formatDate } from '@/lib/date';
 import { resolveImage } from '@/lib/images';
@@ -13,9 +16,11 @@ interface Props {
   slug: string;       // post.id from collection
   logo: string;
   tags: string[];
+  headings?: MarkdownHeading[];
 }
 
-const { title, description, date, slug, logo, tags } = Astro.props;
+const { title, description, date, slug, logo, tags, headings = [] } = Astro.props;
+const showToc = headings.filter(h => h.depth === 2).length >= 3;
 const logoImage = resolveImage(logo);
 const parsedDate = parseDate(date);
 const dateDisplay = formatDate(parsedDate);
@@ -41,31 +46,39 @@ const jsonLd = generateBlogJsonLd({
 ---
 <BaseLayout title={title} description={description} ogImage={ogImage} ogType="article" alternateMarkdown={`/blogs/${slug}.md`}>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-  <article class="max-w-3xl mx-auto px-4 py-10">
-    <header class="mb-10 space-y-3">
-      <h1 class="text-[1.75rem] leading-tight font-bold tracking-tight sm:text-4xl md:text-[2.75rem]">{title}</h1>
-      <div class="flex items-center gap-4 text-sm text-text-secondary">
-        <time datetime={parsedDate.toISOString().split('T')[0]}>{dateDisplay}</time>
+  <PageFrame>
+    <article class="max-w-3xl mx-auto lg:mx-0 py-10">
+      <header class="mb-10 space-y-3">
+        <h1 class="text-[1.75rem] leading-tight font-bold tracking-tight sm:text-4xl md:text-[2.75rem]">{title}</h1>
+        <div class="flex items-center gap-4 text-sm text-text-secondary">
+          <time datetime={parsedDate.toISOString().split('T')[0]}>{dateDisplay}</time>
+        </div>
+        <div class="flex gap-2 flex-wrap pt-1">
+          {tags.map(tag => (
+            <span class="text-[0.8125rem] font-medium text-accent bg-code-bg px-2.5 py-1 rounded">
+              {tag}
+            </span>
+          ))}
+        </div>
+        <div class="pt-8">
+          {logoImage ? (
+            <Image src={logoImage()} alt={title} class="rounded-xl w-full h-auto" loading="eager" fetchpriority="high" />
+          ) : (
+            <img src={logo} alt={title} width="600" height="338" class="rounded-xl w-full h-auto" />
+          )}
+        </div>
+      </header>
+      {showToc && <div class="lg:hidden"><TableOfContents headings={headings} variant="inline" /></div>}
+      <div class="prose">
+        <slot />
       </div>
-      <div class="flex gap-2 flex-wrap pt-1">
-        {tags.map(tag => (
-          <span class="text-[0.8125rem] font-medium text-accent bg-code-bg px-2.5 py-1 rounded">
-            {tag}
-          </span>
-        ))}
+      <hr class="mt-12 mb-6" />
+      <a class="font-medium text-accent underline underline-offset-4 hover:text-accent-hover transition-colors" href={`/blogs/${slug}.md`} target="_blank">View article as markdown</a>
+    </article>
+    {showToc && (
+      <div slot="aside" class="sticky top-24 py-10 max-h-[calc(100vh-6rem)] overflow-y-auto">
+        <TableOfContents headings={headings} variant="sidebar" />
       </div>
-      <div class="pt-8">
-        {logoImage ? (
-          <Image src={logoImage()} alt={title} class="rounded-xl w-full h-auto" loading="eager" fetchpriority="high" />
-        ) : (
-          <img src={logo} alt={title} width="600" height="338" class="rounded-xl w-full h-auto" />
-        )}
-      </div>
-    </header>
-    <div class="prose">
-      <slot />
-    </div>
-    <hr class="mt-12 mb-6" />
-    <a class="font-medium text-accent underline underline-offset-4 hover:text-accent-hover transition-colors" href={`/blogs/${slug}.md`} target="_blank">View article as markdown</a>
-  </article>
+    )}
+  </PageFrame>
 </BaseLayout>

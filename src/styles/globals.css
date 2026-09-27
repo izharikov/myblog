@@ -64,6 +64,9 @@
   * {
     @apply border-border;
   }
+  html {
+    scrollbar-gutter: stable;
+  }
   body {
     @apply bg-surface text-text-primary;
   }

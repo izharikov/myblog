@@ -30,7 +30,7 @@ const grouped = rest.reduce<Record<string, typeof posts>>((acc, post) => {
 const years = Object.keys(grouped).sort((a, b) => +b - +a);
 ---
 <section class="my-8" id="blogs">
-  <div class="max-w-4xl mx-auto px-4">
+  <div>
     <h2 class="text-3xl font-bold tracking-tight sm:text-4xl mb-8">
       {title}
     </h2>

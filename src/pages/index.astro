@@ -4,6 +4,8 @@ import { getSlug } from '@/lib/blog';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import HeroSection from '@/components/home/HeroSection.astro';
 import BlogGrid from '@/components/blog/BlogGrid.astro';
+import CredlyBadges from '@/components/about/CredlyBadges.astro';
+import PageFrame from '@/components/layout/PageFrame.astro';
 import { parseDate, formatDate } from '@/lib/date';
 import { siteConfig } from '@/config/site';
 import { personJsonLd } from '@/lib/json-ld';
@@ -21,10 +23,15 @@ const sorted = posts
     tags: post.data.tags,
   }));
 
-const jsonLd = personJsonLd();
+const jsonLd = personJsonLd({ includeCredentials: true });
 ---
 <BaseLayout title={siteConfig.name} description={siteConfig.description}>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-  <HeroSection />
-  <BlogGrid posts={sorted} title="Latest Posts" showLink={true} featured={true} />
+  <PageFrame>
+    <HeroSection showBadges={true} />
+    <BlogGrid posts={sorted} title="Latest Posts" showLink={true} featured={true} />
+    <div slot="aside" class="sticky top-24 my-10">
+      <CredlyBadges variant="sidebar" />
+    </div>
+  </PageFrame>
 </BaseLayout>
