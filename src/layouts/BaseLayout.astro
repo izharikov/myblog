@@ -43,7 +43,7 @@ const fullOgImage = ogImage ? new URL(ogImage, siteConfig.site).href : undefined
   </head>
   <body class="min-h-screen flex flex-col bg-surface text-text-primary font-sans antialiased">
     <Header />
-    <main class="flex-1">
+    <main class="flex-1 min-w-0">
       <slot />
     </main>
     <Footer />

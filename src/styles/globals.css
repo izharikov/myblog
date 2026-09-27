@@ -1,7 +1,9 @@
 @import "tailwindcss";
 
-/* Fonts — Space Grotesk (headings + body) + IBM Plex Mono (code) */
+/* Fonts — Space Grotesk (headings) + Inter (UI) + Source Serif 4 (article body) + IBM Plex Mono (code) */
 @import "@fontsource-variable/space-grotesk/wght.css";
+@import "@fontsource-variable/inter/wght.css";
+@import "@fontsource-variable/source-serif-4/wght.css";
 @import "@fontsource/ibm-plex-mono/400.css";
 @import "@fontsource/ibm-plex-mono/500.css";
 
@@ -10,6 +12,8 @@
 @theme inline {
   --font-sans: var(--font-body);
   --font-mono: var(--font-code);
+  --font-heading: var(--font-display);
+  --font-serif: var(--font-reading);
 
   --color-surface: var(--surface);
   --color-surface-alt: var(--surface-alt);
@@ -27,14 +31,16 @@
 }
 
 :root {
-  --font-body: 'Space Grotesk Variable', system-ui, sans-serif;
+  --font-body: 'Inter Variable', system-ui, sans-serif;
+  --font-display: 'Space Grotesk Variable', system-ui, sans-serif;
+  --font-reading: 'Source Serif 4 Variable', Georgia, serif;
   --font-code: 'IBM Plex Mono', ui-monospace, monospace;
 
   /* Warm Charcoal & Amber — Light */
   --surface:      oklch(0.98 0.005 80);
   --surface-alt:  oklch(0.95 0.008 80);
-  --text-primary: oklch(0.18 0.01 60);
-  --text-secondary: oklch(0.25 0.01 60);
+  --text-primary: oklch(0.15 0.01 60);
+  --text-secondary: oklch(0.32 0.01 60);
   --accent:       oklch(0.50 0.18 55);
   --accent-hover: oklch(0.44 0.18 55);
   --border:       oklch(0.88 0.01 80);
@@ -46,8 +52,8 @@
   /* Warm Charcoal & Amber — Dark */
   --surface:      oklch(0.14 0.01 60);
   --surface-alt:  oklch(0.18 0.01 60);
-  --text-primary: oklch(0.92 0.005 80);
-  --text-secondary: oklch(0.92 0.01 60);
+  --text-primary: oklch(0.95 0.005 80);
+  --text-secondary: oklch(0.84 0.01 60);
   --accent:       oklch(0.72 0.16 55);
   --accent-hover: oklch(0.78 0.16 55);
   --border:       oklch(0.26 0.01 60);
@@ -60,6 +66,9 @@
   }
   body {
     @apply bg-surface text-text-primary;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
   }
 }
 
@@ -84,21 +93,36 @@
 
 /* Inline code styling */
 :not(pre) > code {
-  @apply relative rounded bg-code-bg text-text-primary py-[0.2rem] font-mono font-semibold px-1;
+  @apply relative rounded bg-code-bg text-text-primary py-[0.2rem] font-mono font-medium text-[0.9em] px-1;
 }
 
 /* MDX table styling */
 .prose thead { @apply bg-surface-alt; }
 .prose tr { @apply border-b border-border transition-colors hover:bg-surface-alt/50; }
-.prose th { @apply border border-border px-4 py-2 text-left font-bold; }
+.prose th { @apply border border-border border-b-2 px-4 py-2 text-left font-bold text-text-primary; }
 .prose td { @apply border border-border px-4 py-2 text-left; }
+.prose table:has(pre) { @apply table-fixed; }
+.prose td pre { @apply max-w-full; }
+
+@media (width < 40rem) {
+  .prose table.stack-mobile { display: flex; flex-direction: column; border: 0; }
+  .prose table.stack-mobile thead,
+  .prose table.stack-mobile tbody,
+  .prose table.stack-mobile tr { display: contents; }
+  .prose table.stack-mobile th { display: block; background: var(--surface-alt); }
+  .prose table.stack-mobile td { display: block; margin-top: -1px; }
+  .prose table.stack-mobile :is(th, td):nth-child(2) { order: 1; }
+  .prose table.stack-mobile th:nth-child(2) { margin-top: 1rem; }
+}
 
 /* MDX prose typography */
-.prose p { @apply leading-7 [&:not(:first-child)]:mt-4 text-text-secondary; }
-.prose ul { @apply my-4 ml-6 list-disc [&>li]:mt-2 text-text-secondary; }
-.prose ol { @apply my-6 ml-6 list-decimal [&>li]:mt-2 text-text-secondary; }
-.prose li { @apply leading-7; }
+.prose { @apply font-serif text-[1.125rem]; }
+.prose p { @apply leading-[1.7] [&:not(:first-child)]:mt-5 text-text-secondary; }
+.prose ul { @apply my-5 ml-6 list-disc [&>li]:mt-1 text-text-secondary; }
+.prose ol { @apply my-5 ml-6 list-decimal [&>li]:mt-1 text-text-secondary; }
+.prose li { @apply leading-[1.7]; }
 .prose hr { @apply my-8 border-border; }
 .prose strong { @apply font-bold text-text-primary; }
 .prose em { @apply italic; }
 .prose img { @apply my-6 max-w-full h-auto m-auto; }
+.dark .prose img { @apply brightness-90; }
