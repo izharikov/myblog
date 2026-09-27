@@ -14,7 +14,8 @@ interface Props {
 }
 
 const { title, description, canonicalUrl, ogImage, ogType = 'website', alternateMarkdown } = Astro.props;
-const canonical = canonicalUrl ?? new URL(Astro.url.pathname, siteConfig.site).href;
+const canonicalPath = Astro.url.pathname.replace(/(\/index)?\.html$/, '') || '/';
+const canonical = canonicalUrl ?? new URL(canonicalPath, siteConfig.site).href;
 const fullOgImage = ogImage ? new URL(ogImage, siteConfig.site).href : undefined;
 ---
 <!doctype html>
