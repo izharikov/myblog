@@ -28,8 +28,9 @@ const jsonLd = personJsonLd({ includeCredentials: true });
 <BaseLayout title={siteConfig.name} description={siteConfig.description}>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <PageFrame>
-    <HeroSection showBadges={true} />
+    <HeroSection />
     <BlogGrid posts={sorted} title="Latest Posts" showLink={true} featured={true} />
+    <CredlyBadges variant="row" class="lg:hidden mt-12 mb-10" />
     <div slot="aside" class="sticky top-24 my-10">
       <CredlyBadges variant="sidebar" />
     </div>

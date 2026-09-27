@@ -4,7 +4,7 @@ import { resolveImage } from '@/lib/images';
 import badges from '@/data/credly.json';
 
 interface Props {
-  variant?: 'full' | 'compact' | 'sidebar';
+  variant?: 'full' | 'sidebar' | 'row';
   class?: string;
 }
 const { variant = 'full', class: className } = Astro.props;
@@ -17,27 +17,19 @@ const mvp = withImage(badges.filter(b => b.name.includes('MVP')));
 const certifications = withImage(badges.filter(b => !b.name.includes('MVP')));
 const groups = [mvp, certifications];
 ---
-{variant === 'sidebar' ? (
+{variant === 'sidebar' || variant === 'row' ? (
   <div class={className}>
     {/* <p class="mb-4 text-xs font-semibold uppercase tracking-wider text-text-secondary">Sitecore MVP</p> */}
-    <ul class="flex flex-col gap-5">
+    <ul class:list={[variant === 'row' ? 'grid grid-cols-3 gap-3' : 'flex flex-col gap-5']}>
       {mvp.map(badge => (
         <li>
           <a href="/about#certifications" class="group flex flex-col items-center gap-2 rounded-xl border border-border p-3 hover:bg-surface-alt transition-colors">
-            {badge.imageFn && <Image src={badge.imageFn()} alt={badge.name} width={288} class="size-36 object-contain" />}
+            {badge.imageFn && <Image src={badge.imageFn()} alt={badge.name} width={288} class:list={['object-contain', variant === 'row' ? 'size-20 sm:size-28' : 'size-36']} />}
             <span class="text-sm font-medium group-hover:text-accent transition-colors">{badge.name.replace('Sitecore Technology ', '')}</span>
           </a>
         </li>
       ))}
     </ul>
-  </div>
-) : variant === 'compact' ? (
-  <div class:list={['flex items-center gap-3', className]}>
-    {mvp.map(badge => (
-      <a href="/about#certifications" title={badge.name} class="block shrink-0 transition-transform hover:-translate-y-0.5">
-        {badge.imageFn && <Image src={badge.imageFn()} alt={badge.name} width={128} class="size-16 object-contain" />}
-      </a>
-    ))}
   </div>
 ) : (
   <section id="certifications" class="scroll-m-20 my-10">

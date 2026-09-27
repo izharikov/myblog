@@ -2,17 +2,11 @@
 import { Image } from 'astro:assets';
 import { siteConfig } from '@/config/site';
 import profileImg from '@/images/profile.jpg';
-import CredlyBadges from '@/components/about/CredlyBadges.astro';
-
-interface Props {
-  showBadges?: boolean;
-}
-const { showBadges = false } = Astro.props;
 ---
 <section class="my-8 md:my-10">
   <div>
     <div class="flex items-center gap-5">
-      <Image src={profileImg} alt={siteConfig.author.name} width={72} height={72} class="rounded-full shrink-0" quality={90} />
+      <Image src={profileImg} alt={siteConfig.author.name} width={72} height={72} class="rounded-xl border border-border shrink-0" quality={90} />
       <div>
         <h1 class="text-2xl font-bold tracking-tight">
           {siteConfig.author.name}
@@ -29,7 +23,6 @@ const { showBadges = false } = Astro.props;
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
           </a>
         </div>
-        {showBadges && <CredlyBadges variant="compact" class="lg:hidden mt-3" />}
       </div>
     </div>
   </div>

@@ -27,3 +27,9 @@
 ## [2026-09-27] About: MVP badges first, certifications on a new row
 
 **Decision:** Two grids: MVP badges by year (newest first), then other certifications by issue date.
+
+## [2026-09-27] Home mobile: badge row at the bottom (supersedes 64px row under social links)
+
+**Context:** Small icons under the social links were unreadable and added no value.
+
+**Decision:** Below `lg`, a 3-column row of MVP badge cards (80-112px, captioned) after the posts list. Hero has no badges.
