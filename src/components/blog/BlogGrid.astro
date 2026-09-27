@@ -13,11 +13,16 @@ interface Props {
   }>;
   title?: string;
   showLink?: boolean;
+  featured?: boolean;
 }
-const { posts, title = "Latest Posts", showLink = true } = Astro.props;
+const { posts, title = "Latest Posts", showLink = true, featured = false } = Astro.props;
+
+const lead = featured ? posts[0] : undefined;
+const rest = featured ? posts.slice(1) : posts;
+const leadLogo = lead ? resolveImage(lead.logo) : undefined;
 
 // Group posts by year
-const grouped = posts.reduce<Record<string, typeof posts>>((acc, post) => {
+const grouped = rest.reduce<Record<string, typeof posts>>((acc, post) => {
   const year = post.dateDisplay.split(', ').pop()!;
   (acc[year] ??= []).push(post);
   return acc;
@@ -25,30 +30,49 @@ const grouped = posts.reduce<Record<string, typeof posts>>((acc, post) => {
 const years = Object.keys(grouped).sort((a, b) => +b - +a);
 ---
 <section class="my-8" id="blogs">
-  <div class="container max-w-screen-xl mx-auto px-4 space-y-12">
+  <div class="max-w-4xl mx-auto px-4">
     <h2 class="text-3xl font-bold tracking-tight sm:text-4xl mb-8">
       {title}
     </h2>
 
+    {lead && (
+      <a href={`/blogs/${lead.slug}`} class="group grid gap-5 sm:grid-cols-2 sm:items-center mb-12 p-3 -mx-3 rounded-xl hover:bg-surface-alt transition-colors">
+        {leadLogo ? (
+          <Image src={leadLogo()} alt="" class="w-full h-auto rounded-lg border" width={800} quality={90} />
+        ) : (
+          <div class="w-full aspect-video rounded-lg bg-surface-alt border" />
+        )}
+        <div class="min-w-0">
+          <span class="text-xs font-semibold uppercase tracking-wider text-accent">Latest</span>
+          <h3 class="mt-2 text-2xl font-semibold tracking-tight leading-snug group-hover:text-accent transition-colors">{lead.title}</h3>
+          <p class="mt-2 text-text-secondary leading-relaxed line-clamp-4">{lead.description}</p>
+          <div class="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1.5 text-xs text-text-secondary">
+            <time>{lead.dateDisplay}</time>
+            {lead.tags.slice(0, 3).map(t => <span class="bg-surface-alt border border-border px-1.5 py-0.5 rounded">{t}</span>)}
+          </div>
+        </div>
+      </a>
+    )}
+
     <div>
       {years.map(year => (
-        <div class="mb-8">
-          <h3 class="text-lg font-bold mb-4 text-text-secondary">{year}</h3>
+        <div class="mb-10">
+          <h3 class="text-sm font-semibold uppercase tracking-wider text-text-secondary pb-2 border-b border-border">{year}</h3>
           {grouped[year].map(post => {
             const logoFn = resolveImage(post.logo);
             return (
-              <a href={`/blogs/${post.slug}`} class="flex items-center gap-4 py-3 px-3 -mx-3 border-b border-border hover:bg-surface-alt transition-colors group">
+              <a href={`/blogs/${post.slug}`} class="flex items-center gap-5 py-4 px-3 -mx-3 border-b border-border hover:bg-surface-alt transition-colors group">
                 {logoFn ? (
                   <Image src={logoFn()} alt="" class="hidden sm:block w-36 h-20 rounded-lg border object-cover shrink-0" width={400} quality={90} />
                 ) : (
-                  <div class="hidden sm:block w-28 h-14 rounded-lg bg-surface-alt border shrink-0" />
+                  <div class="hidden sm:block w-36 h-20 rounded-lg bg-surface-alt border shrink-0" />
                 )}
                 <div class="min-w-0 flex-1">
-                  <span class="font-medium group-hover:text-accent transition-colors">{post.title}</span>
-                  <p class="text-sm text-text-secondary my-0.5 line-clamp-3">{post.description}</p>
-                  <time class="text-xs text-text-secondary mt-1 block">{post.dateDisplay}</time>
-                  <div class="flex gap-1.5 flex-wrap mt-2">
-                    {post.tags.map(t => <span class="text-xs font-medium text-accent bg-code-bg px-1.5 py-0.5 rounded">{t}</span>)}
+                  <h4 class="text-lg font-semibold tracking-tight leading-snug group-hover:text-accent transition-colors">{post.title}</h4>
+                  <p class="mt-1 text-[0.9375rem] leading-relaxed text-text-secondary line-clamp-3 sm:line-clamp-2">{post.description}</p>
+                  <div class="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1.5 text-xs text-text-secondary">
+                    <time>{post.dateDisplay}</time>
+                    {post.tags.slice(0, 3).map(t => <span class="bg-surface-alt border border-border px-1.5 py-0.5 rounded">{t}</span>)}
                   </div>
                 </div>
               </a>
