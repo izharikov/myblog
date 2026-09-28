@@ -9,17 +9,18 @@ date: "14.09.2026"
 
 In this article, I explain how I extended Claude Code to work better with Sitecore XP.
 
-### TL;DR
+## TL;DR
 
-The full setup (skills, scripts and hooks) - is in
+The full setup (skills, scripts and hooks) is in
 [izharikov/sitecore-xp-skills](https://github.com/izharikov/sitecore-xp-skills).
 
 
 ## Sitecore XP development with Claude
 
-On its own, [Claude Code](https://code.claude.com/docs/en/features-overview) already handles the codebase. But in comparison to a popular any open-source stack
+On its own, [Claude Code](https://code.claude.com/docs/en/features-overview) already handles the codebase.
+Sitecore XP is harder than a typical open-source stack.
 
-> Coding Agent has some limitations working with Sitecore XP:
+> Coding agent limitations with Sitecore XP:
 
 - closed platform - no public source; behaviour is compiled into shipped assemblies
 - limited public material - sparse docs and examples next to a stack like Next.js
@@ -34,23 +35,21 @@ On its own, [Claude Code](https://code.claude.com/docs/en/features-overview) alr
 [Claude Memory](https://code.claude.com/docs/en/memory) starts with the _CLAUDE.md_ file. Keep it short, but enough for Claude Code to understand your project.
 
 For a project CLAUDE.md I usually include this Sitecore-related information:
-- Sitecore version and projects architecture (e.g. 10.4.1 and Helix)
-- Serialization: Unicorn, Sitecore Content Serialization (SCS), TDS, etc.
-- Code Generation tool: Leprechaun, T4-Templates, etc.
-- Build Process: e.g. build script which Agent can run to verify work (or an explicit rule against running the build)
-- Unit Tests policies
-- General code rules important for each and every (or most) Claude Code sessions
+- Sitecore version and project architecture (e.g. 10.4.1 and Helix)
+- serialization: Unicorn, Sitecore Content Serialization (SCS), TDS, etc.
+- code generation tool: Leprechaun, T4 templates, etc.
+- build process: e.g. a build script the agent can run to verify work (or an explicit rule against running the build)
+- unit test policy
+- general code rules important for most Claude Code sessions
 
 ### Templates and renderings
 
-I choose the following rule:
-
-> Every tool works on local files under version-control.
+> Every tool works on local files under version control.
 
 The alternative to a local skill is an MCP server wired to a live instance, like
 the [Sitecore Community MCP server](https://github.com/Antonytm/mcp-sitecore-server).
 
-#### Skill vs MCP for Items Editing
+#### Skill vs MCP for item editing
 
 | | Skill | MCP |
 |---|---|---|
@@ -71,7 +70,7 @@ After that, Sitecore serializes it to files on disk, so it
 can be shared and deployed. For Claude Code I change the direction:
 
 > [`/sc-template`](https://github.com/izharikov/sitecore-xp-skills/blob/main/skills/sc-template/SKILL.md) skill:
-> 
+>
 > Edit the YAML locally and sync it back into
 Sitecore, so a template change is a file change.
 
@@ -81,11 +80,11 @@ before (manual):  [developer]  Sitecore   -> serialize -> repository
 now (automated):  [agent]      repository -> sync      -> Sitecore
 ```
 
-To simplify the process and save tokens, it's wrapped into a PowerShell script call:
+To simplify the process and save tokens, it's wrapped in a PowerShell script:
 
 ```powershell
 powershell -File .\.claude\skills\sc-template\Invoke-TemplateOp.ps1 -Json '{
-  "operation": "create", "layer": "Feature", "module": "<ModuleName>",
+  "operation": "create", "layer": "Feature", "module": "Article",
   "templateName": "Article Page", "sectionName": "Data",
   "fields": [
     { "name": "Title", "type": "Single-Line Text" },
@@ -95,7 +94,7 @@ powershell -File .\.claude\skills\sc-template\Invoke-TemplateOp.ps1 -Json '{
 }'
 ```
 
-And skill is calling it:
+The skill calls it:
 
 ![Create template with Claude Code](/src/images/2026/13-sitecore-xp-claude-setup/cc-template-create.png)
 
@@ -113,11 +112,15 @@ Creating a rendering touches even more places than a template. By hand the routi
 
 **Five manual edits** across the Content Editor and the codebase, and they all have to line up.
 
-For Coding Agent I choose a similar approach to templates: 
+For the agent I use the same approach as for templates:
 
 > [`/sc-rendering`](https://github.com/izharikov/sitecore-xp-skills/blob/main/skills/sc-rendering/SKILL.md) skill:
 >
-> To create rendering do all the steps locally (file edits) then deploy code and sync Unicorn to have the Sitecore rendering ready. 
+> Create the rendering locally (file edits), then deploy code and sync Unicorn so the rendering exists in Sitecore.
+
+_Note_: shown with Unicorn - other serialization tools work with adjustments.
+
+The skill wraps it in one script call:
 
 ```powershell
 powershell -File .claude/skills/sc-rendering/New-Rendering.ps1 -Module Accordion `
@@ -132,27 +135,27 @@ powershell -File .claude/skills/sc-rendering/New-Rendering.ps1 -Module Accordion
 
 #### Content Editing
 
-Content editing itself I do not automate yet. The same serialization approach applies (edit yaml file locally for page/datasource and sync), or
-an MCP server against a running instance, like the
-[Sitecore Community MCP server](https://github.com/Antonytm/mcp-sitecore-server).
+Content editing itself I do not automate yet. The same serialization approach applies (edit the YAML file locally for a page or datasource and sync), or
+an MCP server against a running instance (see above).
 
 ### SPE scripting with an LLM
 
-[Sitecore PowerShell Extensions (SPE)](https://doc.sitecorepowershell.com/) is a popular addition to the platform, used widely. And of course Coding Agent can generate SPE scripts.
+[Sitecore PowerShell Extensions (SPE)](https://doc.sitecorepowershell.com/) is widely used, and the agent can generate SPE scripts.
 
-While in most cases it works, sometimes Agent hallucinates: SPE is very similar to PowerShell, so LLM starts 'guessing' names and parameters. The
-cmdlets read like ordinary PowerShell but are a separate set, so it writes a plausible name or
+While in most cases it works, sometimes the agent hallucinates: SPE cmdlets read like ordinary PowerShell but are a separate set, so it writes a plausible name or
 parameter that does not exist. There is no compile step - the script fails only when it runs in a Sitecore instance.
 
 > [`/spe`](https://github.com/izharikov/sitecore-xp-skills/blob/main/skills/spe/SKILL.md) skill:
 >
-> Verify PowerShell commands and parameters against existing documentation. 
+> Verify PowerShell commands and parameters against existing documentation.
 
 SPE documentation is comprehensive and easily machine-accessible in markdown format:
 
-```
+```txt
 https://doc.sitecorepowershell.com/appendix/<category>/<lowercase-command>.md
 ```
+
+_Task_: create a user with a full name and client language.
 
 <div class="my-6 w-full overflow-x-auto">
 <table class="stack-mobile w-full border-collapse border border-border">
@@ -216,19 +219,19 @@ $user.Profile.Save()
 </table>
 </div>
 
-### Sitecore XP Platform
+### Sitecore configs and internals
 
 Not every Sitecore internal is searchable in the docs. Some answers - which processors a pipeline
 runs, what a setting defaults to - live only in the shipped configuration, and none of that is on
 the public web.
 
-Checking it usually means visiting `/sitecore/admin/showconfig.aspx` and searching for the required pipeline/config (but often it's unclear what to search for). But if unzip Sitecore installation locally and give access to Claude Code - it can grep it for us.
+Checking it usually means visiting `/sitecore/admin/showconfig.aspx` and searching for the required pipeline/config (but often it's unclear what to search for). Unzip a Sitecore installation locally, give Claude Code access, and it greps the configs for you.
 
 > [`/sitecore-platform`](https://github.com/izharikov/sitecore-xp-skills/blob/main/skills/sitecore-platform/SKILL.md) skill:
-> 
-> Access to a Sitecore installation: browse all configs, XMLs, DLLs as its source code.
+>
+> Access to a Sitecore installation: browse configs and XMLs, and decompile DLLs when needed.
 
-_Example_. Validate if it's possible to find page items (with presentation) from search index.
+_Example_: can the search index return only page items (items with presentation)?
 
 ![Validate Sitecore question based on platform configuration](/src/images/2026/13-sitecore-xp-claude-setup/sitecore-platform-skill-use.png)
 
@@ -237,7 +240,7 @@ _Example_. Validate if it's possible to find page items (with presentation) from
 A developer who wants to know how a library really works decompiles it - Rider does it on a click,
 Visual Studio with ReSharper too.
 
-[ILSpy](https://github.com/icsharpcode/ILSpy) is the open-source decompiler behind that idea. It
+[ILSpy](https://github.com/icsharpcode/ILSpy) is an open-source decompiler. It
 ships a command-line tool, `ilspycmd`, that turns a compiled assembly back into C# and prints it -
 no GUI, no project loaded:
 
@@ -246,7 +249,7 @@ dotnet tool install -g ilspycmd
 ilspycmd path/to/Library.dll
 ```
 
-I wrapped that in a skill: Claude runs it against an assembly and reads the source. 
+I wrapped that in a skill: Claude runs it against an assembly and reads the source.
 
 > [`/ilspy-decompile`](https://github.com/izharikov/sitecore-xp-skills/blob/main/skills/ilspy-decompile/SKILL.md) skill:
 >
@@ -261,7 +264,7 @@ _CLAUDE.md_ and every loaded skill add to the context on every request. Consider
 
 | Extension | What for |
 |---|---|
-| CLAUDE.md | a judgement the model makes every session |
+| CLAUDE.md | context the model needs every session |
 | Skill | a multi-step operation, loaded only when needed |
 | Hook | anything a machine can check or fix |
 
@@ -270,8 +273,8 @@ after each write - no added context, and it can't be skipped.
 
 ## Conclusion
 
-> Claude Code already works with the Sitecore XP codebase. 
-> 
+> Claude Code already works with the Sitecore XP codebase.
+>
 > With skills it's more predictable and has better Sitecore context.
 
 Templates, renderings, and Sitecore internals follow the same shape:
