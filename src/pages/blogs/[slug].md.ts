@@ -7,12 +7,12 @@ export async function getStaticPaths() {
   const posts = await getCollection('blog');
   return posts.map(post => ({
     params: { slug: getSlug(post) },
-    props: { body: post.body ?? '' },
+    props: { title: post.data.title, body: post.body ?? '' },
   }));
 }
 
-export async function GET({ props }: { props: { body: string } }) {
-  return new Response(props.body, {
+export async function GET({ props }: { props: { title: string; body: string } }) {
+  return new Response(`# ${props.title}\n\n${props.body.trimStart()}`, {
     headers: { 'Content-Type': 'text/markdown; charset=utf-8' },
   });
 }
